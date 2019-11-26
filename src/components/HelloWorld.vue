@@ -1,26 +1,42 @@
 <template>
     <div>
-        <a-menu v-model="current" mode="horizontal">
-            <a-menu-item key="mail"> <a-icon type="mail" />Navigation One </a-menu-item>
-            <a-menu-item key="app" disabled> <a-icon type="appstore" />Navigation Two </a-menu-item>
-            <a-sub-menu>
-        <span slot="title" class="submenu-title-wrapper"
-        ><a-icon type="setting" />Navigation Three - Submenu</span
+        <a-menu
+                @click="handleClick"
+                style="width: 256px"
+                :defaultSelectedKeys="['1']"
+                :openKeys.sync="openKeys"
+                mode="inline"
         >
-                <a-menu-item-group title="Item 1">
-                    <a-menu-item key="setting:1">Option 1</a-menu-item>
-                    <a-menu-item key="setting:2">Option 2</a-menu-item>
+            <a-sub-menu key="sub1" @titleClick="titleClick">
+                <span slot="title"><a-icon type="mail" /><span>Navigation One</span></span>
+                <a-menu-item-group key="g1">
+                    <template slot="title"
+                    ><a-icon type="qq" /><span>Item 1</span></template
+                    >
+                    <a-menu-item key="1">Option 1</a-menu-item>
+                    <a-menu-item key="2">Option 2</a-menu-item>
                 </a-menu-item-group>
-                <a-menu-item-group title="Item 2">
-                    <a-menu-item key="setting:3">Option 3</a-menu-item>
-                    <a-menu-item key="setting:4">Option 4</a-menu-item>
+                <a-menu-item-group key="g2" title="Item 2">
+                    <a-menu-item key="3">Option 3</a-menu-item>
+                    <a-menu-item key="4">Option 4</a-menu-item>
                 </a-menu-item-group>
             </a-sub-menu>
-            <a-menu-item key="alipay">
-                <a href="https://ant.design" target="_blank" rel="noopener noreferrer"
-                >Navigation Four - Link</a
-                >
-            </a-menu-item>
+            <a-sub-menu key="sub2" @titleClick="titleClick">
+                <span slot="title"><a-icon type="appstore" /><span>Navigation Two</span></span>
+                <a-menu-item key="5">Option 5</a-menu-item>
+                <a-menu-item key="6">Option 6</a-menu-item>
+                <a-sub-menu key="sub3" title="Submenu">
+                    <a-menu-item key="7">Option 7</a-menu-item>
+                    <a-menu-item key="8">Option 8</a-menu-item>
+                </a-sub-menu>
+            </a-sub-menu>
+            <a-sub-menu key="sub4">
+                <span slot="title"><a-icon type="setting" /><span>Navigation Three</span></span>
+                <a-menu-item key="9">Option 9</a-menu-item>
+                <a-menu-item key="10">Option 10</a-menu-item>
+                <a-menu-item key="11">Option 11</a-menu-item>
+                <a-menu-item key="12">Option 12</a-menu-item>
+            </a-sub-menu>
         </a-menu>
     </div>
 </template>
@@ -29,7 +45,21 @@
         data() {
             return {
                 current: ['mail'],
+                openKeys: ['sub1'],
             };
+        },
+        methods: {
+            handleClick(e) {
+                window.console.log('click', e);
+            },
+            titleClick(e) {
+                window.console.log('titleClick', e);
+            },
+        },
+        watch: {
+            openKeys(val) {
+                window.console.log('openKeys', val);
+            },
         },
     };
 </script>
