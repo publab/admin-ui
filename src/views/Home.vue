@@ -19,7 +19,7 @@
                         <template slot="title">
                             <a-icon type="qq" /><span>Item 1</span>
                         </template>
-                        <a-menu-item key="1"><router-link to="nav">nav</router-link></a-menu-item>
+                        <a-menu-item key="1" @click="jump('nav')">nav</a-menu-item>
                         <a-menu-item key="2">Option 2</a-menu-item>
                     </a-menu-item-group>
                     <a-menu-item-group key="g2" title="Item 2">
@@ -98,19 +98,16 @@
             return {
                 collapsed: true,
                 defaultSelected: [
-                    // "1"
+                    "13"
                 ]
             };
         },
         methods: {
             jump(path){
-                this.$router.push(path)
+                this.$route.path != path ? this.$router.push(path):null;
             },
             topSelect(){
                 window.console.log(1111);
-            },
-            handleClick(e) {
-                window.console.log('click', e);
             },
             titleClick(e) {
                 window.console.log('titleClick', e);
