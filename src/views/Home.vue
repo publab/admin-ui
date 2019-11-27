@@ -5,13 +5,13 @@
 
             <a-menu
                     theme="dark"
-                    @click="handleClick"
                     :defaultSelectedKeys="defaultSelected"
                     mode="inline"
                     :inlineCollapsed="collapsed"
             >
-                <a-menu-item key="13">
-                    <a-icon type="cloud-download" /><router-link to="nav" :style="{color:red}">nav 1</router-link>
+                <a-menu-item key="13" @click="jump('/')">
+                    <a-icon type="pie-chart" />
+                    <span>首页</span>
                 </a-menu-item>
                 <a-sub-menu key="sub1" @titleClick="titleClick">
                     <span slot="title"><a-icon type="mail" /><span>Navigation One</span></span>
@@ -58,8 +58,8 @@
                                 :style="{ lineHeight: '64px' }"
                                 @select="topSelect"
                         >
-                            <a-menu-item key="1"><router-link to="/login">login</router-link></a-menu-item>
-                            <a-menu-item key="2"><router-link to="/">首页</router-link></a-menu-item>
+                            <a-menu-item key="1"><router-link to="/">nav 1</router-link></a-menu-item>
+                            <a-menu-item key="2">nav 2</a-menu-item>
                             <a-menu-item key="3">nav 3</a-menu-item>
                         </a-menu>
                     </a-col>
@@ -103,6 +103,9 @@
             };
         },
         methods: {
+            jump(path){
+                this.$router.push(path)
+            },
             topSelect(){
                 window.console.log(1111);
             },
@@ -145,9 +148,5 @@
 
     .bounce-enter, .bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
         opacity: 0;
-    }
-
-    .ant-menu-item > a{
-        display: inline-block;
     }
 </style>
