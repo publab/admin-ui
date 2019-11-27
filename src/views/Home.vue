@@ -82,7 +82,7 @@
             </a-layout-header>
 
             <a-layout-content :style="{ padding: '24px', background: '#fff', minHeight: '360px', margin: '16px' }">
-                <transition name="bounce">
+                <transition name="bounce" mode="out-in">
                     <router-view></router-view>
                 </transition>
             </a-layout-content>
@@ -140,7 +140,7 @@
     }
 
     .bounce-enter-active, .bounce-leave-active {
-        transition: opacity .3s;
+        transition: opacity .3s ease;
     }
 
     .bounce-enter, .bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
