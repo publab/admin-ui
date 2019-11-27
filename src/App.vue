@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-      <router-view></router-view>
+      <transition name="bounce" mode="out-in">
+        <router-view></router-view>
+      </transition>
   </div>
 </template>
 
@@ -13,3 +15,12 @@ export default {
   }
 }
 </script>
+<style>
+    .bounce-enter-active, .bounce-leave-active {
+        transition: opacity .3s ease;
+    }
+
+    .bounce-enter, .bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+</style>
