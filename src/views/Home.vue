@@ -58,7 +58,7 @@
                                 :style="{ lineHeight: '64px' }"
                                 @select="topSelect"
                         >
-                            <a-menu-item key="1"><router-link to="/">nav 1</router-link></a-menu-item>
+                            <a-menu-item key="1"><router-link to="/login">nav 1</router-link></a-menu-item>
                             <a-menu-item key="2">nav 2</a-menu-item>
                             <a-menu-item key="3">nav 3</a-menu-item>
                         </a-menu>
@@ -140,7 +140,7 @@
     }
 
     .bounce-enter-active, .bounce-leave-active {
-        transition: opacity .3s ease;
+        transition: opacity .2s ease;
     }
 
     .bounce-enter, .bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
