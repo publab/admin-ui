@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import NavMain from '../components/NavMain.vue'
+import Welcome from '../views/Welcome.vue'
 
 Vue.use(VueRouter)
 
@@ -11,6 +12,11 @@ const routes = [
     name: 'home',
     component: Home,
     children:[
+        {
+            path: '/',
+            name: 'home',
+            component: Welcome,
+        },
         {
             path: 'nav',
             name: 'nav',
