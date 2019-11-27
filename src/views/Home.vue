@@ -10,12 +10,15 @@
                     mode="inline"
                     :inlineCollapsed="collapsed"
             >
+                <a-menu-item key="13">
+                    <a-icon type="cloud-download" /><router-link to="nav" :style="{color:red}">nav 1</router-link>
+                </a-menu-item>
                 <a-sub-menu key="sub1" @titleClick="titleClick">
                     <span slot="title"><a-icon type="mail" /><span>Navigation One</span></span>
                     <a-menu-item-group key="g1">
-                        <template slot="title"
-                        ><a-icon type="qq" /><span>Item 1</span></template
-                        >
+                        <template slot="title">
+                            <a-icon type="qq" /><span>Item 1</span>
+                        </template>
                         <a-menu-item key="1"><router-link to="nav">nav</router-link></a-menu-item>
                         <a-menu-item key="2">Option 2</a-menu-item>
                     </a-menu-item-group>
@@ -52,7 +55,6 @@
                         <a-menu
                                 theme="dark"
                                 mode="horizontal"
-                                :defaultSelectedKeys="['2']"
                                 :style="{ lineHeight: '64px' }"
                                 @select="topSelect"
                         >
@@ -121,7 +123,6 @@
         computed:{
             count: function () {
                 window.console.log(this.$store.getters.getTodoById(2));
-
                 return 'asgffsdgd1';
             }
         }
@@ -144,5 +145,9 @@
 
     .bounce-enter, .bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
         opacity: 0;
+    }
+
+    .ant-menu-item > a{
+        display: inline-block;
     }
 </style>
