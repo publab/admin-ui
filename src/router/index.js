@@ -2,6 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import NavMain from '../components/NavMain.vue';
+import Welcome from '../views/Welcome.vue';
+//import Login from '../views/Login.vue'
+const Login = () => import('../views/Login.vue');
 Vue.use(VueRouter);
 const routes = [
     {
@@ -9,6 +12,11 @@ const routes = [
         name: 'home',
         component: Home,
         children: [
+            {
+                path: '/',
+                name: 'home',
+                component: Welcome,
+            },
             {
                 path: 'nav',
                 name: 'nav',
@@ -19,10 +27,7 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+        component: Login,
     }
 ];
 const router = new VueRouter({

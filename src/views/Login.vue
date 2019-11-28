@@ -1,6 +1,8 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-      <router-link to="/">home</router-link>
+    sdfsdf
   </div>
 </template>
+<style lang="scss">
+    @import '../assets/css/login.scss';
+</style>
