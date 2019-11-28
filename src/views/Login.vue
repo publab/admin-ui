@@ -38,22 +38,35 @@
             <!-- signup -->
             <div v-if="show == 2">
                 <div class="inner">
-                    <div class="form-field">
-                        <input id="mail_reg" type="text" autocomplete="off" maxlength="40" placeholder="您的注册手机号" />
-                    </div>
-                    <div class="form-field">
-                        <input id="pwd_confirm" type="password" autocomplete="off" maxlength="40" placeholder="注册密码" />
-                    </div>
-                    <div class="form-field">
-                        <input id="repwd_confirm" type="password" autocomplete="off" maxlength="40" placeholder="确认注册密码" />
-                    </div>
-                    <div class="form-field">
-                        <div class="clearfix">
-                            <span id="sms_send" class="vcode-send">点击发送验证码</span>
-                            <input id="code_reg" type="text" autocomplete="off" maxlength="4" placeholder="手机验证码" class="vcode-input" />
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                    <a-input size="large" placeholder="您的注册手机号" v-model="userName" ref="userNameInput">
+                        <a-icon slot="prefix" type="user" />
+                        <a-tooltip slot="suffix" title="手机号">
+                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+                        </a-tooltip>
+                    </a-input>
+                    <br /><br/>
+
+                    <a-input size="large" placeholder="注册密码" v-model="userName" ref="userNameInput">
+                        <a-icon slot="prefix" type="user" />
+                        <a-tooltip slot="suffix" title="注册密码">
+                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+                        </a-tooltip>
+                    </a-input>
+                    <br /><br/>
+
+                    <a-input size="large" placeholder="确认注册密码" v-model="userName" ref="userNameInput">
+                        <a-icon slot="prefix" type="user" />
+                        <a-tooltip slot="suffix" title="确认注册密码">
+                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+                        </a-tooltip>
+                    </a-input>
+                    <br /><br/>
+
+                    <a-input-group compact>
+                        <a-input size="large" style="width: 60%" defaultValue="验证码" />
+                        <a-button size="large" style="width: 40%" type="primary">发送短信</a-button>
+                    </a-input-group>
+                    <br />
 
                     <div class="submit-btn">
                         <button>立即注册</button>
@@ -72,22 +85,36 @@
             <!-- signpwd -->
             <div v-if="show == 3">
                 <div class="inner">
-                    <div class="form-field">
-                        <input id="mobile_pwd" type="text" autocomplete="off" maxlength="40" placeholder="您的注册手机号" />
-                    </div>
-                    <div class="form-field">
-                        <input id="pwd_pwd" type="password" autocomplete="off" maxlength="40" placeholder="重置密码" />
-                    </div>
-                    <div class="form-field">
-                        <input id="repwd_pwd" type="password" autocomplete="off" maxlength="40" placeholder="确认重置密码" />
-                    </div>
-                    <div class="form-field">
-                        <div class="clearfix">
-                            <span id="sms_send_pwd" class="vcode-send">点击发送验证码</span>
-                            <input id="code_pwd" type="text" autocomplete="off" maxlength="4" placeholder="手机验证码" class="vcode-input" />
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+
+                    <a-input size="large" placeholder="您的注册手机号" v-model="userName" ref="userNameInput">
+                        <a-icon slot="prefix" type="user" />
+                        <a-tooltip slot="suffix" title="手机号">
+                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+                        </a-tooltip>
+                    </a-input>
+                    <br /><br/>
+
+                    <a-input size="large" placeholder="重置密码" v-model="userName" ref="userNameInput">
+                        <a-icon slot="prefix" type="user" />
+                        <a-tooltip slot="suffix" title="重置密码">
+                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+                        </a-tooltip>
+                    </a-input>
+                    <br /><br/>
+
+                    <a-input size="large" placeholder="确认重置密码" v-model="userName" ref="userNameInput">
+                        <a-icon slot="prefix" type="user" />
+                        <a-tooltip slot="suffix" title="确认重置密码">
+                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+                        </a-tooltip>
+                    </a-input>
+                    <br /><br/>
+
+                    <a-input-group compact>
+                        <a-input size="large" style="width: 60%" defaultValue="验证码" />
+                        <a-button size="large" style="width: 40%" type="primary">发送短信</a-button>
+                    </a-input-group>
+                    <br/>
 
                     <div class="submit-btn">
                         <button>找回密码</button>
