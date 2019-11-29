@@ -152,7 +152,7 @@
                 path && this.$route.path != path ? this.$router.push(path):null;
             },
             register(){
-                axios.post('token').then((response) => {
+                axios.post('userinfo').then((response) => {
                     // sessionStorage.setItem('access_token','asdffffffffffffffffff')
                     window.console.log(response);
                 });

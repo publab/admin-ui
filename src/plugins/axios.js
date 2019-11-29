@@ -2,7 +2,6 @@
 
 import Vue from 'vue';
 import axios from "axios";
-import {message} from 'ant-design-vue'
 import layer from 'vue-layer'
 import 'vue-layer/lib/vue-layer.css';
 
@@ -40,16 +39,16 @@ _axios.interceptors.request.use(
 
 // Add a response interceptor
 _axios.interceptors.response.use(
-  function(response) {
-    // Do something with response data
-      --_index || _layer.closeAll();
-      return response.data.status ? response.data : !message.error(response.data.message);
-  },
-  function(error) {
-    // Do something with response error
-      --_index || _layer.closeAll();
-      return Promise.reject(error);
-  }
+    function(response) {
+        // Do something with response data
+        --_index || _layer.closeAll();
+        return response;
+    },
+    function(error) {
+        // Do something with response error
+        --_index || _layer.closeAll();
+        return Promise.reject(error);
+    }
 );
 
 Plugin.install = function(Vue, options) {
