@@ -25,7 +25,7 @@ _axios.interceptors.request.use(
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + token,
         }
-        message.success('sadfgsdg');
+        message.loading('sadfgsdg');
         return config;
     },
     function(error) {
