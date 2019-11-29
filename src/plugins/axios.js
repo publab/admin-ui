@@ -3,6 +3,8 @@
 import Vue from 'vue';
 import axios from "axios";
 import {message} from 'ant-design-vue'
+import layer from 'vue-layer'
+import 'vue-layer/lib/vue-layer.css';
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
@@ -16,16 +18,18 @@ let config = {
 };
 
 const _axios = axios.create(config);
+const _layer = layer(Vue);
+let _index = 0;
 
 _axios.interceptors.request.use(
     function(config) {
         // Do something before request is sent
+        _index++ || _layer.loading();
         let token = sessionStorage.getItem('access_token');
         config.headers = {
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + token,
         }
-        message.loading('sadfgsdg');
         return config;
     },
     function(error) {
@@ -38,11 +42,13 @@ _axios.interceptors.request.use(
 _axios.interceptors.response.use(
   function(response) {
     // Do something with response data
-    return response;
+      --_index || _layer.closeAll();
+      return response.data.status ? response : message.error(response.data.message);
   },
   function(error) {
     // Do something with response error
-    return Promise.reject(error);
+      --_index || _layer.closeAll();
+      return Promise.reject(error);
   }
 );
 
