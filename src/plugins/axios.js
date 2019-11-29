@@ -2,6 +2,7 @@
 
 import Vue from 'vue';
 import axios from "axios";
+import {message} from 'ant-design-vue'
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
@@ -17,19 +18,20 @@ let config = {
 const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
-  function(config) {
-    // Do something before request is sent
-    let token = sessionStorage.getItem('access_token');
-    config.headers = {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ' + token,
+    function(config) {
+        // Do something before request is sent
+        let token = sessionStorage.getItem('access_token');
+        config.headers = {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
+        message.success('sadfgsdg');
+        return config;
+    },
+    function(error) {
+        // Do something with request error
+        return Promise.reject(error);
     }
-    return config;
-  },
-  function(error) {
-    // Do something with request error
-    return Promise.reject(error);
-  }
 );
 
 // Add a response interceptor
