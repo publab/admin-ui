@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import NavMain from '../components/NavMain.vue';
+const Home = () => import('../views/Home.vue');
+const NavMain = () => import('../components/NavMain.vue');
 const Welcome = () => import('../views/Welcome.vue');
 const Login = () => import('../views/Login.vue');
 Vue.use(VueRouter);
