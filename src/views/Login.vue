@@ -154,7 +154,7 @@
             register(){
                 axios.post('token').then((response) => {
                     // sessionStorage.setItem('access_token','asdffffffffffffffffff')
-                    alert('122345');
+                    window.console.log(response);
                 });
             }
         }

@@ -43,7 +43,8 @@ _axios.interceptors.response.use(
   function(response) {
     // Do something with response data
       --_index || _layer.closeAll();
-      return response.data.status ? response : message.error(response.data.message);
+      return response;
+      // return response.data.status ? response : message.error(response.data.message);
   },
   function(error) {
     // Do something with response error
