@@ -152,8 +152,8 @@
                 path && this.$route.path != path ? this.$router.push(path):null;
             },
             register(){
-                axios.post('http://admin.2l2.cn/token').then((response) => {
-
+                axios.post('token').then((response) => {
+                    sessionStorage.setItem('access_token','asdffffffffffffffffff')
                 });
             }
         }
