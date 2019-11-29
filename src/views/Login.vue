@@ -69,7 +69,7 @@
                     <br />
 
                     <div class="submit-btn">
-                        <button>立即注册</button>
+                        <button @click="register">立即注册</button>
                     </div>
                     <div class="connect">
                         <p class="hd" align="center">
@@ -147,19 +147,15 @@
                 ]
             };
         },
-        mounted (){
-
-        },
         methods: {
             jump(path){
                 path && this.$route.path != path ? this.$router.push(path):null;
             },
-            topSelect(){
-                window.console.log(1111);
-            },
-            titleClick(e) {
-                window.console.log('titleClick', e);
-            },
+            register(){
+                axios.post('http://admin.2l2.cn/token').then((response) => {
+
+                });
+            }
         }
     };
 </script>
