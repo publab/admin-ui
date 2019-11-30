@@ -46,7 +46,7 @@ _axios.interceptors.response.use(
     function(response) {
         // Do something with response data
         --_index || _layer.closeAll();
-        return response;
+        return response.data;
     },
     function(error) {
         // Do something with response error
@@ -59,12 +59,10 @@ _axios.interceptors.response.use(
                     return new Promise(resolve => {
                         // 等待refresh_token
                         _axios.post('refresh').then((response) => {
-                            if(response.data.status && response.data.data.token){
+                            if(response.status && response.data.token){
                                 //写入新的token重新发送请求
-                                sessionStorage.setItem('access_token',response.data.data.token)
-
-                                error.config.headers['Authorization'] = 'Bearer ' + response.data.data.token;
-                                axios(error.config).then((response) => {
+                                sessionStorage.setItem('access_token',response.data.token)
+                                _axios(error.config).then((response) => {
                                     resolve(response);
                                 });
                             }else{

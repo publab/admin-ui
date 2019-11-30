@@ -154,10 +154,10 @@
             login(){
                 axios.post('token').then((response) => {
 
-                    if(!response.data.status){
-                        this.message.error(response.data.message);
+                    if(!response.status){
+                        this.message.error(response.message);
                     }
-                    sessionStorage.setItem('access_token',response.data.data.token)
+                    sessionStorage.setItem('access_token',response.data.token)
                     this.jump('/')
 
                 });
