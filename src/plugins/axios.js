@@ -80,6 +80,10 @@ _axios.interceptors.response.use(
         }
 
         return Promise.reject(error);
+        // return new Promise(resolve => {
+        //     resolve('test');
+        // });
+
     }
 );
 
