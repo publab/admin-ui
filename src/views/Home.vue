@@ -104,7 +104,12 @@
         },
         created (){
             axios.post('userinfo').then((response) => {
+                window.console.log('11111');
                 window.console.log(response);
+
+            }).catch(function(error){
+                window.console.log('2222');
+                window.console.log(error);
             });
         },
         methods: {
