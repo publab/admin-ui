@@ -1,11 +1,11 @@
 <template>
-    <div id="wrapper" :style="{  backgroundImage: 'url(https://tinyuse.oss-cn-beijing.aliyuncs.com/loginbgimg/'+imgIndex+'.jpg)'}">
+    <div id="wrapper" :style="{  backgroundImage: 'url(https://tinyuse.oss-cn-beijing.aliyuncs.com/loginbgimg/'+img_index+'.jpg)'}">
         <div class="container">
             <div title="返回首页" class="logo"></div>
             <!-- signin(login) -->
             <div v-if="show == 1">
                 <div class="inner">
-                    <a-input size="large" placeholder="请输入登录账号" v-model="userName" ref="userNameInput">
+                    <a-input size="large" placeholder="请输入登录账号" v-model="user_name" ref="userNameInput">
                         <a-icon slot="prefix" type="user" />
                         <a-tooltip slot="suffix" title="手机号">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
@@ -13,7 +13,7 @@
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="请输入密码" v-model="userName" ref="userNameInput">
+                    <a-input size="large" placeholder="请输入密码" v-model="password" ref="userNameInput">
                         <a-icon slot="prefix" type="lock" />
                         <a-tooltip slot="suffix" title="密码">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
@@ -38,7 +38,7 @@
             <!-- signup -->
             <div v-if="show == 2">
                 <div class="inner">
-                    <a-input size="large" placeholder="您的注册手机号" v-model="userName" ref="userNameInput">
+                    <a-input size="large" placeholder="您的注册手机号" v-model="user_name" ref="userNameInput">
                         <a-icon slot="prefix" type="user" />
                         <a-tooltip slot="suffix" title="手机号">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
@@ -46,16 +46,16 @@
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="注册密码" v-model="userName" ref="userNameInput">
-                        <a-icon slot="prefix" type="user" />
+                    <a-input size="large" placeholder="注册密码" v-model="register_pwd" ref="userNameInput">
+                        <a-icon slot="prefix" type="lock" />
                         <a-tooltip slot="suffix" title="注册密码">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
                         </a-tooltip>
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="确认注册密码" v-model="userName" ref="userNameInput">
-                        <a-icon slot="prefix" type="user" />
+                    <a-input size="large" placeholder="确认注册密码" v-model="register_pwd_confirm" ref="userNameInput">
+                        <a-icon slot="prefix" type="lock" />
                         <a-tooltip slot="suffix" title="确认注册密码">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
                         </a-tooltip>
@@ -63,7 +63,7 @@
                     <br /><br/>
 
                     <a-input-group compact>
-                        <a-input size="large" style="width: 60%" defaultValue="验证码" />
+                        <a-input size="large" style="width: 60%" v-model="register_code" defaultValue="验证码" />
                         <a-button size="large" style="width: 40%" type="primary">发送短信</a-button>
                     </a-input-group>
                     <br />
@@ -86,7 +86,7 @@
             <div v-if="show == 3">
                 <div class="inner">
 
-                    <a-input size="large" placeholder="您的注册手机号" v-model="userName" ref="userNameInput">
+                    <a-input size="large" placeholder="您的注册手机号" v-model="user_name" ref="userNameInput">
                         <a-icon slot="prefix" type="user" />
                         <a-tooltip slot="suffix" title="手机号">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
@@ -94,16 +94,16 @@
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="重置密码" v-model="userName" ref="userNameInput">
-                        <a-icon slot="prefix" type="user" />
+                    <a-input size="large" placeholder="重置密码" v-model="reset_pwd" ref="userNameInput">
+                        <a-icon slot="prefix" type="lock" />
                         <a-tooltip slot="suffix" title="重置密码">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
                         </a-tooltip>
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="确认重置密码" v-model="userName" ref="userNameInput">
-                        <a-icon slot="prefix" type="user" />
+                    <a-input size="large" placeholder="确认重置密码" v-model="reset_pwd_confirm" ref="userNameInput">
+                        <a-icon slot="prefix" type="lock" />
                         <a-tooltip slot="suffix" title="确认重置密码">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
                         </a-tooltip>
@@ -111,7 +111,7 @@
                     <br /><br/>
 
                     <a-input-group compact>
-                        <a-input size="large" style="width: 60%" defaultValue="验证码" />
+                        <a-input size="large" style="width: 60%" v-model="reset_code" defaultValue="验证码" />
                         <a-button size="large" style="width: 40%" type="primary">发送短信</a-button>
                     </a-input-group>
                     <br/>
@@ -138,9 +138,16 @@
     export default {
         data() {
             return {
-                userName: '',
+                user_name: '',
+                password: '',
+                register_pwd: '',
+                register_pwd_confirm: '',
+                register_code: '',
+                reset_pwd: '',
+                reset_pwd_confirm: '',
+                reset_code: '',
                 show:1,
-                imgIndex: Math.floor(Math.random()*39)+1,
+                img_index: Math.floor(Math.random()*39)+1,
                 collapsed: true,
                 defaultSelected: [
                     "13"
@@ -152,10 +159,15 @@
                 path && this.$route.path != path ? this.$router.push(path):null;
             },
             login(){
-                axios.post('token').then((response) => {
+                axios.post('token',{
+                    data:{
+                        'mobile': this.user_name,
+                        'password': this.password,
+                    }
+                }).then((response) => {
 
                     if(!response.status){
-                        this.message.error(response.message);
+                        return this.$message.error(response.message);
                     }
                     sessionStorage.setItem('access_token',response.data.token)
                     this.jump('/')
