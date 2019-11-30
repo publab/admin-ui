@@ -102,6 +102,11 @@
                 ]
             };
         },
+        created (){
+            axios.post('userinfo').then((response) => {
+                window.console.log(response);
+            });
+        },
         methods: {
             jump(path){
                 path && this.$route.path != path ? this.$router.push(path):null;

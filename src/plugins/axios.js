@@ -47,9 +47,34 @@ _axios.interceptors.response.use(
     function(error) {
         // Do something with response error
         --_index || _layer.closeAll();
+
+        // if(error.response){
+        //     if(error.response.status == 401 && sessionStorage.getItem('access_token')){
+        //         return new Promise(resolve => {
+        //             // 等待refresh_token
+        //             _axios.post('token').then((response) => {
+        //                 //区分重新发送请求/返回登陆页面
+        //                 resolve(error. response);
+        //
+        //                 window.console.log();
+        //             });
+        //         });
+        //     }else{
+        //         _login();
+        //     }
+        // }
+
+        // return _login();
         return Promise.reject(error);
     }
 );
+
+let _login = function () {
+    sessionStorage.clear();
+    router.push({
+        name: '/'
+    });
+};
 
 Plugin.install = function(Vue, options) {
   Vue.axios = _axios;

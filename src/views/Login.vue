@@ -22,7 +22,7 @@
                     <br /><br/>
 
                     <div class="submit-btn">
-                        <router-link to="/"><button>登 录</button></router-link>
+                        <button @click="login">登 录</button>
                     </div>
                     <div class="connect">
                         <p class="hd" align="center">
@@ -151,11 +151,19 @@
             jump(path){
                 path && this.$route.path != path ? this.$router.push(path):null;
             },
-            register(){
-                axios.post('userinfo').then((response) => {
-                    // sessionStorage.setItem('access_token','asdffffffffffffffffff')
-                    window.console.log(response);
+            login(){
+                axios.post('token').then((response) => {
+
+                    if(!response.data.status){
+                        this.message.error(response.data.message);
+                    }
+                    sessionStorage.setItem('access_token',response.data.data.token)
+                    this.jump('/')
+
                 });
+            },
+            register(){
+
             }
         }
     };
