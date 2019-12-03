@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-      <transition name="bounce" mode="out-in">
-          <a-spin>
-              <a-icon slot="indicator" type="loading" style="font-size: 24px" spin />
+      <a-spin :spinning="false">
+          <a-icon slot="indicator" type="loading" style="font-size: 24px" spin />
+          <transition name="bounce" mode="out-in">
               <router-view></router-view>
-          </a-spin>
-      </transition>
+          </transition>
+      </a-spin>
   </div>
 </template>
 
