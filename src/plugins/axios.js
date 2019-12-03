@@ -21,8 +21,8 @@ const _axios = axios.create(config);
 _axios.interceptors.request.use(
     function(config) {
         // Do something before request is sent
-        store.state.loading++;
         let token = sessionStorage.getItem('access_token');
+        store.commit('loading/increment');
         config.headers = {
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + token,
@@ -32,7 +32,7 @@ _axios.interceptors.request.use(
     },
     function(error) {
         // Do something with request error
-        store.state.loading--;
+        store.commit('loading/decrement');
         return Promise.reject(error);
     }
 );
@@ -41,12 +41,12 @@ _axios.interceptors.request.use(
 _axios.interceptors.response.use(
     function(response) {
         // Do something with response data
-        store.state.loading--;
+        store.commit('loading/decrement');
         return response.data;
     },
     function(error) {
         // Do something with response error
-        store.state.loading--;
+        store.commit('loading/decrement');
         if(error.response){
             if(error.response.status == 401){
                 if(sessionStorage.getItem('access_token')){
