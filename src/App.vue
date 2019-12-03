@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <a-spin :spinning="false">
-          <a-icon slot="indicator" type="loading" style="font-size: 24px" spin />
+      <a-spin :spinning="this.$store.state.loading ? true : false" size="large">
+          <a-icon slot="indicator" type="loading" spin />
           <transition name="bounce" mode="out-in">
               <router-view></router-view>
           </transition>
