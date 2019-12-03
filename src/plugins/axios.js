@@ -2,8 +2,6 @@
 
 import Vue from 'vue';
 import axios from "axios";
-import layer from 'vue-layer'
-import 'vue-layer/lib/vue-layer.css';
 import router from '../router'
 
 // Full config:  https://github.com/axios/axios#request-config
@@ -19,14 +17,9 @@ let config = {
 
 const _axios = axios.create(config);
 
-const _layer = layer(Vue);
-let _index = 0;
-
 _axios.interceptors.request.use(
     function(config) {
         // Do something before request is sent
-        _index++ || _layer.loading();
-
         let token = sessionStorage.getItem('access_token');
         config.headers = {
             'Accept': 'application/json',
@@ -45,13 +38,10 @@ _axios.interceptors.request.use(
 _axios.interceptors.response.use(
     function(response) {
         // Do something with response data
-        --_index || _layer.closeAll();
         return response.data;
     },
     function(error) {
         // Do something with response error
-        --_index || _layer.closeAll();
-
         if(error.response){
             if(error.response.status == 401){
                 if(sessionStorage.getItem('access_token')){
