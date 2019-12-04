@@ -155,9 +155,6 @@
             };
         },
         methods: {
-            jump(path){
-                path && this.$route.path != path ? this.$router.push(path):null;
-            },
             login(){
                 axios.post('token',{
                     data:{
