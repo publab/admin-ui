@@ -9,7 +9,7 @@
                         :style="{ lineHeight: '64px' }"
                         @select="topSelect"
                 >
-                    <a-menu-item key="1"><router-link to="/login">nav 1</router-link></a-menu-item>
+                    <a-menu-item key="1">nav 1</a-menu-item>
                     <a-menu-item key="2">nav 2</a-menu-item>
                     <a-menu-item key="3">nav 3</a-menu-item>
                 </a-menu>
