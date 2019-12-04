@@ -21,7 +21,7 @@
     export default {
         data() {
             return {
-
+                count: 0
             };
         },
         created (){
@@ -38,10 +38,9 @@
         },
 
         computed:{
-            count: function () {
-                // window.console.log(this.$store.getters.loading.getTodoById(2));
-                return 'asgffsdgd1';
-            }
+            // ...mapGetters({
+            //     count:'loading/getTodoById'
+            // })
         }
     };
 </script>
