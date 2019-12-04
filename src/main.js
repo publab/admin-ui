@@ -5,6 +5,7 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import './plugins/ant-design-vue.js';
+import './plugins/helper.js';
 Vue.config.productionTip = false;
 new Vue({
     router,

@@ -13,7 +13,7 @@
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="请输入密码" v-model="password" ref="userNameInput">
+                    <a-input size="large" type="password" placeholder="请输入密码" v-model="password" ref="userNameInput">
                         <a-icon slot="prefix" type="lock" />
                         <a-tooltip slot="suffix" title="密码">
                             <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />

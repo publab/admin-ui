@@ -71,7 +71,7 @@
                                     <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
                                 </a-menu-item>
                                 <a-menu-item key="1">
-                                    <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">2nd menu item</a>
+                                    <a rel="noopener noreferrer" @click="logout">Logout（退出）</a>
                                 </a-menu-item>
                                 <a-menu-divider />
                                 <a-menu-item key="3" disabled>3rd menu item</a-menu-item>
@@ -103,20 +103,29 @@
             };
         },
         created (){
+            let _this = this;
             axios.post('userinfo').then((response) => {
-                window.console.log(response);
+
             });
         },
         methods: {
-            jump(path){
-                path && this.$route.path != path ? this.$router.push(path):null;
-            },
             topSelect(){
                 window.console.log(1111);
             },
             titleClick(e) {
                 window.console.log('titleClick', e);
             },
+            logout(){
+                let _this = this;
+                axios.post('logout').then((response) => {
+                    if(!response.status){
+                        return _this.$message.error(response.message);
+                    }
+                    sessionStorage.clear()
+                    _this.jump('/login');
+                });
+
+            }
         },
         watch: {
 
