@@ -8,7 +8,7 @@
                 mode="inline"
                 :inlineCollapsed="collapsed"
         >
-            <a-menu-item key="13" @click="jump('/')">
+            <a-menu-item key="0" @click="jump('/')">
                 <a-icon type="pie-chart" />
                 <span>首页</span>
             </a-menu-item>
@@ -18,7 +18,7 @@
                     <template slot="title">
                         <a-icon type="qq" /><span>Item 1</span>
                     </template>
-                    <a-menu-item key="1" @click="jump('/nav')">nav</a-menu-item>
+                    <a-menu-item key="1">nav</a-menu-item>
                     <a-menu-item key="2">Option 2</a-menu-item>
                 </a-menu-item-group>
                 <a-menu-item-group key="g2" title="Item 2">
@@ -53,7 +53,7 @@
             return {
                 collapsed: true,
                 defaultSelected: [
-                    "13"
+                    "0"
                 ]
             };
         },
