@@ -44,7 +44,7 @@
                     onChange: page => {
                         window.console.log(page);
                     },
-                    pageSize: 5,
+                    pageSize: 10,
                 },
                 actions: [
                     { type: 'star-o', text: '156' },

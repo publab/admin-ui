@@ -12,6 +12,7 @@
                 Ant Design ©2018 Created by Ant UED {{count}}
             </a-layout-footer>
         </a-layout>
+        <a-back-top />
     </a-layout>
 </template>
 <script>
