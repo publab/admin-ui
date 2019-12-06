@@ -14,6 +14,10 @@ const routes = [
                 path: '/',
                 name: 'index',
                 component: Welcome,
+            },
+            {
+                path: 'system/develop/permission/index',
+                component: () => import('../views/system/develop/permission/Index.vue')
             }
         ]
     },

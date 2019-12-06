@@ -1,5 +1,5 @@
 <template>
-    <a-layout-header >
+    <a-layout-header>
         <a-row>
             <a-col :span="3"></a-col>
             <a-col :span="18">
@@ -16,7 +16,7 @@
             </a-col>
             <a-col :span="3" :style="{textAlign: 'right'}">
                 <a-dropdown placement="bottomRight">
-                    <a class="ant-dropdown-link" :style="{color: '#fff'}"> Hover me <a-icon type="down" /> </a>
+                    <a class="ant-dropdown-link" :style="{color: '#fff'}"> {{mobile}} {{name}} <a-icon type="down" /> </a>
                     <a-menu slot="overlay">
                         <a-menu-item key="0">
                             <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
@@ -38,13 +38,15 @@
         name: "Top",
         data() {
             return {
-
+                mobile:'',
+                name:'',
             };
         },
         created (){
             let _this = this;
             axios.post('userinfo').then((response) => {
-
+                _this.mobile = response.data.mobile
+                _this.name = response.data.name
             });
         },
         methods: {
