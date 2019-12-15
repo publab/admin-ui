@@ -42,7 +42,6 @@ const router = new VueRouter({
   routes
 })
 router.afterEach((to, from) => {
-    window.console.log(to);
     store.commit('router/setitems',to.matched.map(function (item) {
         return {
             name:item.name,
