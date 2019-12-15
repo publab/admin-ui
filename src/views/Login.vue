@@ -13,12 +13,9 @@
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" type="password" placeholder="请输入密码" v-model="password" ref="userNameInput">
+                    <a-input-password size="large" v-model="password" placeholder="请输入密码">
                         <a-icon slot="prefix" type="lock" />
-                        <a-tooltip slot="suffix" title="密码">
-                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
-                        </a-tooltip>
-                    </a-input>
+                    </a-input-password>
                     <br /><br/>
 
                     <div class="submit-btn">
@@ -46,20 +43,14 @@
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="注册密码" v-model="register_pwd" ref="userNameInput">
+                    <a-input-password size="large" v-model="register_pwd" placeholder="注册密码">
                         <a-icon slot="prefix" type="lock" />
-                        <a-tooltip slot="suffix" title="注册密码">
-                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
-                        </a-tooltip>
-                    </a-input>
+                    </a-input-password>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="确认注册密码" v-model="register_pwd_confirm" ref="userNameInput">
+                    <a-input-password size="large" v-model="register_pwd_confirm" placeholder="确认注册密码">
                         <a-icon slot="prefix" type="lock" />
-                        <a-tooltip slot="suffix" title="确认注册密码">
-                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
-                        </a-tooltip>
-                    </a-input>
+                    </a-input-password>
                     <br /><br/>
 
                     <a-input-group compact>
@@ -94,20 +85,14 @@
                     </a-input>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="重置密码" v-model="reset_pwd" ref="userNameInput">
+                    <a-input-password size="large" v-model="reset_pwd" placeholder="重置密码">
                         <a-icon slot="prefix" type="lock" />
-                        <a-tooltip slot="suffix" title="重置密码">
-                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
-                        </a-tooltip>
-                    </a-input>
+                    </a-input-password>
                     <br /><br/>
 
-                    <a-input size="large" placeholder="确认重置密码" v-model="reset_pwd_confirm" ref="userNameInput">
+                    <a-input-password size="large" v-model="reset_pwd_confirm" placeholder="确认重置密码">
                         <a-icon slot="prefix" type="lock" />
-                        <a-tooltip slot="suffix" title="确认重置密码">
-                            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
-                        </a-tooltip>
-                    </a-input>
+                    </a-input-password>
                     <br /><br/>
 
                     <a-input-group compact>

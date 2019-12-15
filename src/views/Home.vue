@@ -3,7 +3,10 @@
         <left></left>
         <a-layout>
             <top></top>
-            <a-layout-content :style="{ padding: '24px', background: '#fff', minHeight: '360px', margin: '16px' }">
+            <a-breadcrumb :style="{margin: '16px'}">
+                <a-breadcrumb-item v-for="(item, key) in this.$store.state.router.items" :key="key">{{item.name}}</a-breadcrumb-item>
+            </a-breadcrumb>
+            <a-layout-content :style="{ padding: '24px', background: '#fff', minHeight: '360px', margin: '0 16px 16px' }">
                 <transition name="bounce" mode="out-in">
                     <router-view></router-view>
                 </transition>

@@ -187,8 +187,8 @@
     export default {
         data: () => ({
             formItemLayout: {
-                labelCol: { span: 6 },
-                wrapperCol: { span: 14 },
+                labelCol: { span: 3},
+                wrapperCol: { span: 17 },
             },
         }),
         beforeCreate() {
