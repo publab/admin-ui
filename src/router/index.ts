@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
+import tree from  './tree';
 
 const  Home = () => import('../views/Home.vue');
 const  Welcome = () => import('../views/Welcome.vue');
@@ -20,15 +21,33 @@ const routes = [
             component: Welcome
         },
         {
-            path: 'system/develop/permission/index',
-            name: 'permission',
-            component: () => import('../views/system/develop/permission/Index.vue')
+            path: 'system',
+            name: 'system',
+            component: tree(() => import('../views/system/develop/permission/Index.vue')),
+            children: [
+                {
+                    path: 'develop',
+                    name: 'develop',
+                    component: tree(() => import('../views/system/develop/permission/Index.vue')),
+                    children:[
+                        {
+                            path: 'permission',
+                            name: 'permission',
+                            component: tree(() => import('../views/system/develop/permission/Index.vue')),
+                            children:[
+                                {
+                                    path: 'create',
+                                    name: 'create',
+                                    component: tree(() => import('../views/system/develop/permission/Create.vue'))
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+
         },
-        {
-            path: 'system/develop/permission/create',
-            name: 'create',
-            component: () => import('../views/system/develop/permission/Create.vue')
-        }
+
     ]
   },
   {
