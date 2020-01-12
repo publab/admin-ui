@@ -51,7 +51,7 @@
     export default {
         data() {
             return {
-                collapsed: true,
+                collapsed: false,//侧面菜单 默认状态
                 defaultSelected: [
                     "0"
                 ]
