@@ -1,5 +1,5 @@
 <template>
-    <div id="wrapper" :style="{  backgroundImage: 'url(https://tinyuse.oss-cn-beijing.aliyuncs.com/loginbgimg/'+img_index+'.jpg)'}">
+    <div id="wrapper" :style="{  backgroundImage: 'url(https://tinyuse-video.oss-cn-beijing.aliyuncs.com/loginbgimg/'+img_index+'.jpg)'}">
         <div class="container">
             <div title="返回首页" class="logo"></div>
             <!-- signin(login) -->

@@ -38,7 +38,7 @@
                 <a-menu-item key="5">Option 5</a-menu-item>
                 <a-menu-item key="6">Option 6</a-menu-item>
                 <a-sub-menu key="sub3" title="权限管理">
-                    <a-menu-item key="7" @click="jump('/system/develop/permission/index')">权限列表</a-menu-item>
+                    <a-menu-item key="7" @click="jump('/system/develop/permission')">权限列表</a-menu-item>
                     <a-menu-item key="8" @click="jump('/system/develop/permission/create')">Option 8</a-menu-item>
                 </a-sub-menu>
             </a-sub-menu>
