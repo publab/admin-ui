@@ -2,7 +2,7 @@
     <a-layout-header>
         <a-row>
             <a-col :span="3"></a-col>
-            <a-col :span="18">
+            <a-col :span="16">
                 <a-menu
                         theme="dark"
                         mode="horizontal"
@@ -14,7 +14,7 @@
                     <a-menu-item key="3">nav 3</a-menu-item>
                 </a-menu>
             </a-col>
-            <a-col :span="3" :style="{textAlign: 'right'}">
+            <a-col :span="5" :style="{textAlign: 'right'}">
                 <a-dropdown placement="bottomRight">
                     <a class="ant-dropdown-link" :style="{color: '#fff'}"> {{mobile}} {{name}} <a-icon type="down" /> </a>
                     <a-menu slot="overlay">
