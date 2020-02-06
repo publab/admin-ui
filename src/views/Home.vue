@@ -12,7 +12,7 @@
                 </transition>
             </a-layout-content>
             <a-layout-footer style="text-align: center">
-                Ant Design ©2018 Created by Ant UED {{count}}
+                <a href="http://vue.ant-design.cn/docs/vue/introduce-cn/" target="_blank">Ant Design ©2018 Created by Ant UED</a>
             </a-layout-footer>
         </a-layout>
         <a-back-top />
@@ -25,7 +25,7 @@
     export default {
         data() {
             return {
-                count: 0
+
             };
         },
         created (){
