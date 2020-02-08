@@ -59,7 +59,7 @@
         },
         methods: {
             titleClick(e) {
-                window.console.log('titleClick', e);
+                // window.console.log('titleClick', e);
             },
         }
     };

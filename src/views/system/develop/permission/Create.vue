@@ -110,10 +110,11 @@
             handleSubmit(e) {
                 e.preventDefault();
                 this.form.validateFields((err, values) => {
+                    if(!err){
+                        window.console.log('innnnnn');
+                    }
 
                 });
-
-                window.console.log(this.form.getFieldsError());
             },
             handleSelectChange (value) {
                 this.form.setFieldsValue({
@@ -127,7 +128,6 @@
                 });
             },
             hasErrors (fieldsError) {
-                window.console.log(Object.keys(fieldsError).some(field => fieldsError[field]));
                 return Object.keys(fieldsError).some(field => fieldsError[field]);
             }
         },
