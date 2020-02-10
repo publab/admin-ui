@@ -20,10 +20,12 @@
         </a-form-item>
 
         <a-form-item
-            label="Note"
+                label="Note"
+                validate-status="error"
+                help="ooooooooooooooooo"
         >
             <a-input
-                v-decorator="[
+                    v-decorator="[
                   'note',
                   {rules: [{ required: true, message: 'Please input your note!' }]}
                 ]"
@@ -32,11 +34,12 @@
 
         <a-form-item label="Gender">
             <a-select
-                v-decorator="[
+                    v-decorator="[
                   'gender',
                   {rules: [{ required: true, message: 'Please select your gender!' }]}
                 ]"
-                placeholder="Select a option and change input text above"
+                    placeholder="Select a option and change input text above"
+                    @change="handleSelectChange"
             >
                 <a-select-option value="male">
                     male
@@ -48,22 +51,33 @@
         </a-form-item>
 
         <a-form-item
-            label="Nickname"
+                label="Nickname"
         >
             <a-input
-                v-decorator="[
+                    v-decorator="[
                   'nickname',
-                  {rules: [{ required: false, message: 'Please input your nickname' }]}
+                  {rules: [{ required: checkNick, message: 'Please input your nickname' }]}
                 ]"
                     placeholder="Please input your nickname"
             />
         </a-form-item>
 
+        <a-form-item
+                :wrapper-col="{offset: formItemLayout.labelCol.span}"
+        >
+            <a-checkbox
+                    :checked="checkNick"
+                    @change="handleChange"
+            >
+                Nickname is required
+            </a-checkbox>
+        </a-form-item>
+
         <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
             <a-button
-                type="primary"
-                html-type="submit"
-                :disabled="hasErrors(form.getFieldsError())"
+                    type="primary"
+                    html-type="submit"
+                    :disabled="hasErrors(form.getFieldsError())"
             >
                 Submit
             </a-button>
@@ -72,16 +86,25 @@
 </template>
 
 <script>
+    import AFormItem from "ant-design-vue/es/form/FormItem";
     export default {
+        components: {AFormItem},
         data: () => ({
             formItemLayout: {
                 labelCol: { span: 3},
                 wrapperCol: { span: 17 },
             },
             formLayout: 'horizontal',
+            checkNick: false,
         }),
         beforeCreate() {
-            this.form = this.$form.createForm(this);
+            this.form = this.$form.createForm(this, { note: 'validate_other' });
+        },
+        mounted () {
+            this.$nextTick(() => {
+                // To disabled submit button at the beginning.
+                // this.form.validateFields();
+            });
         },
         methods: {
             handleSubmit(e) {
@@ -93,6 +116,20 @@
 
                 });
             },
+            handleSelectChange (value) {
+                this.form.setFieldsValue({
+                    note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`,
+                });
+            },
+            handleChange  (e) {
+                this.checkNick = e.target.checked;
+                this.$nextTick(() => {
+                    this.form.validateFields(['nickname'], { force: true });
+                });
+            },
+            hasErrors (fieldsError) {
+                return Object.keys(fieldsError).some(field => fieldsError[field]);
+            }
         },
     };
 </script>

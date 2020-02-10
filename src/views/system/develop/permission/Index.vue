@@ -1,57 +1,67 @@
 <template>
-    <a-list itemLayout="vertical" size="large" :pagination="pagination" :dataSource="listData">
-        <div slot="footer"><b>ant design vue</b> footer part</div>
-        <a-list-item slot="renderItem" slot-scope="item" key="item.title">
-            <template slot="actions" v-for="{type, text} in actions">
-        <span :key="type">
-          <a-icon :type="type" style="margin-right: 8px" />
-          {{text}}
-        </span>
-            </template>
-            <img
-                    slot="extra"
-                    width="272"
-                    alt="logo"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-            />
-            <a-list-item-meta :description="item.description">
-                <a slot="title" :href="item.href">{{item.title}}</a>
-                <a-avatar slot="avatar" :src="item.avatar" />
-            </a-list-item-meta>
-            {{item.content}}
-        </a-list-item>
-    </a-list>
+    <a-table :columns="columns" :dataSource="data">
+        <template slot="title">
+            <a-row type="flex" justify="space-around" align="middle">
+                <a-col :span="18">Admin功能列表</a-col>
+                <a-col :span="6" :style="{ textAlign:'right'}">
+                    <a-button type="primary" icon="plus">添加功能</a-button>
+                </a-col>
+            </a-row>
+        </template>
+        <template slot="name" slot-scope="text">
+            <a href="javascript:;">{{text}}</a>
+        </template>
+        <template slot="operation" slot-scope="text, record">
+            <a-popconfirm
+                title="Sure to delete?"
+                @confirm="() => onDelete(record.key)">
+                <a>Delete</a>
+            </a-popconfirm>
+        </template>
+    </a-table>
 </template>
 <script>
-    const listData = [];
-    for (let i = 0; i < 23; i++) {
-        listData.push({
-            href: 'https://vue.ant.design/',
-            title: `ant design vue part ${i}`,
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            description:
-                'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-            content:
-                'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-        });
-    }
+    const columns = [{
+        title: 'Name',
+        dataIndex: 'name',
+        scopedSlots: { customRender: 'name' },
+    }, {
+        title: 'Cash Assets',
+        className: 'column-money',
+        dataIndex: 'money',
+        align: 'right',
+    }, {
+        title: 'Address',
+        dataIndex: 'address',
+    }, {
+        title: 'operation',
+        dataIndex: 'operation',
+        scopedSlots: { customRender: 'operation' },
+    }];
+
+    const data = [{
+        key: '1',
+        name: 'John Brown',
+        money: '￥300,000.00',
+        address: 'New York No. 1 Lake Park',
+    }, {
+        key: '2',
+        name: 'Jim Green',
+        money: '￥1,256,000.00',
+        address: 'London No. 1 Lake Park',
+    }, {
+        key: '3',
+        name: 'Joe Black',
+        money: '￥120,000.00',
+        address: 'Sidney No. 1 Lake Park',
+    }];
 
     export default {
         data() {
             return {
-                listData,
-                pagination: {
-                    onChange: page => {
-                        window.console.log(page);
-                    },
-                    pageSize: 10,
-                },
-                actions: [
-                    { type: 'star-o', text: '156' },
-                    { type: 'like-o', text: '156' },
-                    { type: 'message', text: '2' },
-                ],
-            };
-        },
-    };
+                data,
+                columns,
+            }
+        }
+    }
 </script>
