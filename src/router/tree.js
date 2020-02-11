@@ -8,8 +8,9 @@ export default function tree(component) {
             },
         },
         render(h) {
-            const child = this.showChild ? h('router-view') : h(component);
-            return h('keep-alive', [child]);
+            return this.showChild ? h('router-view') : h(component);
+            // const child = this.showChild ? h('router-view') : h(component);
+            // return h('keep-alive', [child]);
         },
     };
 }
