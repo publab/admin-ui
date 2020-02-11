@@ -5,38 +5,15 @@
             :layout="formLayout"
             @submit="handleSubmit"
     >
+        <a-divider orientation="left">Admin 功能添加</a-divider>
 
-        <a-form-item label="Plain Text">
-            <span class="ant-form-text">
-                China
-            </span>
-        </a-form-item>
-
-        <a-form-item label="InputNumber">
-            <a-input-number v-decorator="['input-number', { initialValue: 3 }]" :min="1" :max="10" />
-            <span class="ant-form-text">
-                machines
-            </span>
-        </a-form-item>
-
-        <a-form-item
-            label="Note"
-        >
-            <a-input
-                v-decorator="[
-                  'note',
-                  {rules: [{ required: true, message: 'Please input your note!' }]}
-                ]"
-            />
-        </a-form-item>
-
-        <a-form-item label="Gender">
+        <a-form-item label="上级模块">
             <a-select
-                v-decorator="[
+                    v-decorator="[
                   'gender',
                   {rules: [{ required: true, message: 'Please select your gender!' }]}
                 ]"
-                placeholder="Select a option and change input text above"
+                    placeholder="Select a option and change input text above"
             >
                 <a-select-option value="male">
                     male
@@ -45,6 +22,22 @@
                     female
                 </a-select-option>
             </a-select>
+        </a-form-item>
+
+        <a-form-item label="显示名称">
+            <a-input
+                v-decorator="[
+                  'note',
+                  {rules: [{ required: true, message: 'Please input your note!' }]}
+                ]"
+            />
+        </a-form-item>
+
+        <a-form-item label="排序">
+            <a-input-number v-decorator="['input-number', { initialValue: 0 }]" :min="0" :max="99999999" style="width: 100px" />
+            <span class="ant-form-text">
+                (0 ~ 99999999) 值越大越靠前
+            </span>
         </a-form-item>
 
         <a-form-item

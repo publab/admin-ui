@@ -1,4 +1,4 @@
-export default function tree(component) {
+export default function tree(component = false) {
     return {
         name: 'tree',
         computed: {
@@ -8,7 +8,7 @@ export default function tree(component) {
             },
         },
         render(h) {
-            return this.showChild ? h('router-view') : h(component);
+            return this.showChild || !component ? h('router-view') : h(component);
             // const child = this.showChild ? h('router-view') : h(component);
             // return h('keep-alive', [child]);
         },

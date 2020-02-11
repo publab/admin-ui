@@ -4,7 +4,7 @@
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="18">Admin功能列表</a-col>
                 <a-col :span="6" :style="{ textAlign:'right'}">
-                    <a-button type="primary" icon="plus">添加功能</a-button>
+                    <a-button type="primary" icon="plus" @click="jump('/system/develop/permission/create')">添加功能</a-button>
                 </a-col>
             </a-row>
         </template>
@@ -63,14 +63,11 @@
             }
         },
         mounted(){
-            // this.fetch();
+            this.fetch();
         },
         methods: {
             fetch(){
-                axios.post('system/develop/permission',{
-                    data:{
-                    }
-                }).then((response) => {
+                axios.post('system/develop/permission',{}).then((response) => {
 
                     if(!response.status){
                         return this.$message.error(response.message);

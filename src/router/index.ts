@@ -21,23 +21,19 @@ const routes = [
             component: Welcome
         },
         {
-            path: 'system',
-            name: 'system',
-            component: tree(() => import('../views/system/develop/permission/Index.vue')),
+            path: 'system', name: 'system',
+            component: tree(),
             children: [
                 {
-                    path: 'develop',
-                    name: 'develop',
-                    component: tree(() => import('../views/system/develop/permission/Index.vue')),
+                    path: 'develop', name: 'develop',
+                    component: tree(),
                     children:[
                         {
-                            path: 'permission',
-                            name: 'permission',
+                            path: 'permission', name: 'permission',
                             component: tree(() => import('../views/system/develop/permission/Index.vue')),
                             children:[
                                 {
-                                    path: 'create',
-                                    name: 'create',
+                                    path: 'create', name: 'create',
                                     component: tree(() => import('../views/system/develop/permission/Create.vue'))
                                 }
                             ]
