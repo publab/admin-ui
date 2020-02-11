@@ -27,7 +27,6 @@
         scopedSlots: { customRender: 'name' },
     }, {
         title: 'Cash Assets',
-        className: 'column-money',
         dataIndex: 'money',
         align: 'right',
     }, {
@@ -62,6 +61,23 @@
                 data,
                 columns,
             }
+        },
+        mounted(){
+            // this.fetch();
+        },
+        methods: {
+            fetch(){
+                axios.post('system/develop/permission',{
+                    data:{
+                    }
+                }).then((response) => {
+
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+
+                });
+            },
         }
     }
 </script>
