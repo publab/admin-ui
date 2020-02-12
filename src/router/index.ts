@@ -23,13 +23,11 @@ const router = new VueRouter({
 
 export const asyncRouterMap = [
     {
-        path: '/',
-        name: 'home',
+        path: '/', name: 'home',
         component: Home,
         children:[
             {
-                path: '/',
-                name: 'index',
+                path: '/', name: 'index',
                 component: Welcome
             },
             {
