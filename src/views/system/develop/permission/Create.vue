@@ -33,6 +33,29 @@
             />
         </a-form-item>
 
+        <a-form-item label="权限名称">
+            <a-input
+                v-decorator="[
+                  'power',
+                  {rules: [{ required: true, message: 'Please input your power!' }]}
+                ]"
+            />
+        </a-form-item>
+
+        <a-form-item label="菜单">
+            <a-radio-group name="radioGroup" :defaultValue="1">
+                <a-radio :value="1">菜单</a-radio>
+                <a-radio :value="2">非菜单</a-radio>
+            </a-radio-group>
+        </a-form-item>
+
+        <a-form-item label="状态">
+            <a-radio-group name="status" :defaultValue="1">
+                <a-radio :value="1">正常</a-radio>
+                <a-radio :value="2">停止</a-radio>
+            </a-radio-group>
+        </a-form-item>
+
         <a-form-item label="排序">
             <a-input-number v-decorator="['input-number', { initialValue: 0 }]" :min="0" :max="99999999" style="width: 100px" />
             <span class="ant-form-text">
@@ -41,7 +64,7 @@
         </a-form-item>
 
         <a-form-item
-            label="Nickname"
+            label="图标"
         >
             <a-input
                 v-decorator="[
@@ -65,7 +88,9 @@
 </template>
 
 <script>
+    import AFormItem from "ant-design-vue/es/form/FormItem";
     export default {
+        components: {AFormItem},
         data: () => ({
             formItemLayout: {
                 labelCol: { span: 3},

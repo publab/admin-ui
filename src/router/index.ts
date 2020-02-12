@@ -11,42 +11,6 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: Home,
-    children:[
-        {
-            path: '/',
-            name: 'index',
-            component: Welcome
-        },
-        {
-            path: 'system', name: 'system',
-            component: tree(),
-            children: [
-                {
-                    path: 'develop', name: 'develop',
-                    component: tree(),
-                    children:[
-                        {
-                            path: 'permission', name: 'permission',
-                            component: tree(() => import('../views/system/develop/permission/Index.vue')),
-                            children:[
-                                {
-                                    path: 'create', name: 'create',
-                                    component: tree(() => import('../views/system/develop/permission/Create.vue'))
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ],
-
-        },
-
-    ]
-  },
-  {
     path: '/login',
     name: 'login',
     component: Login,
@@ -56,6 +20,47 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+export const asyncRouterMap = [
+    {
+        path: '/',
+        name: 'home',
+        component: Home,
+        children:[
+            {
+                path: '/',
+                name: 'index',
+                component: Welcome
+            },
+            {
+                path: 'system', name: 'system',
+                component: tree(),
+                children: [
+                    {
+                        path: 'develop', name: 'develop',
+                        component: tree(),
+                        children:[
+                            {
+                                path: 'permission', name: 'permission',
+                                component: tree(() => import('../views/system/develop/permission/Index.vue')),
+                                children:[
+                                    {
+                                        path: 'create', name: 'create',
+                                        component: tree(() => import('../views/system/develop/permission/Create.vue'))
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+
+            },
+        ]
+    },
+];
+
+router.addRoutes(asyncRouterMap);
+
 router.afterEach((to, from) => {
     store.commit('router/setitems',to.matched.map(function (item) {
         return {
