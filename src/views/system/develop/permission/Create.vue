@@ -9,16 +9,13 @@
 
         <a-form-item label="上级模块">
             <a-select
-                    v-decorator="[
+                v-decorator="[
                   'parent_id'
                 ]"
                     placeholder="请选择上级模块"
             >
-                <a-select-option value="0">
-                    male
-                </a-select-option>
-                <a-select-option value="1">
-                    female
+                <a-select-option v-for="(item,index) in menuTree" :key="index" :value="item.key">
+                    |<span v-for="(n,i) in item.level" :key="i"> -- </span>{{item.display_name}}
                 </a-select-option>
             </a-select>
         </a-form-item>
@@ -96,9 +93,19 @@
                 wrapperCol: { span: 17 },
             },
             formLayout: 'horizontal',
+            menuTree: [],
         }),
         beforeCreate() {
             this.form = this.$form.createForm(this);
+        },
+        mounted(){
+            let _this = this;
+            axios.post('system/develop/permission',{menu:1}).then((response) => {
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                _this.menuTree = response.data;
+            });
         },
         methods: {
             handleSubmit(e) {

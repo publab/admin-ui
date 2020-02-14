@@ -8,13 +8,19 @@
                 </a-col>
             </a-row>
         </template>
-        <template slot="is_menu" slot-scope="text">
-            {{text == 1 ? '是' : '否'}}
+        <template slot="icon" slot-scope="data">
+            <a-icon v-if="data" :type="data" />
         </template>
-        <template slot="is_work" slot-scope="text">
-            {{text == 1 ? '正常' : '停止'}}
+        <template slot="display_name" slot-scope="data, record">
+            |<span v-for="i in record.level" :key="i"> -- </span> {{data}}
         </template>
-        <template slot="operation" slot-scope="text, record">
+        <template slot="is_menu" slot-scope="data">
+            {{data == 1 ? '是' : '否'}}
+        </template>
+        <template slot="is_work" slot-scope="data">
+            {{data == 1 ? '正常' : '停止'}}
+        </template>
+        <template slot="operation" slot-scope="data, record">
             <a href="javascript:;">编辑</a>
             <a-divider type="vertical" />
             <a-popconfirm
@@ -27,15 +33,21 @@
 </template>
 <script>
     const columns = [{
+        title: '图',
+        dataIndex: 'icon',
+        align: 'right',
+        width: 70,
+        scopedSlots: { customRender: 'icon' },
+    },{
         title: '名称',
         dataIndex: 'display_name',
+        scopedSlots: { customRender: 'display_name' },
     },{
         title: '路由',
         dataIndex: 'name',
     }, {
         title: '菜单',
         dataIndex: 'is_menu',
-        align: 'left',
         width: 100,
         scopedSlots: { customRender: 'is_menu' },
     }, {
