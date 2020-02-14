@@ -1,5 +1,5 @@
 <template>
-    <a-table :columns="columns" :dataSource="data" :pagination="pagination">
+    <a-table :columns="columns" :dataSource="data">
         <template slot="title">
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="18">Admin功能列表</a-col>
@@ -8,11 +8,8 @@
                 </a-col>
             </a-row>
         </template>
-        <template slot="is_menu" slot-scope="text">
-            {{text == 1 ? '是' : '否'}}
-        </template>
-        <template slot="is_work" slot-scope="text">
-            {{text == 1 ? '正常' : '停止'}}
+        <template slot="name" slot-scope="text">
+            <a href="javascript:;">{{text}}</a>
         </template>
         <template slot="operation" slot-scope="text, record">
             <a href="javascript:;">编辑</a>
@@ -27,55 +24,57 @@
 </template>
 <script>
     const columns = [{
-        title: '名称',
-        dataIndex: 'display_name',
-    },{
-        title: '路由',
+        title: 'Name',
         dataIndex: 'name',
+        scopedSlots: { customRender: 'name' },
     }, {
-        title: '菜单',
-        dataIndex: 'is_menu',
-        align: 'left',
-        width: 100,
-        scopedSlots: { customRender: 'is_menu' },
+        title: 'Cash Assets',
+        dataIndex: 'money',
+        align: 'right',
     }, {
-        title: '状态',
-        dataIndex: 'is_work',
-        width: 100,
-        scopedSlots: { customRender: 'is_work' },
-    },{
-        title: '排序',
-        dataIndex: 'sorts',
-        width: 100,
+        title: 'Address',
+        dataIndex: 'address',
     }, {
-        title: '操作',
+        title: 'operation',
         dataIndex: 'operation',
-        width: 150,
         scopedSlots: { customRender: 'operation' },
+    }];
+
+    const data = [{
+        key: '1',
+        name: 'John Brown',
+        money: '￥300,000.00',
+        address: 'New York No. 1 Lake Park',
+    }, {
+        key: '2',
+        name: 'Jim Green',
+        money: '￥1,256,000.00',
+        address: 'London No. 1 Lake Park',
+    }, {
+        key: '3',
+        name: 'Joe Black',
+        money: '￥120,000.00',
+        address: 'Sidney No. 1 Lake Park',
     }];
 
     export default {
         data() {
             return {
-                data: [],
+                data,
                 columns,
-                pagination: {
-                    pageSize: 10
-                }
             }
         },
         mounted(){
-            this.fetch();
+            // this.fetch();
         },
         methods: {
             fetch(){
-                let _this = this;
                 axios.post('system/develop/permission',{}).then((response) => {
 
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
-                    _this.data = response.data;
+
                 });
             },
         }
