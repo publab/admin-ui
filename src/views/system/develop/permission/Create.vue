@@ -18,7 +18,7 @@
                 <a-select-option :value="0">
                     请选择上级模块
                 </a-select-option>
-                <a-select-option v-for="(item,index) in menuTree" :key="index" :value="item.key">
+                <a-select-option v-for="(item,index) in menuTree" :key="index" :value="item.key" :disabled="item.disabled">
                     |<span v-for="(n,i) in item.level" :key="i"> -- </span>{{item.display_name}}
                 </a-select-option>
             </a-select>
@@ -103,12 +103,20 @@
             this.form = this.$form.createForm(this);
         },
         mounted(){
-            let _this = this;
+            let _this = this,open = 0;
             axios.post('system/develop/permission',{menu:1}).then((response) => {
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
                 _this.menuTree = response.data;
+                _this.menuTree.forEach(item => {
+                    if(item.key == _this.$route.params.id){
+                        open = 1;
+                    }else if(item.level == 1){
+                        open = 0;
+                    }
+                    open ? item.disabled = true:item.disabled = false;
+                });
             });
 
             if(_this.$route.params.id){
@@ -116,7 +124,9 @@
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
-                    this.form.setFieldsValue(response.data);
+                    _this.$nextTick(() => {
+                        _this.form.setFieldsValue(response.data);
+                    });
                 });
             }
         },
