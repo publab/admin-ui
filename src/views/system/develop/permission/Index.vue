@@ -90,6 +90,17 @@
                     _this.data = response.data;
                 });
             },
+            onDelete(id){
+                let _this = this;
+                axios.post('system/develop/permission/delete/'+id,{}).then((response) => {
+
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    _this.data = _this.data.filter(item => item.key !== id);
+
+                });
+            }
         }
     }
 </script>
