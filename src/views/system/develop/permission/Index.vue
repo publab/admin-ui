@@ -21,7 +21,7 @@
             {{data == 1 ? '正常' : '停止'}}
         </template>
         <template slot="operation" slot-scope="data, record">
-            <a href="javascript:;">编辑</a>
+            <a @click="jump('/system/develop/permission/update/'+record.key)">编辑</a>
             <a-divider type="vertical" />
             <a-popconfirm
                 title="Sure to delete?"

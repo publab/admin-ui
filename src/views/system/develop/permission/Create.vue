@@ -11,9 +11,13 @@
             <a-select
                 v-decorator="[
                   'parent_id',
+                  {initialValue: 0},
                 ]"
                 placeholder="请选择上级模块"
             >
+                <a-select-option :value="0">
+                    请选择上级模块
+                </a-select-option>
                 <a-select-option v-for="(item,index) in menuTree" :key="index" :value="item.key">
                     |<span v-for="(n,i) in item.level" :key="i"> -- </span>{{item.display_name}}
                 </a-select-option>
@@ -24,7 +28,7 @@
             <a-input
                 v-decorator="[
                   'display_name',
-                  {rules: [{ required: true, message: 'Please input your display_name!' }]}
+                  {initialValue: '',rules: [{ required: true, message: 'Please input your display_name!' }]}
                 ]"
                 placeholder="请输入显示名称"
             />
@@ -34,7 +38,7 @@
             <a-input
                 v-decorator="[
                   'name',
-                  {rules: [{ required: true, message: 'Please input your route_name!' }]}
+                  {initialValue: '',rules: [{ required: true, message: 'Please input your route_name!' }]}
                 ]"
                 placeholder="请输入权限名称"
             />
@@ -67,7 +71,7 @@
             <a-input
                 v-decorator="[
                   'icon',
-                  {rules: [{ required: false, message: 'Please input your icon' }]}
+                  {initialValue: '',rules: [{ required: false, message: 'Please input your icon' }]}
                 ]"
                 placeholder="请输入图标"
             />
@@ -106,6 +110,15 @@
                 }
                 _this.menuTree = response.data;
             });
+
+            if(_this.$route.params.id){
+                axios.post('system/develop/permission/detail/'+_this.$route.params.id,{}).then((response) => {
+                    if(!response.status){
+                        return this.$message.error(response.message);
+                    }
+                    this.form.setFieldsValue(response.data);
+                });
+            }
         },
         methods: {
             handleSubmit(e) {
@@ -117,7 +130,14 @@
                         return false;
                     }
 
-                    axios.post('system/develop/permission/create',{data:values}).then((response) => {
+                    let url;
+                    if(_this.$route.params.id){
+                        url = 'system/develop/permission/update/'+_this.$route.params.id;
+                    }else{
+                        url = 'system/develop/permission/create';
+                    }
+
+                    axios.post(url,{data:values}).then((response) => {
 
                         if(!response.status){
                             return this.$message.error(response.message);
