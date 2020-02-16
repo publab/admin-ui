@@ -4,12 +4,12 @@
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="18">角色列表</a-col>
                 <a-col :span="6" :style="{ textAlign:'right'}">
-                    <a-button type="primary" icon="plus" @click="jump('/system/develop/permission/create')">添加角色</a-button>
+                    <a-button type="primary" icon="plus" @click="jump('/system/develop/role/create')">添加角色</a-button>
                 </a-col>
             </a-row>
         </template>
         <template slot="operation" slot-scope="data, record">
-            <a @click="jump('/system/develop/permission/update/'+record.key)">编辑</a>
+            <a @click="jump('/system/develop/role/update/'+record.key)">编辑</a>
             <a-divider type="vertical" />
             <a-popconfirm
                 title="Sure to delete?"
@@ -24,6 +24,9 @@
         title: 'ID',
         dataIndex: 'key',
         width: 100,
+    },{
+        title: '显示名称',
+        dataIndex: 'display_name',
     },{
         title: '角色名称',
         dataIndex: 'name',
@@ -60,7 +63,7 @@
             },
             onDelete(id){
                 let _this = this;
-                axios.post('system/develop/permission/delete/'+id,{}).then((response) => {
+                axios.post('system/develop/role/delete/'+id,{}).then((response) => {
 
                     if(!response.status){
                         return this.$message.error(response.message);
