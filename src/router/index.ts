@@ -51,7 +51,21 @@ export const asyncRouterMap = [
                                         component: tree(() => import('../views/system/develop/permission/Create.vue'))
                                     },
                                 ]
-                            }
+                            },
+                            {
+                                path: 'role', name: 'role',
+                                component: tree(() => import('../views/system/develop/role/Index.vue')),
+                                children:[
+                                    {
+                                        path: 'create', name: 'create',
+                                        component: tree(() => import('../views/system/develop/role/Create.vue'))
+                                    },
+                                    {
+                                        path: 'update/:id', name: 'update',
+                                        component: tree(() => import('../views/system/develop/role/Create.vue'))
+                                    },
+                                ]
+                            },
                         ]
                     }
                 ],
