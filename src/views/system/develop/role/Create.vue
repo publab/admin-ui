@@ -34,6 +34,19 @@
             </a-radio-group>
         </a-form-item>
 
+        <a-form-item label="权限">
+            <a-tree
+                checkable
+                :treeData="treeData"
+                :defaultExpandParent="true"
+                :defaultExpandAll="true"
+                :autoExpandParent="true"
+                @check="onCheck"
+            />
+        </a-form-item>
+
+
+
         <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
             <a-button
                 type="primary"
@@ -43,10 +56,56 @@
                 Submit
             </a-button>
         </a-form-item>
+
     </a-form>
 </template>
 
 <script>
+
+    const treeData = [
+        {
+            title: '0-0',
+            key: '0-0',
+            children: [
+                {
+                    title: '0-0-0',
+                    key: '0-0-0',
+                    children: [
+                        { title: '0-0-0-0', key: '0-0-0-0', style:{display:'inline-block'}},
+                        { title: '0-0-0-1', key: '0-0-0-1', style:{display:'inline-block'}},
+                        { title: '0-0-0-2', key: '0-0-0-2', style:{display:'inline-block'}},
+                    ],
+                },
+                {
+                    title: '0-0-1',
+                    key: '0-0-1',
+                    children: [
+                        { title: '0-0-1-0', key: '0-0-1-0' },
+                        { title: '0-0-1-1', key: '0-0-1-1' },
+                        { title: '0-0-1-2', key: '0-0-1-2' },
+                    ],
+                },
+                {
+                    title: '0-0-2',
+                    key: '0-0-2',
+                },
+            ],
+        },
+        {
+            title: '0-1',
+            key: '0-1',
+            children: [
+                { title: '0-1-0-0', key: '0-1-0-0' },
+                { title: '0-1-0-1', key: '0-1-0-1' },
+                { title: '0-1-0-2', key: '0-1-0-2' },
+            ],
+        },
+        {
+            title: '0-2',
+            key: '0-2',
+        },
+    ];
+
     export default {
         data: () => ({
             formItemLayout: {
@@ -54,6 +113,7 @@
                 wrapperCol: { span: 17 },
             },
             formLayout: 'horizontal',
+            treeData,
         }),
         beforeCreate() {
             this.form = this.$form.createForm(this);
@@ -99,6 +159,9 @@
                     });
 
                 });
+            },
+            onCheck(selectedKeys, info) {
+                window.console.log('onSelect', info);
             },
         },
     };
