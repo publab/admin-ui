@@ -40,7 +40,7 @@
         scopedSlots: { customRender: 'icon' },
     },{
         title: '名称',
-        dataIndex: 'display_name',
+        dataIndex: 'title',
         scopedSlots: { customRender: 'display_name' },
     },{
         title: '路由',

@@ -19,7 +19,7 @@
                     请选择上级模块
                 </a-select-option>
                 <a-select-option v-for="(item,index) in menuTree" :key="index" :value="item.key" :disabled="item.disabled">
-                    |<span v-for="(n,i) in item.level" :key="i"> -- </span>{{item.display_name}}
+                    |<span v-for="(n,i) in item.level" :key="i"> -- </span>{{item.title}}
                 </a-select-option>
             </a-select>
         </a-form-item>
@@ -27,7 +27,7 @@
         <a-form-item label="显示名称">
             <a-input
                 v-decorator="[
-                  'display_name',
+                  'title',
                   {initialValue: '',rules: [{ required: true, message: 'Please input your display_name!' }]}
                 ]"
                 placeholder="请输入显示名称"

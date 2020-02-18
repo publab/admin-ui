@@ -10,7 +10,7 @@
         <a-form-item label="显示名称">
             <a-input
                 v-decorator="[
-                  'display_name',
+                  'title',
                   {initialValue: '',rules: [{ required: true, message: 'Please input your display_name!' }]}
                 ]"
                 placeholder="请输入显示名称"
@@ -86,32 +86,29 @@
             handleSubmit(e) {
                 e.preventDefault();
 
-                window.console.log(this.checkboxs);
-                return false;
+                let _this = this;
+                _this.form.validateFields((err, values) => {
+                    if(err){
+                        return false;
+                    }
 
-                // let _this = this;
-                // _this.form.validateFields((err, values) => {
-                //     if(err){
-                //         return false;
-                //     }
-                //
-                //     let url;
-                //     if(_this.$route.params.id){
-                //         url = 'system/develop/role/update/'+_this.$route.params.id;
-                //     }else{
-                //         url = 'system/develop/role/create';
-                //     }
-                //
-                //     axios.post(url,{data:values}).then((response) => {
-                //
-                //         if(!response.status){
-                //             return this.$message.error(response.message);
-                //         }
-                //         return this.$message.success(response.message,1,() => _this.$router.go(-1));
-                //
-                //     });
-                //
-                // });
+                    let url;
+                    if(_this.$route.params.id){
+                        url = 'system/develop/role/update/'+_this.$route.params.id;
+                    }else{
+                        url = 'system/develop/role/create';
+                    }
+
+                    axios.post(url,{data:values}).then((response) => {
+
+                        if(!response.status){
+                            return this.$message.error(response.message);
+                        }
+                        return this.$message.success(response.message,1,() => _this.$router.go(-1));
+
+                    });
+
+                });
             },
         },
     };

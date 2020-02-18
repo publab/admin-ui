@@ -26,7 +26,7 @@
         width: 100,
     },{
         title: '显示名称',
-        dataIndex: 'display_name',
+        dataIndex: 'title',
     },{
         title: '角色名称',
         dataIndex: 'name',
