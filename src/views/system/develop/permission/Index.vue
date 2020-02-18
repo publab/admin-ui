@@ -12,7 +12,7 @@
             <a-icon v-if="data" :type="data" />
         </template>
         <template slot="display_name" slot-scope="data, record">
-            |<span v-for="i in record.level" :key="i"> -- </span> {{data}}
+            |<span v-for="i in record.level" :key="i"> --- </span> {{data}}
         </template>
         <template slot="is_menu" slot-scope="data">
             {{data == 1 ? '是' : '否'}}
@@ -82,7 +82,7 @@
         methods: {
             fetch(){
                 let _this = this;
-                axios.post('system/develop/permission',{}).then((response) => {
+                axios.post('system/develop/permission',{merge:1}).then((response) => {
 
                     if(!response.status){
                         return this.$message.error(response.message);

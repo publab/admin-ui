@@ -104,7 +104,7 @@
         },
         mounted(){
             let _this = this,open = 0;
-            axios.post('system/develop/permission',{menu:1}).then((response) => {
+            axios.post('system/develop/permission',{menu:1,merge:1}).then((response) => {
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
