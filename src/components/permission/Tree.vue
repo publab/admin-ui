@@ -10,60 +10,6 @@
 </template>
 
 <script>
-    const treeData = [
-        {
-            title: '0-0',
-            key: '0-0',
-            children: [
-                {
-                    title: '0-0-0',
-                    key: '0-0-0',
-                    class: 'whiteSpaceNormal',
-                    children: [
-                        { title: '0-0-0-0', key: '0-0-0-0'},
-                        { title: '0-0-0-1', key: '0-0-0-1'},
-                        { title: '0-0-0-2', key: '0-0-0-2'},
-                        { title: '0-0-0-2', key: '0-0-0-3'},
-                        { title: '0-0-0-2', key: '0-0-0-4'},
-                        { title: '0-0-0-2', key: '0-0-0-5'},
-                        { title: '0-0-0-2', key: '0-0-0-6'},
-                        { title: '0-0-0-2', key: '0-0-0-7'},
-                        { title: '0-0-0-2', key: '0-0-0-8'},
-                        { title: '0-0-0-2', key: '0-0-0-9'},
-                        { title: '0-0-0-2', key: '0-0-0-10'},
-                        { title: '0-0-0-2', key: '0-0-0-11'},
-                    ],
-                },
-                {
-                    title: '0-0-1',
-                    key: '0-0-1',
-                    children: [
-                        { title: '0-0-1-0', key: '0-0-1-0' },
-                        { title: '0-0-1-1', key: '0-0-1-1' },
-                        { title: '0-0-1-2', key: '0-0-1-2' },
-                    ],
-                },
-                {
-                    title: '0-0-2',
-                    key: '0-0-2',
-                },
-            ],
-        },
-        {
-            title: '0-1',
-            key: '0-1',
-            children: [
-                { title: '0-1-0-0', key: '0-1-0-0' },
-                { title: '0-1-0-1', key: '0-1-0-1' },
-                { title: '0-1-0-2', key: '0-1-0-2' },
-            ],
-        },
-        {
-            title: '0-2',
-            key: '0-2',
-        },
-    ];
-
     export default {
         name: "Tree",
         data: () => ({
@@ -90,6 +36,8 @@
         methods: {
             onCheck(selectedKeys, info) {
                 window.console.log('selectedKeys', selectedKeys);
+                window.console.log('info', info);
+                window.console.log('this', this);
                 // window.console.log('info', info);
             },
         }
