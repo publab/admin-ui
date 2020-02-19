@@ -35,9 +35,33 @@
         },
         methods: {
             onCheck(selectedKeys, info) {
-                window.console.log('treeData', this.treeData);
-                window.console.log('key', info.node.eventKey);
+                // window.console.log('selectedKeys', selectedKeys);
                 // window.console.log('info', info);
+
+                let status = info.checked,
+                    isSelected = selectedKeys.checked,
+                    line = this.findLine(this.treeData,info.node.eventKey);
+
+                window.console.log(this.treeData,line,status,isSelected);
+
+                this.initLineCheck(this.treeData,line,status,isSelected);
+
+            },
+            findLine(data,key,line = []){
+                for(var i in data){
+                    line.push(i);
+                    if(data[i].id == key){
+                        return line;
+                    }
+                    if(this.findLine(data[i].children,key,line)){
+                        return line;
+                    }else{
+                        line.pop();
+                    }
+                }
+                return false;
+            },
+            initLineCheck(data,line,status){
 
                 //选中
                     //向下全选
@@ -46,6 +70,7 @@
                 //撤销
                     //向下撤销
                     //向上父节点撤销无子节点选中
+
             },
         }
     }
