@@ -35,10 +35,17 @@
         },
         methods: {
             onCheck(selectedKeys, info) {
-                window.console.log('selectedKeys', selectedKeys);
-                window.console.log('info', info);
-                window.console.log('this', this);
+                window.console.log('treeData', this.treeData);
+                window.console.log('key', info.node.eventKey);
                 // window.console.log('info', info);
+
+                //选中
+                    //向下全选
+                    //向上父节点全部选中
+
+                //撤销
+                    //向下撤销
+                    //向上父节点撤销无子节点选中
             },
         }
     }
