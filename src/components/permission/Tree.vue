@@ -24,11 +24,11 @@
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
-                for(var i in response.data){
-                    for(var j in response.data[i].children){
-                        response.data[i].children[j].class = 'whiteSpaceNormal'
-                    }
-                }
+                // for(var i in response.data){
+                //     for(var j in response.data[i].children){
+                //         response.data[i].children[j].class = 'whiteSpaceNormal'
+                //     }
+                // }
                 _this.treeData = response.data;
             });
 
