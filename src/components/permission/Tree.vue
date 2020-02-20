@@ -35,17 +35,30 @@
         },
         methods: {
             onCheck(selectedKeys, info) {
-                // window.console.log('selectedKeys', selectedKeys);
-                // window.console.log('info', info);
+                let _this = this;
+                _this.$nextTick(() => {
+                    let status = info.checked,
+                        isSelected = selectedKeys.checked,
+                        line = this.findLine(this.treeData,info.node.eventKey);
 
-                let status = info.checked,
-                    isSelected = selectedKeys.checked,
-                    line = this.findLine(this.treeData,info.node.eventKey);
-
-                window.console.log(this.treeData,line,status,isSelected);
-
-                this.initLineCheck(this.treeData,line,status,isSelected);
-
+                    this.initLineCheck(this.treeData,line,status,isSelected);
+                });
+            },
+            initLineCheck(data,line,status){
+                let sons = this.getSonKey(this.getNodeByLine(data,line));
+                let nodePool = this.checkboxs.checked;
+                if(status){
+                    sons = sons.filter(item => {
+                        return !nodePool.includes(item)
+                    });
+                    nodePool = [...nodePool,...sons];
+                }else{
+                    nodePool = nodePool.filter(item => {
+                        return !sons.includes(item)
+                    })
+                }
+                nodePool = this.parentNode(data,line,nodePool);
+                this.checkboxs = nodePool;
             },
             findLine(data,key,line = []){
                 for(var i in data){
@@ -61,17 +74,42 @@
                 }
                 return false;
             },
-            initLineCheck(data,line,status){
-
-                //选中
-                    //向下全选
-                    //向上父节点全部选中
-
-                //撤销
-                    //向下撤销
-                    //向上父节点撤销无子节点选中
-
+            getNodeByLine(data,line){
+                let need = data;
+                for (let i in line){
+                    need = need[line[i]].children
+                }
+                return need;
             },
+            getSonKey(data,line = []){
+                for(var i in data){
+                    line.push(data[i].key);
+                    this.getSonKey(data[i].children,line)
+                }
+                return line;
+            },
+            parentNode(data,line,nodePool){
+                line.pop()
+                if(!line.length){
+                    return nodePool;
+                }
+                let brothers = this.getNodeByLine(data,line);
+                let top = brothers.map(item => {
+                        return item.key;
+                    }).some(item => {
+                        return nodePool.includes(item)
+                    });
+                let parentKey = brothers[0].parent_id;
+
+                if(top){
+                    nodePool = nodePool.includes(parentKey) ? nodePool : [...nodePool,parentKey];
+                }else{
+                    nodePool = nodePool.filter(item => {
+                        return item != parentKey
+                    })
+                }
+                return this.parentNode(data,line,nodePool);
+            }
         }
     }
 </script>
