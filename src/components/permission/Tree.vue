@@ -125,5 +125,7 @@
     }
     .whiteSpaceNormal>ul>li{
         display: inline-block;
+        vertical-align: top;
+        padding-top: 8px;
     }
 </style>
