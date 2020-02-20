@@ -35,7 +35,7 @@
         </a-form-item>
 
         <a-form-item label="权限">
-            <tree :selectNode="selectNode"></tree>
+            <tree v-bind:selectNode="selectNode"></tree>
         </a-form-item>
 
         <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
@@ -68,7 +68,9 @@
         },
         mounted(){
             let _this = this;
+
             _this.selectNode = [2];
+
             if(_this.$route.params.id){
                 axios.post('system/develop/role/detail/'+_this.$route.params.id,{}).then((response) => {
                     if(!response.status){
