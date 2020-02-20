@@ -103,7 +103,7 @@
             this.form = this.$form.createForm(this);
         },
         mounted(){
-            let _this = this,open = 0;
+            let _this = this,open = 0,level = 0;
             axios.post('system/develop/permission',{menu:1,merge:1}).then((response) => {
                 if(!response.status){
                     return this.$message.error(response.message);
@@ -112,7 +112,8 @@
                 _this.menuTree.forEach(item => {
                     if(item.key == _this.$route.params.id){
                         open = 1;
-                    }else if(item.level == 1){
+                        level = item.level;
+                    }else if(item.level <= level && open == 1){
                         open = 0;
                     }
                     open ? item.disabled = true:item.disabled = false;

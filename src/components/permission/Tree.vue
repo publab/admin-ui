@@ -3,7 +3,7 @@
             checkable
             v-model="checkboxs"
             :treeData="treeData"
-            :defaultExpandAll="false"
+            :defaultExpandedKeys="threeNodes"
             :checkStrictly="true"
             @check="onCheck"
     />
@@ -15,6 +15,7 @@
         data: () => ({
             treeData: [],
             checkboxs: [],
+            threeNodes:[],
         }),
         mounted(){
             let _this = this;
@@ -24,11 +25,15 @@
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
+                let threeNodes = [];
                 for(var i in response.data){
+                    threeNodes.push(response.data[i].key);
                     for(var j in response.data[i].children){
+                        threeNodes.push(response.data[i].children[j].key);
                         response.data[i].children[j].class = 'whiteSpaceNormal'
                     }
                 }
+                _this.threeNodes = threeNodes;
                 _this.treeData = response.data;
             });
 
