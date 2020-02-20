@@ -12,6 +12,11 @@
 <script>
     export default {
         name: "Tree",
+        props: {
+            selectNode: {
+                type: Array
+            }
+        },
         data: () => ({
             treeData: [],
             checkboxs: [],
@@ -19,7 +24,7 @@
         }),
         mounted(){
             let _this = this;
-
+            _this.checkboxs = _this.selectNode
             //异步加载权限
             axios.post('system/develop/permission',{}).then((response) => {
                 if(!response.status){

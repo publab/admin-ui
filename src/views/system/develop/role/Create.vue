@@ -35,7 +35,7 @@
         </a-form-item>
 
         <a-form-item label="权限">
-            <tree></tree>
+            <tree :selectNode="[2]"></tree>
         </a-form-item>
 
         <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
