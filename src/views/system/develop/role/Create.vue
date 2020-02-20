@@ -35,7 +35,7 @@
         </a-form-item>
 
         <a-form-item label="权限">
-            <tree :selectNode="[2]"></tree>
+            <tree :selectNode="selectNode"></tree>
         </a-form-item>
 
         <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
@@ -61,13 +61,14 @@
                 wrapperCol: { span: 17 },
             },
             formLayout: 'horizontal',
+            selectNode: [],
         }),
         beforeCreate() {
             this.form = this.$form.createForm(this);
         },
         mounted(){
             let _this = this;
-
+            _this.selectNode = [2];
             if(_this.$route.params.id){
                 axios.post('system/develop/role/detail/'+_this.$route.params.id,{}).then((response) => {
                     if(!response.status){
