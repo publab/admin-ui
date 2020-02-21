@@ -13,13 +13,11 @@
     export default {
         name: "Tree",
         props: ['selectNode'],
-        data(){
-            return {
-                treeData: [],
-                checkboxs: [],
-                threeNodes:[],
-            }
-        },
+        data: () => ({
+            treeData: [],
+            checkboxs: [],
+            threeNodes:[],
+        }),
         mounted(){
             let _this = this;
 
@@ -40,6 +38,11 @@
                 _this.treeData = response.data;
             });
 
+        },
+        watch:{
+            selectNode(val){
+                this.checkboxs = val;
+            }
         },
         methods: {
             onCheck(selectedKeys, info) {

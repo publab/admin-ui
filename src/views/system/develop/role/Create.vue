@@ -35,7 +35,7 @@
         </a-form-item>
 
         <a-form-item label="权限">
-            <tree v-bind:selectNode="selectNode"></tree>
+            <tree :selectNode="selectNode"></tree>
         </a-form-item>
 
         <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
