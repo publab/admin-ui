@@ -76,8 +76,9 @@
                         return this.$message.error(response.message);
                     }
                     _this.$nextTick(() => {
+                        _this.selectNode = response.data.permission;
+                        delete response.data.permission;
                         _this.form.setFieldsValue(response.data);
-                        _this.selectNode = [2];
                     });
                 });
             }
