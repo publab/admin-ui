@@ -1,5 +1,5 @@
 <template>
-    <a-table :columns="columns" :dataSource="data" :pagination="pagination">
+    <a-table :columns="columns" :dataSource="data" :pagination="pagination" @change="handleTableChange">
         <template slot="title">
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="18">角色列表</a-col>
@@ -42,16 +42,26 @@
             return {
                 data: [],
                 columns,
-                pagination: {
-                    pageSize: 10
-                }
+                pagination: {}
             }
         },
         mounted(){
             this.fetch();
         },
         methods: {
-            fetch(){
+            handleTableChange(pagination, filters, sorter) {
+                const pager = { ...this.pagination };
+                pager.current = pagination.current;
+                this.pagination = pager;
+                this.fetch({
+                    results: pagination.pageSize,
+                    page: pagination.current,
+                    sortField: sorter.field,
+                    sortOrder: sorter.order,
+                    ...filters,
+                });
+            },
+            fetch(params = {}){
                 let _this = this;
                 axios.post('system/develop/role',{}).then((response) => {
 
@@ -59,6 +69,11 @@
                         return this.$message.error(response.message);
                     }
                     _this.data = response.data;
+                    _this.pagination = {
+                        total : response.meta.total,
+                        pageSize : response.meta.per_page,
+                        ..._this.pagination,
+                    }
                 });
             },
             onDelete(id){
