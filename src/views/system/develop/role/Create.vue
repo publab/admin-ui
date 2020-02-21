@@ -71,7 +71,7 @@
 
 
             if(_this.$route.params.id){
-                axios.post('system/develop/role/detail/'+_this.$route.params.id,{}).then((response) => {
+                axios.post('system/develop/role/detail/'+_this.$route.params.id,{permission:1}).then((response) => {
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
