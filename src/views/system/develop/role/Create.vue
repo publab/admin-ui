@@ -35,7 +35,7 @@
         </a-form-item>
 
         <a-form-item label="权限">
-            <tree :selectNode="selectNode"></tree>
+            <tree ref="permissionTree" :selectNode="selectNode"></tree>
         </a-form-item>
 
         <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
@@ -69,7 +69,6 @@
         mounted(){
             let _this = this;
 
-            _this.selectNode = [2];
 
             if(_this.$route.params.id){
                 axios.post('system/develop/role/detail/'+_this.$route.params.id,{}).then((response) => {
@@ -78,6 +77,7 @@
                     }
                     _this.$nextTick(() => {
                         _this.form.setFieldsValue(response.data);
+                        _this.selectNode = [2];
                     });
                 });
             }
@@ -102,7 +102,7 @@
                         url = 'system/develop/role/create';
                     }
 
-                    axios.post(url,{data:values}).then((response) => {
+                    axios.post(url,{data:values,permission:_this.$refs.permissionTree.checkboxs}).then((response) => {
 
                         if(!response.status){
                             return this.$message.error(response.message);

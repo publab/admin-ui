@@ -3,6 +3,7 @@
             checkable
             v-model="checkboxs"
             :treeData="treeData"
+            :replaceFields="replaceFields"
             :defaultExpandedKeys="threeNodes"
             :checkStrictly="true"
             @check="onCheck"
@@ -14,6 +15,11 @@
         name: "Tree",
         props: ['selectNode'],
         data: () => ({
+            replaceFields:{
+                children:'children',
+                title:'title',
+                key:'id'
+            },
             treeData: [],
             checkboxs: [],
             threeNodes:[],
@@ -28,9 +34,9 @@
                 }
                 let threeNodes = [];
                 for(var i in response.data){
-                    threeNodes.push(response.data[i].key);
+                    threeNodes.push(response.data[i].id);
                     for(var j in response.data[i].children){
-                        threeNodes.push(response.data[i].children[j].key);
+                        threeNodes.push(response.data[i].children[j].id);
                         response.data[i].children[j].class = 'whiteSpaceNormal'
                     }
                 }
@@ -94,7 +100,7 @@
             },
             getSonKey(data,line = []){
                 for(var i in data){
-                    line.push(data[i].key);
+                    line.push(data[i].id);
                     this.getSonKey(data[i].children,line)
                 }
                 return line;
@@ -106,7 +112,7 @@
                 }
                 let brothers = this.getNodeByLine(data,line);
                 let top = brothers.map(item => {
-                        return item.key;
+                        return item.id;
                     }).some(item => {
                         return nodePool.includes(item)
                     });
