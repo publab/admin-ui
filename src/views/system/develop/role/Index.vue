@@ -58,6 +58,8 @@
         },
         methods: {
             handleTableChange(pagination, filters, sorter) {
+
+                window.console.log(pagination, filters, sorter);
                 const pager = { ...this.pagination };
                 pager.current = pagination.current;
                 this.pagination = pager;

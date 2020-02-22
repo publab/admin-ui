@@ -27,7 +27,7 @@ export const asyncRouterMap = [
         component: Home,
         children:[
             {
-                path: '/', name: 'index',
+                path: '/index', name: 'index',
                 component: Welcome
             },
             {
@@ -35,33 +35,33 @@ export const asyncRouterMap = [
                 component: tree(),
                 children: [
                     {
-                        path: 'develop', name: 'develop',
+                        path: 'develop', name: 'system.develop',
                         component: tree(),
                         children:[
                             {
-                                path: 'permission', name: 'permission',
+                                path: 'permission', name: 'system.develop.permission',
                                 component: tree(() => import('../views/system/develop/permission/Index.vue')),
                                 children:[
                                     {
-                                        path: 'create', name: 'create',
+                                        path: 'create', name: 'system.develop.permission.create',
                                         component: tree(() => import('../views/system/develop/permission/Create.vue'))
                                     },
                                     {
-                                        path: 'update/:id', name: 'update',
+                                        path: 'update/:id', name: 'system.develop.permission.update',
                                         component: tree(() => import('../views/system/develop/permission/Create.vue'))
                                     },
                                 ]
                             },
                             {
-                                path: 'role', name: 'role',
+                                path: 'role', name: 'system.develop.role',
                                 component: tree(() => import('../views/system/develop/role/Index.vue')),
                                 children:[
                                     {
-                                        path: 'create', name: 'create',
+                                        path: 'create', name: 'system.develop.role.create',
                                         component: tree(() => import('../views/system/develop/role/Create.vue'))
                                     },
                                     {
-                                        path: 'update/:id', name: 'update',
+                                        path: 'update/:id', name: 'system.develop.role.update',
                                         component: tree(() => import('../views/system/develop/role/Create.vue'))
                                     },
                                 ]

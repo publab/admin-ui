@@ -8,7 +8,7 @@
                 mode="inline"
                 :inlineCollapsed="collapsed"
         >
-            <a-menu-item key="1" @click="jump('/')">
+            <a-menu-item key="1" @click="jump({name:'index'})">
                 <a-icon type="pie-chart" />
                 <span>首页</span>
             </a-menu-item>
@@ -53,7 +53,7 @@
             return {
                 collapsed: false,//侧面菜单 默认状态
                 defaultSelected: [
-                    "1"
+
                 ]
             };
         },

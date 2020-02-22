@@ -152,7 +152,7 @@
                         return this.$message.error(response.message);
                     }
                     sessionStorage.setItem('access_token',response.data.token)
-                    this.jump('/')
+                    this.jump({name:'index'})
 
                 });
             },
