@@ -8,6 +8,9 @@
                 </a-col>
             </a-row>
         </template>
+        <template slot="is_work" slot-scope="data">
+            {{data == 1 ? '正常' : '停止'}}
+        </template>
         <template slot="operation" slot-scope="data, record">
             <a @click="jump('/system/develop/role/update/'+record.key)">编辑</a>
             <a-divider type="vertical" />
@@ -30,6 +33,11 @@
     },{
         title: '角色名称',
         dataIndex: 'name',
+    },{
+        title: '状态',
+        dataIndex: 'is_work',
+        width: 100,
+        scopedSlots: { customRender: 'is_work' },
     },{
         title: '操作',
         dataIndex: 'operation',
