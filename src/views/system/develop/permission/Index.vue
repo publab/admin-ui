@@ -1,5 +1,5 @@
 <template>
-    <a-table :columns="columns" :dataSource="data" :pagination="pagination">
+    <a-table :columns="columns" :dataSource="data" :pagination="pagination" rowKey="id">
         <template slot="title">
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="18">Admin功能列表</a-col>
@@ -21,11 +21,11 @@
             {{data == 1 ? '正常' : '停止'}}
         </template>
         <template slot="operation" slot-scope="data, record">
-            <a @click="jump('/system/develop/permission/update/'+record.key)">编辑</a>
+            <a @click="jump('/system/develop/permission/update/'+record.id)">编辑</a>
             <a-divider type="vertical" />
             <a-popconfirm
                 title="Sure to delete?"
-                @confirm="() => onDelete(record.key)">
+                @confirm="() => onDelete(record.id)">
                 <a>删除</a>
             </a-popconfirm>
         </template>
@@ -97,7 +97,7 @@
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
-                    _this.data = _this.data.filter(item => item.key !== id);
+                    _this.data = _this.data.filter(item => item.id !== id);
 
                 });
             }
