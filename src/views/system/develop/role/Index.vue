@@ -8,6 +8,35 @@
                 </a-col>
             </a-row>
         </template>
+        <div
+                slot="filterDropdown"
+                slot-scope="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }"
+                style="padding: 8px"
+        >
+            <a-input
+                    v-ant-ref="c => searchInput = c"
+                    :placeholder="`Search ${column.dataIndex}`"
+                    :value="selectedKeys[0]"
+                    @change="e => setSelectedKeys(e.target.value ? [e.target.value] : [])"
+                    @pressEnter="() => handleSearch(selectedKeys, confirm)"
+                    style="width: 188px; margin-bottom: 8px; display: block;"
+            />
+            <a-button
+                    type="primary"
+                    @click="() => handleSearch(selectedKeys, confirm)"
+                    icon="search"
+                    size="small"
+                    style="width: 90px; margin-right: 8px"
+            >Search</a-button
+            >
+            <a-button @click="() => handleReset(clearFilters)" size="small" style="width: 90px"
+            >Reset</a-button
+            >
+        </div>
+        <a-icon
+                slot="filterIcon"
+                type="search"
+        />
         <template slot="is_work" slot-scope="data">
             {{data == 1 ? '正常' : '停止'}}
         </template>
@@ -30,43 +59,17 @@
                 pagination: {},
                 filteredInfo: null,
                 sortedInfo: null,
+                columns: [
+                    {title: 'ID', dataIndex: 'id', width: 100, sorter: true,},
+                    {title: '显示名称', dataIndex: 'title', filters: [{ text: 'Male', value: 'male' }, { text: 'Female', value: 'female' }]},
+                    {title: '角色名称', dataIndex: 'name', scopedSlots: { filterDropdown: 'filterDropdown', filterIcon: 'filterIcon'}, onFilterDropdownVisibleChange: visible => {visible && setTimeout(() => {this.searchInput.focus();}, 0);},},
+                    {title: '状态', dataIndex: 'is_work', width: 100, scopedSlots: {customRender: 'is_work'},},
+                    {title: '操作', dataIndex: 'operation', width: 150, scopedSlots: { customRender: 'operation' },
+                }]
             }
         },
         mounted(){
             this.fetch();
-        },
-        computed: {
-            columns(){
-                let { sortedInfo, filteredInfo } = this;
-                sortedInfo = sortedInfo || {};
-                filteredInfo = filteredInfo || {};
-
-                const columns = [{
-                    title: 'ID',
-                    dataIndex: 'id',
-                    width: 100,
-                    sorter: (a, b) => a.name.length - b.name.length,
-                    sortOrder: sortedInfo.columnKey === 'key' && sortedInfo.order,
-                },{
-                    title: '显示名称',
-                    dataIndex: 'title',
-                },{
-                    title: '角色名称',
-                    dataIndex: 'name',
-                },{
-                    title: '状态',
-                    dataIndex: 'is_work',
-                    width: 100,
-                    scopedSlots: { customRender: 'is_work' },
-                },{
-                    title: '操作',
-                    dataIndex: 'operation',
-                    width: 150,
-                    scopedSlots: { customRender: 'operation' },
-                }];
-
-                return columns;
-            }
         },
         methods: {
             handleTableChange(pagination, filters, sorter) {
@@ -108,7 +111,11 @@
                     _this.data = _this.data.filter(item => item.id !== id);
 
                 });
-            }
+            },
+            handleReset(clearFilters) {
+                clearFilters();
+                this.searchText = '';
+            },
         }
     }
 </script>

@@ -32,48 +32,23 @@
     </a-table>
 </template>
 <script>
-    const columns = [{
-        title: '图',
-        dataIndex: 'icon',
-        align: 'right',
-        width: 70,
-        scopedSlots: { customRender: 'icon' },
-    },{
-        title: '名称',
-        dataIndex: 'title',
-        scopedSlots: { customRender: 'display_name' },
-    },{
-        title: '路由',
-        dataIndex: 'name',
-    }, {
-        title: '菜单',
-        dataIndex: 'is_menu',
-        width: 100,
-        scopedSlots: { customRender: 'is_menu' },
-    }, {
-        title: '状态',
-        dataIndex: 'is_work',
-        width: 100,
-        scopedSlots: { customRender: 'is_work' },
-    },{
-        title: '排序',
-        dataIndex: 'sorts',
-        width: 100,
-    }, {
-        title: '操作',
-        dataIndex: 'operation',
-        width: 150,
-        scopedSlots: { customRender: 'operation' },
-    }];
 
     export default {
         data() {
             return {
                 data: [],
-                columns,
                 pagination: {
-                    pageSize: 10
-                }
+                    pageSize: 20
+                },
+                columns: [
+                    {title: '图', dataIndex: 'icon', align: 'right', width: 70, scopedSlots: { customRender: 'icon' },},
+                    {title: '名称', dataIndex: 'title', scopedSlots: { customRender: 'display_name' },},
+                    {title: '路由', dataIndex: 'name',},
+                    {title: '菜单', dataIndex: 'is_menu', width: 100, scopedSlots: { customRender: 'is_menu' },},
+                    {title: '状态', dataIndex: 'is_work', width: 100, scopedSlots: { customRender: 'is_work' },},
+                    {title: '排序', dataIndex: 'sorts', width: 100,},
+                    {title: '操作', dataIndex: 'operation', width: 150, scopedSlots: { customRender: 'operation' },}
+                ]
             }
         },
         mounted(){
