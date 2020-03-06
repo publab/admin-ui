@@ -7,11 +7,11 @@
                     <a-button type="primary" icon="plus" @click="jump('/system/develop/role/create')">添加角色</a-button>
                 </a-col>
             </a-row>
-            <a-form layout="inline" :form="form" style="margin-top: 16px;">
+            <a-form layout="inline" :form="form" @submit="handleFormSubmit" style="margin-top: 16px;">
                 <a-form-item label="Field A">
                     <a-input
                             v-decorator="[
-                              'gender',
+                              'gender', { rules: [{ required: true, message: 'Please input your gender!' }] }
                             ]"
                             placeholder="input Field A"
                     />
@@ -44,12 +44,12 @@
                     :placeholder="`Search ${column.dataIndex}`"
                     :value="selectedKeys[0]"
                     @change="e => setSelectedKeys(e.target.value ? [e.target.value] : [])"
-                    @pressEnter="() => handleSearch(selectedKeys, confirm)"
+                    @pressEnter="confirm()"
                     style="width: 188px; margin-bottom: 8px; display: block;"
             />
             <a-button
                     type="primary"
-                    @click="() => handleSearch(selectedKeys, confirm)"
+                    @click="confirm()"
                     icon="search"
                     size="small"
                     style="width: 90px; margin-right: 8px"
@@ -85,7 +85,9 @@
             return {
                 form: this.$form.createForm(this),
                 data: [],
-                pagination: {},
+                pagination: {
+                    pageSize: 10
+                },
                 filteredInfo: null,
                 sortedInfo: null,
                 columns: [
@@ -98,21 +100,17 @@
             }
         },
         mounted(){
-            this.handleTableChange();
+            this.handleTableChange(this.pagination);
         },
         methods: {
             handleTableChange(pagination = {}, filters = {}, sorter = {}) {
-
-                const pager = { ...this.pagination };
-                pager.current = pagination.current || 1;
-                this.pagination = pager;
-
+                window.console.log(pagination,filters,sorter);
                 axios.post('system/develop/role',{
-                    results: pagination.pageSize,
-                    page: pagination.current,
+                    page: pagination.current || 1,
                     sortField: sorter.field,
                     sortOrder: sorter.order,
                     ...filters,
+                    ...pagination,
                 }).then((response) => {
 
                     if(!response.status){
@@ -120,14 +118,18 @@
                     }
                     this.data = response.data;
                     this.pagination = {
-                        total : response.meta.total,
-                        pageSize : response.meta.per_page,
-                        ...this.pagination,
-                    }
+                        total: response.meta.total,
+                        ...pagination,
+                    };
                 });
             },
-            handleSearch(selectedKeys, confirm) {
-                confirm();
+            handleFormSubmit(e){
+                e.preventDefault();
+                this.form.validateFields((err, values) => {
+                    if (!err) {
+                        window.console.log('Received values of form: ', values);
+                    }
+                });
             },
             onDelete(id){
                 let _this = this;
