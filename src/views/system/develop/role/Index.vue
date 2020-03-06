@@ -98,41 +98,36 @@
             }
         },
         mounted(){
-            this.fetch();
+            this.handleTableChange();
         },
         methods: {
-            handleTableChange(pagination, filters, sorter) {
+            handleTableChange(pagination = {}, filters = {}, sorter = {}) {
 
-                window.console.log(pagination, filters, sorter);
                 const pager = { ...this.pagination };
-                pager.current = pagination.current;
+                pager.current = pagination.current || 1;
                 this.pagination = pager;
-                this.fetch({
+
+                axios.post('system/develop/role',{
                     results: pagination.pageSize,
                     page: pagination.current,
                     sortField: sorter.field,
                     sortOrder: sorter.order,
                     ...filters,
-                });
-            },
-            fetch(params = {}){
-                let _this = this;
-                axios.post('system/develop/role',{}).then((response) => {
+                }).then((response) => {
 
                     if(!response.status){
                         return this.$message.error(response.message);
                     }
-                    _this.data = response.data;
-                    _this.pagination = {
+                    this.data = response.data;
+                    this.pagination = {
                         total : response.meta.total,
                         pageSize : response.meta.per_page,
-                        ..._this.pagination,
+                        ...this.pagination,
                     }
                 });
             },
             handleSearch(selectedKeys, confirm) {
                 confirm();
-                this.searchText = selectedKeys[0];
             },
             onDelete(id){
                 let _this = this;
