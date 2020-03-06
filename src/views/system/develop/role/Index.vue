@@ -1,5 +1,32 @@
 <template>
     <div>
+        <a-form layout="inline" :form="form">
+            <a-form-item label="Field A">
+                <a-input
+                        v-decorator="[
+                              'gender',
+                            ]"
+                        placeholder="input Field A"
+                />
+            </a-form-item>
+            <a-form-item label="Field B">
+                <a-input
+                        v-decorator="[
+                              'sex',
+                            ]"
+                        placeholder="input Field B"
+                />
+            </a-form-item>
+            <a-form-item>
+                <a-button type="primary" html-type="submit">
+                    Search
+                </a-button>
+                <a-button :style="{ marginLeft: '8px' }" @click="() => this.form.resetFields()">
+                    Clear
+                </a-button>
+            </a-form-item>
+        </a-form>
+
         <a-table :columns="columns" :dataSource="data" :pagination="pagination" @change="handleTableChange" rowKey="id">
             <template slot="title">
                 <a-row type="flex" justify="space-around" align="middle">
@@ -8,32 +35,6 @@
                         <a-button type="primary" icon="plus" @click="jump('/system/develop/role/create')">添加角色</a-button>
                     </a-col>
                 </a-row>
-                <a-form layout="inline" :form="form">
-                    <a-form-item label="Field A">
-                        <a-input
-                            v-decorator="[
-                              'gender',
-                            ]"
-                            placeholder="input Field A"
-                        />
-                    </a-form-item>
-                    <a-form-item label="Field B">
-                        <a-input
-                            v-decorator="[
-                              'sex',
-                            ]"
-                            placeholder="input Field B"
-                        />
-                    </a-form-item>
-                    <a-form-item>
-                        <a-button type="primary" html-type="submit">
-                            Search
-                        </a-button>
-                        <a-button :style="{ marginLeft: '8px' }" @click="() => this.form.resetFields()">
-                            Clear
-                        </a-button>
-                    </a-form-item>
-                </a-form>
             </template>
             <div
                     slot="filterDropdown"
