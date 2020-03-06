@@ -10,10 +10,6 @@ Helper.install = function (Vue, options) {
     Vue.prototype.hasErrors = function (fieldsError) {
         return Object.keys(fieldsError).some(field => fieldsError[field]);
     }
-
-    // Vue.prototype.handleReset = function (clearFilters = null) {
-    //     clearFilters ? clearFilters() && (this.searchText = ''): (this.form.resetFields());
-    // }
 };
 
 Vue.use(Helper)

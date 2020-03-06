@@ -11,18 +11,18 @@
                 <a-form layout="inline" :form="form">
                     <a-form-item label="Field A">
                         <a-input
-                                v-decorator="[
-                          'gender',
-                        ]"
-                                placeholder="input Field A"
+                            v-decorator="[
+                              'gender',
+                            ]"
+                            placeholder="input Field A"
                         />
                     </a-form-item>
                     <a-form-item label="Field B">
                         <a-input
-                                v-decorator="[
-                          'sex',
-                        ]"
-                                placeholder="input Field B"
+                            v-decorator="[
+                              'sex',
+                            ]"
+                            placeholder="input Field B"
                         />
                     </a-form-item>
                     <a-form-item>
