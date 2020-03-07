@@ -107,10 +107,10 @@
                 window.console.log(pagination,filters,sorter);
                 axios.post('system/develop/role',{
                     page: pagination.current || 1,
+                    pageSize: this.pagination.pageSize || null,
                     sortField: sorter.field,
                     sortOrder: sorter.order,
                     ...filters,
-                    ...pagination,
                 }).then((response) => {
 
                     if(!response.status){
@@ -119,6 +119,7 @@
                     this.data = response.data;
                     this.pagination = {
                         total: response.meta.total,
+                        pageSize: response.meta.per_page,
                         ...pagination,
                     };
                 });
@@ -128,6 +129,7 @@
                 this.form.validateFields((err, values) => {
                     if (!err) {
                         window.console.log('Received values of form: ', values);
+                        this.handleTableChange({},values);
                     }
                 });
             },
