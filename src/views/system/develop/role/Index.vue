@@ -107,7 +107,7 @@
                 window.console.log(pagination,filters,sorter);
                 axios.post('system/develop/role',{
                     page: pagination.current || 1,
-                    pageSize: this.pagination.pageSize || null,
+                    pageSize: this.pagination.pageSize,
                     sortField: sorter.field,
                     sortOrder: sorter.order,
                     ...filters,
