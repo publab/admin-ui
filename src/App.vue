@@ -10,9 +10,15 @@
 </template>
 
 <script>
+import { deviceEnquire } from '@/utils/device'
 
 export default {
     name: 'app',
+    mounted(){
+        deviceEnquire(deviceType => {
+            this.$store.commit('setDevice',deviceType);
+        })
+    },
     computed: {
         loading(){
             return this.$store.state.loading.index;
