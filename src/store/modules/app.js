@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import config from '@/config'
 
 const app = {
   state: {
-
+      ...config
   },
   mutations: {
 
