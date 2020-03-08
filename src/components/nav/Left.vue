@@ -8,7 +8,7 @@
                 mode="inline"
                 :inlineCollapsed="collapsed"
         >
-            <a-menu-item key="1" @click="jump({name:'index'})">
+            <a-menu-item key="1" @click="jump('/')">
                 <a-icon type="pie-chart" />
                 <span>首页</span>
             </a-menu-item>

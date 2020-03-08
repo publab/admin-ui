@@ -4,7 +4,9 @@
         <a-layout>
             <top></top>
             <a-breadcrumb :style="{margin: '16px'}">
-                <a-breadcrumb-item v-for="(item, key) in this.$store.state.router.items" :key="key">{{item.name}}</a-breadcrumb-item>
+                <template v-for="(item,key) in this.$store.state.router.items">
+                    <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
+                </template>
             </a-breadcrumb>
             <a-layout-content :style="{ padding: '10px 24px', background: '#fff', minHeight: '360px', margin: '0 16px' }">
                 <transition name="bounce" mode="out-in">
@@ -49,7 +51,7 @@
     };
 </script>
 
-<style>
+<style scoped>
     #components-layout-demo-side .logo {
         height: 32px;
         margin: 16px;

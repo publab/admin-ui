@@ -60,7 +60,7 @@
                         return _this.$message.error(response.message);
                     }
                     sessionStorage.clear()
-                    _this.jump('/login');
+                    _this.jump('/user/login');
                 });
 
             }

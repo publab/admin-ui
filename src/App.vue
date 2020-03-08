@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <a-spin :spinning="this.$store.state.loading.index ? true : false" size="large" :style="{background:'#000'}">
+      <a-spin :spinning="loading ? true : false" size="large" :style="{background:'#000'}">
           <a-icon slot="indicator" type="loading" spin />
           <transition name="bounce" mode="out-in">
               <router-view></router-view>
@@ -12,10 +12,12 @@
 <script>
 
 export default {
-  name: 'app',
-  components: {
-
-  }
+    name: 'app',
+    computed: {
+        loading(){
+            return this.$store.state.loading.index;
+        }
+    }
 }
 </script>
 <style>

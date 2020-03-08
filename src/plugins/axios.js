@@ -11,7 +11,7 @@ import store from '../store'
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 let config = {
-  baseURL: process.env.baseURL || process.env.apiUrl || "http://admin.2l2.cn",
+  baseURL: process.env.VUE_APP_API_BASE_URL,
   timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };
@@ -83,9 +83,7 @@ _axios.interceptors.response.use(
 
 let _login = function () {
     sessionStorage.clear();
-    router.push({
-        name: 'login'
-    });
+    router.push('/user/login');
 };
 
 Plugin.install = function(Vue, options) {

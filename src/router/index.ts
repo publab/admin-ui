@@ -3,17 +3,29 @@ import VueRouter from 'vue-router'
 import store from '../store'
 import tree from  './tree';
 
-const  Home = () => import('../views/Home.vue');
-const  Welcome = () => import('../views/Welcome.vue');
-const  Login = () => import('../views/Login.vue');
-
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
-    name: 'login',
-    component: Login,
+    path: '/user',
+    component: () => import('@/layouts/UserLayout.vue'),
+    children:[
+        {
+          path: 'login',
+          meta: { title: '确定', keepAlive: true},
+          component: () => import('@/views/user/Login.vue'),
+        },
+        {
+          path: 'password',
+          meta: { title: '忘记密码', keepAlive: true},
+          component: () => import('@/views/user/Password.vue'),
+        },
+        {
+          path: 'register',
+          meta: { title: '注册', keepAlive: true},
+          component: () => import('@/views/user/Register.vue'),
+        },
+    ]
   }
 ]
 
@@ -23,45 +35,48 @@ const router = new VueRouter({
 
 export const asyncRouterMap = [
     {
-        path: '/', name: 'home',
-        component: Home,
+        path: '/',
+        component: () => import('@/layouts/HomeLayout.vue'),
+        meta: { title: '首页' },
+        redirect: '/index',
         children:[
             {
-                path: '/index', name: 'index',
-                component: Welcome
+                path: 'index',
+                meta: { title: '仪表盘', keepAlive: true},
+                component: () => import('../views/Welcome.vue'),
             },
             {
-                path: 'system', name: 'system',
+                path: 'system',
                 component: tree(),
                 children: [
                     {
-                        path: 'develop', name: 'system.develop',
+                        path: 'develop',
                         component: tree(),
                         children:[
                             {
-                                path: 'permission', name: 'system.develop.permission',
+                                path: 'permission',
                                 component: tree(() => import('../views/system/develop/permission/Index.vue')),
                                 children:[
                                     {
-                                        path: 'create', name: 'system.develop.permission.create',
+                                        path: 'create',
                                         component: tree(() => import('../views/system/develop/permission/Create.vue'))
                                     },
                                     {
-                                        path: 'update/:id', name: 'system.develop.permission.update',
+                                        path: 'update/:id',
                                         component: tree(() => import('../views/system/develop/permission/Create.vue'))
                                     },
                                 ]
                             },
                             {
-                                path: 'role', name: 'system.develop.role',
+                                path: 'role',
                                 component: tree(() => import('../views/system/develop/role/Index.vue')),
                                 children:[
                                     {
-                                        path: 'create', name: 'system.develop.role.create',
+                                        path: 'create',
                                         component: tree(() => import('../views/system/develop/role/Create.vue'))
                                     },
                                     {
-                                        path: 'update/:id', name: 'system.develop.role.update',
+                                        path: 'update/:id',
                                         component: tree(() => import('../views/system/develop/role/Create.vue'))
                                     },
                                 ]
@@ -80,7 +95,7 @@ router.addRoutes(asyncRouterMap);
 router.afterEach((to, from) => {
     store.commit('router/setitems',to.matched.map(function (item) {
         return {
-            name:item.name,
+            title:item.meta.title,
             path:item.path
         }
     }));

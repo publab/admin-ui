@@ -1,17 +1,20 @@
 import Vue from 'vue'
-import './plugins/axios'
 import App from './App.vue'
-import './registerServiceWorker'
 import router from './router'
 import store from './store'
+import './registerServiceWorker'
+import './plugins/axios'
 import './plugins/ant-design-vue.js'
+import './plugins/vue-ls.js'
 import './plugins/helper.js'
+import bootstrap from './core/bootstrap'
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
+  created: bootstrap,
   render: h => h(App)
 }).$mount('#app')
 
