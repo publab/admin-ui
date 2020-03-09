@@ -23,15 +23,6 @@
     @import '../assets/css/login.scss';
 </style>
 <style scoped>
-    #components-layout-demo-side .logo {
-        height: 32px;
-        margin: 16px;
-        background-image: url("../assets/logo.png");
-        background-size: auto 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
     .bounce-enter-active, .bounce-leave-active {
         transition: opacity .2s ease;
     }

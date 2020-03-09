@@ -40,7 +40,7 @@
         data() {
             return {
                 collapsed: false,
-                siderWidth:200
+                siderWidth:256
             };
         },
         components: {

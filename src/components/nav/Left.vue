@@ -1,6 +1,6 @@
 <template>
-    <a-layout-sider :theme="navtheme" :width="siderWidth" v-model="collapsed">
-        <div class="logo" style="height: 80px;"></div>
+    <a-layout-sider :theme="navtheme" :width="siderWidth" v-model="collapsed" style="box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);">
+        <Logo></Logo>
         <a-menu :theme="navtheme" mode="inline" :defaultSelectedKeys="['1']">
             <a-menu-item key="1" @click="jump('/')">
                 <a-icon type="pie-chart" />
@@ -40,6 +40,8 @@
     </a-layout-sider>
 </template>
 <script>
+    import Logo from '@/components/tool/Logo'
+
     export default {
         data() {
             return {
@@ -47,6 +49,9 @@
 
                 ]
             };
+        },
+        components: {
+            Logo
         },
         props: {
             navtheme: {
