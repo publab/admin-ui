@@ -5,14 +5,15 @@
                 <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
             </a-col>
             <a-col :span="20" :style="{textAlign: 'right'}">
-                <a target="_blank">
+                <a target="_blank" class="action">
                     <span class="action">
                       <a-icon type="question-circle-o"></a-icon>
                     </span>
                 </a>
-                <a-dropdown placement="bottomRight">
-                    <span style="height: 100%; display: inline-block;">
-                      <a-avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style="margin: 0 5px 0 20px;"/>
+                <notice-icon class="action"/>
+                <a-dropdown placement="bottomRight" :trigger="['click','hover']">
+                    <span class="action">
+                      <!--<a-avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>-->
                       <span class="ant-dropdown-link">{{ name }} <a-icon type="down" /></span>
                     </span>
                     <a-menu slot="overlay" style="width: 150px">
@@ -29,6 +30,8 @@
 </template>
 
 <script>
+    import NoticeIcon from '@/components/noticeIcon'
+
     export default {
         name: "Top",
         data() {
@@ -43,6 +46,9 @@
                 required: false,
                 default: false
             },
+        },
+        components: {
+            NoticeIcon
         },
         created (){
             let _this = this;
@@ -94,5 +100,31 @@
 
     .trigger:hover {
         color: #1890ff;
+    }
+</style>
+<style lang="scss">
+    .action {
+        cursor: pointer;
+        padding: 0 12px;
+        display: inline-block;
+        transition: all 0.3s;
+        height: 100%;
+        color: rgba(0, 0, 0, 0.65);
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.025);
+        }
+
+        .avatar {
+            margin: 20px 8px 20px 0;
+            color: #1890ff;
+            background: hsla(0, 0%, 100%, 0.85);
+            vertical-align: middle;
+        }
+
+        .icon {
+            font-size: 16px;
+            padding: 4px;
+        }
     }
 </style>
