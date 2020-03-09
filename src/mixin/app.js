@@ -1,10 +1,11 @@
 import { DEVICE_TYPE } from '@/utils/device'
 import { mapState } from 'vuex'
 
-export const mixinDevice = {
+export const mixinApp = {
     computed: {
         ...mapState({
-            device: state => state.app.DEVICE
+            device: state => state.app.DEVICE,
+            navtheme: state => state.app.NAVTHEME,
         }),
         isMobile(){
            return  this.device == DEVICE_TYPE.MOBILE

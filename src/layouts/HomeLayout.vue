@@ -1,36 +1,36 @@
 <template>
-    <a-layout id="components-layout-demo-custom-trigger">
+    <a-layout style="min-height: 100vh">
 
         <a-drawer
                 v-if="isMobile"
                 placement="left"
                 :closable="false"
                 :visible="collapsed"
-                @close="drawerClose"
-                wrapClassName="duanzhiwei"
+                @close="()=> collapsed = !collapsed"
                 :bodyStyle="{ padding: '0px'}"
-                :drawerStyle="{background: '#001529'}"
         >
-            <div class="logo" style="height: 80px;"></div>
-            <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
-                <a-menu-item key="1">
-                    <a-icon type="user" />
-                    <span>nav 1</span>
-                </a-menu-item>
-                <a-menu-item key="2">
-                    <a-icon type="video-camera" />
-                    <span>nav 2</span>
-                </a-menu-item>
-                <a-menu-item key="3">
-                    <a-icon type="upload" />
-                    <span>nav 3</span>
-                </a-menu-item>
-            </a-menu>
+            <a-layout-sider :theme="navtheme" :trigger="null" collapsible width="100%" style="min-height: 100vh">
+                <div class="logo" style="height: 80px;"></div>
+                <a-menu :theme="navtheme" mode="inline" :defaultSelectedKeys="['1']">
+                    <a-menu-item key="1">
+                        <a-icon type="user" />
+                        <span>nav 1</span>
+                    </a-menu-item>
+                    <a-menu-item key="2">
+                        <a-icon type="video-camera" />
+                        <span>nav 2</span>
+                    </a-menu-item>
+                    <a-menu-item key="3">
+                        <a-icon type="upload" />
+                        <span>nav 3</span>
+                    </a-menu-item>
+                </a-menu>
+            </a-layout-sider>
         </a-drawer>
 
-        <a-layout-sider :trigger="null" collapsible v-model="collapsed" v-if="!isMobile">
+        <a-layout-sider :theme="navtheme" :trigger="null" collapsible v-model="collapsed" v-if="!isMobile">
             <div class="logo" style="height: 80px;"></div>
-            <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
+            <a-menu :theme="navtheme" mode="inline" :defaultSelectedKeys="['1']">
                 <a-menu-item key="1">
                     <a-icon type="user" />
                     <span>nav 1</span>
@@ -57,26 +57,46 @@
                     :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
             >
                 {{device}}-{{isMobile}}-{{isDesktop}}
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </a-layout-content>
         </a-layout>
     </a-layout>
 </template>
 <script>
-    import {mixinDevice} from '@/mixin/device'
+    import {mixinApp} from '@/mixin/app'
     export default {
-        mixins: [mixinDevice],
+        mixins: [mixinApp],
         data() {
             return {
-                collapsed: false,
+                collapsed: false
             };
         },
-        mounted(){
-            this.collapsed = this.isMobile ? false : true;
-        },
-        methods: {
-            drawerClose () {
+        // computed: {
+        //     collapsed: function(){
+        //         return false;
+        //     }
+        // },
+        watch: {
+            //渲染不触发 只有更改后才触发
+            isMobile: function(val,oldVal){
                 this.collapsed = false
             }
+        },
+        methods: {
+
         }
     };
 </script>
+<style scoped>
+    .trigger {
+        font-size: 18px;
+        line-height: 64px;
+        padding: 0 20px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .trigger:hover {
+        color: #1890ff;
+    }
+</style>
