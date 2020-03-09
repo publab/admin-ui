@@ -1,30 +1,26 @@
 <template>
-    <a-layout-header style="background: #fff; padding: 0">
+    <a-layout-header style="background: #fff; padding: 0 20px;">
         <a-row>
             <a-col :span="4">
-                <a-icon
-                        class="trigger"
-                        :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-                        @click="toggle"
-                />
+                <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
             </a-col>
             <a-col :span="20" :style="{textAlign: 'right'}">
-                <a href="https://pro.loacg.com/docs/getting-started" target="_blank">
+                <a target="_blank">
                     <span class="action">
                       <a-icon type="question-circle-o"></a-icon>
                     </span>
                 </a>
                 <a-dropdown placement="bottomRight">
-                    <a class="ant-dropdown-link"> {{mobile}} {{name}} <a-icon type="down" /> </a>
-                    <a-menu slot="overlay">
-                        <a-menu-item key="0">
-                            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
-                        </a-menu-item>
-                        <a-menu-item key="1">
-                            <a rel="noopener noreferrer" @click="logout">Logout（退出）</a>
-                        </a-menu-item>
-                        <a-menu-divider />
-                        <a-menu-item key="3" disabled>3rd menu item</a-menu-item>
+                    <span style="height: 100%; display: inline-block;">
+                      <a-avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style="margin: 0 5px 0 20px;"/>
+                      <span class="ant-dropdown-link">{{ name }} <a-icon type="down" /></span>
+                    </span>
+                    <a-menu slot="overlay" style="width: 150px">
+                        <a-menu-item key="11"><a-icon type="user" />个人中心</a-menu-item>
+                        <a-menu-item key="21"><a-icon type="setting" />账户设置</a-menu-item>
+                        <a-menu-item key="41" disabled><a-icon type="setting" />禁用</a-menu-item>
+                        <a-menu-divider/>
+                        <a-menu-item key="31" @click="logout"><a-icon type="logout"/>退出登录</a-menu-item>
                     </a-menu>
                 </a-dropdown>
             </a-col>
@@ -60,14 +56,26 @@
                 window.console.log(1111);
             },
             logout(){
-                let _this = this;
-                axios.post('logout').then((response) => {
-                    if(!response.status){
-                        return _this.$message.error(response.message);
-                    }
-                    sessionStorage.clear()
-                    _this.jump('/user/login');
+
+                var _this = this;
+
+                this.$confirm({
+                    title: '提示',
+                    content: '真的要注销登录吗 ?',
+                    onOk() {
+                        axios.post('logout').then((response) => {
+                            if(!response.status){
+                                return _this.$message.error(response.message);
+                            }
+                            sessionStorage.clear()
+                            _this.jump('/user/login');
+                        });
+                    },
+                    onCancel() {
+
+                    },
                 });
+
 
             },
             toggle () {
@@ -80,7 +88,6 @@
     .trigger {
         font-size: 18px;
         line-height: 64px;
-        padding: 0 20px;
         cursor: pointer;
         transition: color 0.3s;
     }
