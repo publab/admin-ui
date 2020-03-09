@@ -9,6 +9,11 @@
                 />
             </a-col>
             <a-col :span="20" :style="{textAlign: 'right'}">
+                <a href="https://pro.loacg.com/docs/getting-started" target="_blank">
+                    <span class="action">
+                      <a-icon type="question-circle-o"></a-icon>
+                    </span>
+                </a>
                 <a-dropdown placement="bottomRight">
                     <a class="ant-dropdown-link"> {{mobile}} {{name}} <a-icon type="down" /> </a>
                     <a-menu slot="overlay">

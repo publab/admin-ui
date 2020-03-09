@@ -1,5 +1,5 @@
 <template>
-    <a-layout>
+    <a-layout style="min-height: 100vh;">
         <a-drawer
                 v-if="isMobile"
                 placement="left"
@@ -9,7 +9,7 @@
                 :bodyStyle="{ padding: '0px'}"
                 :width="siderWidth"
         >
-            <Left :navtheme="navtheme" :siderWidth="siderWidth"></Left>
+            <Left :navtheme="navtheme" :siderWidth="siderWidth" style="min-height: 100vh;"></Left>
         </a-drawer>
         <Left v-else :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></Left>
         <a-layout>
@@ -19,7 +19,7 @@
                     <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
                 </template>
             </a-breadcrumb>
-            <a-layout-content :style="{ padding: '10px 24px', background: '#fff', minHeight: '360px', margin: '0 16px' }">
+            <a-layout-content :style="{ padding: '10px 24px', background: '#fff', margin: '0 16px 10px' }">
                 <transition name="bounce" mode="out-in">
                     <router-view></router-view>
                 </transition>

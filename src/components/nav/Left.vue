@@ -1,5 +1,5 @@
 <template>
-    <a-layout-sider :theme="navtheme" style="min-height: 100vh;" :width="siderWidth" v-model="collapsed">
+    <a-layout-sider :theme="navtheme" :width="siderWidth" v-model="collapsed">
         <div class="logo" style="height: 80px;"></div>
         <a-menu :theme="navtheme" mode="inline" :defaultSelectedKeys="['1']">
             <a-menu-item key="1" @click="jump('/')">
