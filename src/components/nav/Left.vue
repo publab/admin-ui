@@ -1,13 +1,7 @@
 <template>
-    <a-layout-sider collapsible v-model="collapsed">
-        <div class="logo" />
-
-        <a-menu
-                theme="dark"
-                :defaultSelectedKeys="defaultSelected"
-                mode="inline"
-                :inlineCollapsed="collapsed"
-        >
+    <a-layout-sider :theme="navtheme" style="min-height: 100vh;" :width="siderWidth" v-model="collapsed">
+        <div class="logo" style="height: 80px;"></div>
+        <a-menu :theme="navtheme" mode="inline" :defaultSelectedKeys="['1']">
             <a-menu-item key="1" @click="jump('/')">
                 <a-icon type="pie-chart" />
                 <span>首页</span>
@@ -43,19 +37,33 @@
                 </a-sub-menu>
             </a-sub-menu>
         </a-menu>
-
-
     </a-layout-sider>
 </template>
 <script>
     export default {
         data() {
             return {
-                collapsed: false,//侧面菜单 默认状态
                 defaultSelected: [
 
                 ]
             };
+        },
+        props: {
+            navtheme: {
+                type: String,
+                required: false,
+                default: 'dark'
+            },
+            siderWidth: {
+                type: Number,
+                required: false,
+                default: 200
+            },
+            collapsed: {
+                type: Boolean,
+                required: false,
+                default: false
+            },
         },
         methods: {
             titleClick(e) {

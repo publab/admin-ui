@@ -1,22 +1,16 @@
 <template>
-    <a-layout-header>
+    <a-layout-header style="background: #fff; padding: 0">
         <a-row>
-            <a-col :span="3"></a-col>
-            <a-col :span="16">
-                <a-menu
-                        theme="dark"
-                        mode="horizontal"
-                        :style="{ lineHeight: '64px' }"
-                        @select="topSelect"
-                >
-                    <a-menu-item key="1">nav 1</a-menu-item>
-                    <a-menu-item key="2">nav 2</a-menu-item>
-                    <a-menu-item key="3">nav 3</a-menu-item>
-                </a-menu>
+            <a-col :span="4">
+                <a-icon
+                        class="trigger"
+                        :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+                        @click="toggle"
+                />
             </a-col>
-            <a-col :span="5" :style="{textAlign: 'right'}">
+            <a-col :span="20" :style="{textAlign: 'right'}">
                 <a-dropdown placement="bottomRight">
-                    <a class="ant-dropdown-link" :style="{color: '#fff'}"> {{mobile}} {{name}} <a-icon type="down" /> </a>
+                    <a class="ant-dropdown-link"> {{mobile}} {{name}} <a-icon type="down" /> </a>
                     <a-menu slot="overlay">
                         <a-menu-item key="0">
                             <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
@@ -42,6 +36,13 @@
                 name:'',
             };
         },
+        props: {
+            collapsed: {
+                type: Boolean,
+                required: false,
+                default: false
+            },
+        },
         created (){
             let _this = this;
             axios.post('userinfo').then((response) => {
@@ -63,7 +64,23 @@
                     _this.jump('/user/login');
                 });
 
+            },
+            toggle () {
+                this.$emit('toggle')
             }
         }
     }
 </script>
+<style scoped>
+    .trigger {
+        font-size: 18px;
+        line-height: 64px;
+        padding: 0 20px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .trigger:hover {
+        color: #1890ff;
+    }
+</style>

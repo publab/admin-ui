@@ -1,6 +1,5 @@
 <template>
-    <a-layout style="min-height: 100vh">
-
+    <a-layout>
         <a-drawer
                 v-if="isMobile"
                 placement="left"
@@ -8,74 +7,47 @@
                 :visible="collapsed"
                 @close="()=> collapsed = !collapsed"
                 :bodyStyle="{ padding: '0px'}"
+                :width="siderWidth"
         >
-            <a-layout-sider :theme="navtheme" :trigger="null" collapsible width="100%" style="min-height: 100vh">
-                <div class="logo" style="height: 80px;"></div>
-                <a-menu :theme="navtheme" mode="inline" :defaultSelectedKeys="['1']">
-                    <a-menu-item key="1">
-                        <a-icon type="user" />
-                        <span>nav 1</span>
-                    </a-menu-item>
-                    <a-menu-item key="2">
-                        <a-icon type="video-camera" />
-                        <span>nav 2</span>
-                    </a-menu-item>
-                    <a-menu-item key="3">
-                        <a-icon type="upload" />
-                        <span>nav 3</span>
-                    </a-menu-item>
-                </a-menu>
-            </a-layout-sider>
+            <Left :navtheme="navtheme" :siderWidth="siderWidth"></Left>
         </a-drawer>
-
-        <a-layout-sider :theme="navtheme" :trigger="null" collapsible v-model="collapsed" v-if="!isMobile">
-            <div class="logo" style="height: 80px;"></div>
-            <a-menu :theme="navtheme" mode="inline" :defaultSelectedKeys="['1']">
-                <a-menu-item key="1">
-                    <a-icon type="user" />
-                    <span>nav 1</span>
-                </a-menu-item>
-                <a-menu-item key="2">
-                    <a-icon type="video-camera" />
-                    <span>nav 2</span>
-                </a-menu-item>
-                <a-menu-item key="3">
-                    <a-icon type="upload" />
-                    <span>nav 3</span>
-                </a-menu-item>
-            </a-menu>
-        </a-layout-sider>
+        <Left v-else :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></Left>
         <a-layout>
-            <a-layout-header style="background: #fff; padding: 0">
-                <a-icon
-                        class="trigger"
-                        :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-                        @click="()=> collapsed = !collapsed"
-                />
-            </a-layout-header>
-            <a-layout-content
-                    :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
-            >
-                {{device}}-{{isMobile}}-{{isDesktop}}
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <Top :collapsed="collapsed" @toggle="toggle"></Top>
+            <a-breadcrumb :style="{margin: '16px'}">
+                <template v-for="(item,key) in breadcrumb">
+                    <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
+                </template>
+            </a-breadcrumb>
+            <a-layout-content :style="{ padding: '10px 24px', background: '#fff', minHeight: '360px', margin: '0 16px' }">
+                <transition name="bounce" mode="out-in">
+                    <router-view></router-view>
+                </transition>
             </a-layout-content>
         </a-layout>
     </a-layout>
 </template>
 <script>
+    import Left from '../components/nav/Left';
+    import Top from '../components/nav/Top';
     import {mixinApp} from '@/mixin/app'
+
     export default {
         mixins: [mixinApp],
         data() {
             return {
-                collapsed: false
+                collapsed: false,
+                siderWidth:200
             };
         },
-        // computed: {
-        //     collapsed: function(){
-        //         return false;
-        //     }
-        // },
+        components: {
+            Left,Top
+        },
+        computed: {
+            breadcrumb(){
+                return this.$store.state.router.items;
+            }
+        },
         watch: {
             //渲染不触发 只有更改后才触发
             isMobile: function(val,oldVal){
@@ -83,20 +55,18 @@
             }
         },
         methods: {
-
+            toggle () {
+                this.collapsed = !this.collapsed
+            },
         }
     };
 </script>
 <style scoped>
-    .trigger {
-        font-size: 18px;
-        line-height: 64px;
-        padding: 0 20px;
-        cursor: pointer;
-        transition: color 0.3s;
+    .bounce-enter-active, .bounce-leave-active {
+        transition: opacity .2s ease;
     }
 
-    .trigger:hover {
-        color: #1890ff;
+    .bounce-enter, .bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
     }
 </style>
