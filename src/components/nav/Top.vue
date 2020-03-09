@@ -13,7 +13,7 @@
                 <notice-icon class="action"/>
                 <a-dropdown placement="bottomRight" :trigger="['click','hover']">
                     <span class="action">
-                      <!--<a-avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>-->
+                      <a-avatar class="avatar" size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
                       <span class="ant-dropdown-link">{{ name }} <a-icon type="down" /></span>
                     </span>
                     <a-menu slot="overlay" style="width: 150px">
@@ -120,6 +120,8 @@
             color: #1890ff;
             background: hsla(0, 0%, 100%, 0.85);
             vertical-align: middle;
+            position: relative;
+            top: -4px;
         }
 
         .icon {
