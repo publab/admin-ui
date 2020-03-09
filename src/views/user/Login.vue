@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="inner">
-            <a-input size="large" type="number" pattern="[0-9]*" placeholder="请输入登录账号" v-model="user_name" ref="userNameInput">
+            <a-input size="large" pattern="[0-9]*" placeholder="请输入登录账号" v-model="user_name" ref="userNameInput">
                 <a-icon slot="prefix" type="user" />
                 <a-tooltip slot="suffix" title="手机号">
                     <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
