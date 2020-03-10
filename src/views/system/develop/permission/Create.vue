@@ -1,5 +1,5 @@
 <template>
-    <a-form id="components-form-demo-validate-other"
+    <a-form
             :form="form"
             v-bind="formItemLayout"
             :layout="formLayout"
@@ -77,7 +77,10 @@
             />
         </a-form-item>
 
-        <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
+        <a-form-item
+                :wrapperCol="{ span: 24 }"
+                style="text-align: center"
+        >
             <a-button
                 type="primary"
                 html-type="submit"

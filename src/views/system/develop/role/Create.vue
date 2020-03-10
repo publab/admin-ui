@@ -38,7 +38,10 @@
             <tree ref="permissionTree" :selectNode="selectNode"></tree>
         </a-form-item>
 
-        <a-form-item :wrapper-col="{offset: formItemLayout.labelCol.span }">
+        <a-form-item
+                :wrapperCol="{ span: 24 }"
+                style="text-align: center"
+        >
             <a-button
                 type="primary"
                 html-type="submit"
