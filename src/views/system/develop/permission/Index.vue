@@ -2,8 +2,8 @@
     <a-table :columns="columns" :dataSource="data" :pagination="pagination" rowKey="id">
         <template slot="title">
             <a-row type="flex" justify="space-around" align="middle">
-                <a-col :span="18">Admin功能列表</a-col>
-                <a-col :span="6" :style="{ textAlign:'right'}">
+                <a-col :span="8">Admin功能列表</a-col>
+                <a-col :span="16" :style="{ textAlign:'right'}">
                     <a-button type="primary" icon="plus" @click="jump('/system/develop/permission/create')">添加功能</a-button>
                 </a-col>
             </a-row>
@@ -41,12 +41,12 @@
                     pageSize: 20
                 },
                 columns: [
-                    {title: '图', dataIndex: 'icon', align: 'right', width: 70, scopedSlots: { customRender: 'icon' },},
+                    {title: 'ID', dataIndex: 'id', align: 'right'},
                     {title: '名称', dataIndex: 'title', scopedSlots: { customRender: 'display_name' },},
-                    {title: '路由', dataIndex: 'name',},
-                    {title: '菜单', dataIndex: 'is_menu', width: 100, scopedSlots: { customRender: 'is_menu' },},
-                    {title: '状态', dataIndex: 'is_work', width: 100, scopedSlots: { customRender: 'is_work' },},
-                    {title: '排序', dataIndex: 'sorts', width: 100,},
+                    {title: '路由', dataIndex: 'name'},
+                    {title: '菜单', dataIndex: 'is_menu', scopedSlots: { customRender: 'is_menu' },},
+                    {title: '状态', dataIndex: 'is_work', scopedSlots: { customRender: 'is_work' },},
+                    {title: '排序', dataIndex: 'sorts'},
                     {title: '操作', dataIndex: 'operation', width: 150, scopedSlots: { customRender: 'operation' },}
                 ]
             }

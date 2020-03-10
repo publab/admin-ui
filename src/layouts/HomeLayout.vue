@@ -19,7 +19,7 @@
                     <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
                 </template>
             </a-breadcrumb>
-            <a-layout-content :style="{ padding: '10px 24px', background: '#fff', margin: '0 16px 10px' }">
+            <a-layout-content :style="{ padding: '10px 20px', background: '#fff', margin: '0 5px 10px' }">
                 <transition name="bounce" mode="out-in">
                     <router-view></router-view>
                 </transition>
