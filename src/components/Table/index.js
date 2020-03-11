@@ -4,7 +4,7 @@ export default {
     name: 'STable',
     data () {
         return {
-
+            items: [{name: 'duan'}]
         }
     },
     props: Object.assign({},T.props,{
@@ -19,18 +19,27 @@ export default {
     methods: {
 
     },
-    render(){
-        const props = {}
+    render(createElement){
 
-        const table = (
-            <a-table {...{props}}>
-            </a-table>
-        )
-
-        return (
-            <div class="table-wrapper">
-                { table }
-            </div>
-        )
+        if (this.items.length) {
+            return createElement('ul', this.items.map(function (item) {
+                return createElement('li', item.name)
+            }))
+        } else {
+            return createElement('p', 'No items found.')
+        }
+        //
+        // const props = {}
+        //
+        // const table = (
+        //     <a-table {...{props}}>
+        //     </a-table>
+        // )
+        //
+        // return (
+        //     <div class="table-wrapper">
+        //         { table }
+        //     </div>
+        // )
     }
 }
