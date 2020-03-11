@@ -26,6 +26,7 @@
                 </a-button>
             </a-form-item>
         </a-form>
+        <s-table :columns="columns"></s-table>
         <a-table ref="table" :columns="columns" :dataSource="data" :pagination="pagination" @change="handleTableChange" rowKey="id">
             <template slot="title">
                 <a-row type="flex" justify="space-around" align="middle">
@@ -82,7 +83,12 @@
     </div>
 </template>
 <script>
+    import { STable } from '@/components'
+
     export default {
+        components: {
+            STable
+        },
         data() {
             return {
                 form: this.$form.createForm(this),
