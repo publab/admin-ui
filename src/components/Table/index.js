@@ -4,7 +4,7 @@ export default {
     name: 'STable',
     data () {
         return {
-            items: [{name: 'duan'}]
+
         }
     },
     props: Object.assign({},T.props,{
@@ -14,32 +14,40 @@ export default {
 
     },
     created () {
-
+        // this.loadDate(this.pagination);
     },
     methods: {
-
+        loadDate(pagination = {}, filters = {}, sorter = {}){
+            // axios.post('system/develop/role',{
+            //     page: pagination.current || 1,
+            //     pageSize: this.pagination.pageSize,
+            //     sortField: sorter.field,
+            //     sortOrder: sorter.order,
+            //     ...filters,
+            // }).then((response) => {
+            //
+            //     if(!response.status){
+            //         return this.$message.error(response.message);
+            //     }
+            //     this.data = response.data;
+            //
+            // });
+        }
     },
     render(createElement){
 
-        if (this.items.length) {
-            return createElement('ul', this.items.map(function (item) {
-                return createElement('li', item.name)
-            }))
-        } else {
-            return createElement('p', 'No items found.')
-        }
-        //
-        // const props = {}
-        //
-        // const table = (
-        //     <a-table {...{props}}>
-        //     </a-table>
-        // )
-        //
-        // return (
-        //     <div class="table-wrapper">
-        //         { table }
-        //     </div>
-        // )
+        window.console.log('-------------------');
+
+        const props = {}
+
+        Object.keys(T.props).forEach(k => {
+            props[k] = this[k]
+        })
+
+        const table = (
+            <a-table {...{props, scopedSlots: { ...this.$scopedSlots }}} onChange={this.loadDate}></a-table>
+        )
+
+        return table
     }
 }
