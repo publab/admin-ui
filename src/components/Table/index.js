@@ -8,7 +8,10 @@ export default {
         }
     },
     props: Object.assign({},T.props,{
-
+        rowKey: {
+            type: [String, Function],
+            default: 'id'
+        },
     }),
     watch: {
 
