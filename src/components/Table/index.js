@@ -46,7 +46,8 @@ export default {
         Object.keys(T.props).forEach(k => {
             props[k] = this[k]
         })
-
+window.console.log(props);
+window.console.log(T.props);
         const table = (
             <a-table {...{props, scopedSlots: { ...this.$scopedSlots }}} onChange={this.loadDate}></a-table>
         )
