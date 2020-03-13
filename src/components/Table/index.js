@@ -4,10 +4,17 @@ export default {
     name: 'STable',
     data () {
         return {
-
+            dataSourceLocal: [],
+            paginationLocal: {
+                pageSize: 10
+            },
         }
     },
     props: Object.assign({},T.props,{
+        dataUrl: {
+            type: [String],
+            required: true
+        },
         rowKey: {
             type: [String, Function],
             default: 'id'
@@ -17,41 +24,42 @@ export default {
 
     },
     created () {
-        // this.loadDate(this.pagination);
+        this.loadDate(this.pagination);
     },
     methods: {
         loadDate(pagination = {}, filters = {}, sorter = {}){
-            // axios.post('system/develop/role',{
-            //     page: pagination.current || 1,
-            //     pageSize: this.pagination.pageSize,
-            //     sortField: sorter.field,
-            //     sortOrder: sorter.order,
-            //     ...filters,
-            // }).then((response) => {
-            //
-            //     if(!response.status){
-            //         return this.$message.error(response.message);
-            //     }
-            //     this.data = response.data;
-            //
-            // });
+            axios.post(this.dataUrl,{
+            }).then((response) => {
+
+                if(!response.status){
+                    return this.$message.error(response.message);
+                }
+                this.dataSourceLocal = response.data;
+                this.paginationLocal = {
+                    total: response.meta.total,
+                    pageSize: response.meta.per_page,
+                    ...pagination,
+                };
+            });
         }
     },
     render(createElement){
 
-        window.console.log('-------------------');
-
-        const props = {}
+        const props = {};
+        const localKeys = Object.keys(this.$data)
 
         Object.keys(T.props).forEach(k => {
-            props[k] = this[k]
+            const localKey = `${k}Local`;
+            if (localKeys.includes(localKey)) {
+                props[k] = this[localKey]
+            }else{
+                this[k] && (props[k] = this[k])
+            }
+            return props[k]
         })
-window.console.log(props);
-window.console.log(T.props);
-        const table = (
+
+        return (
             <a-table {...{props, scopedSlots: { ...this.$scopedSlots }}} onChange={this.loadDate}></a-table>
         )
-
-        return table
     }
 }

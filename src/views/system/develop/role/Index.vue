@@ -26,60 +26,60 @@
                 </a-button>
             </a-form-item>
         </a-form>
-        <s-table :columns="columns"></s-table>
-        <a-table ref="table" :columns="columns" :dataSource="data" :pagination="pagination" @change="handleTableChange" rowKey="id">
-            <template slot="title">
-                <a-row type="flex" justify="space-around" align="middle">
-                    <a-col :span="8"><h3>角色列表</h3></a-col>
-                    <a-col :span="16" :style="{ textAlign:'right'}">
-                        <a-button type="primary" icon="plus" @click="jump('/system/develop/role/create')">添加角色</a-button>
-                    </a-col>
-                </a-row>
-            </template>
-            <div
-                    slot="filterDropdown"
-                    slot-scope="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }"
-                    style="padding: 8px"
-            >
-                <a-input
-                        v-ant-ref="c => searchInput = c"
-                        :placeholder="`Search ${column.dataIndex}`"
-                        :value="selectedKeys[0]"
-                        @change="e => setSelectedKeys(e.target.value ? [e.target.value] : [])"
-                        @pressEnter="confirm()"
-                        style="width: 188px; margin-bottom: 8px; display: block;"
-                />
-                <a-button
-                        type="primary"
-                        @click="confirm()"
-                        icon="search"
-                        size="small"
-                        style="width: 90px; margin-right: 8px"
-                >Search</a-button
-                >
-                <a-button @click="clearFilters" size="small" style="width: 90px"
-                >Reset</a-button
-                >
-            </div>
-            <a-icon
-                    slot="filterIcon"
-                    slot-scope="filtered"
-                    type="search"
-                    :style="{ color: filtered ? '#108ee9' : undefined }"
-            />
-            <template slot="is_work" slot-scope="data">
-                {{data == 1 ? '正常' : '停止'}}
-            </template>
-            <template slot="operation" slot-scope="data, record">
-                <a @click="jump('/system/develop/role/update/'+record.id)">编辑</a>
-                <a-divider type="vertical" />
-                <a-popconfirm
-                    title="Sure to delete?"
-                    @confirm="() => onDelete(record.id)">
-                    <a>删除</a>
-                </a-popconfirm>
-            </template>
-        </a-table>
+        <s-table :columns="columns" dataUrl="system/develop/role"></s-table>
+        <!--<a-table ref="table" :columns="columns" :dataSource="data" :pagination="pagination" @change="handleTableChange" rowKey="id">-->
+            <!--<template slot="title">-->
+                <!--<a-row type="flex" justify="space-around" align="middle">-->
+                    <!--<a-col :span="8"><h3>角色列表</h3></a-col>-->
+                    <!--<a-col :span="16" :style="{ textAlign:'right'}">-->
+                        <!--<a-button type="primary" icon="plus" @click="jump('/system/develop/role/create')">添加角色</a-button>-->
+                    <!--</a-col>-->
+                <!--</a-row>-->
+            <!--</template>-->
+            <!--<div-->
+                    <!--slot="filterDropdown"-->
+                    <!--slot-scope="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }"-->
+                    <!--style="padding: 8px"-->
+            <!--&gt;-->
+                <!--<a-input-->
+                        <!--v-ant-ref="c => searchInput = c"-->
+                        <!--:placeholder="`Search ${column.dataIndex}`"-->
+                        <!--:value="selectedKeys[0]"-->
+                        <!--@change="e => setSelectedKeys(e.target.value ? [e.target.value] : [])"-->
+                        <!--@pressEnter="confirm()"-->
+                        <!--style="width: 188px; margin-bottom: 8px; display: block;"-->
+                <!--/>-->
+                <!--<a-button-->
+                        <!--type="primary"-->
+                        <!--@click="confirm()"-->
+                        <!--icon="search"-->
+                        <!--size="small"-->
+                        <!--style="width: 90px; margin-right: 8px"-->
+                <!--&gt;Search</a-button-->
+                <!--&gt;-->
+                <!--<a-button @click="clearFilters" size="small" style="width: 90px"-->
+                <!--&gt;Reset</a-button-->
+                <!--&gt;-->
+            <!--</div>-->
+            <!--<a-icon-->
+                    <!--slot="filterIcon"-->
+                    <!--slot-scope="filtered"-->
+                    <!--type="search"-->
+                    <!--:style="{ color: filtered ? '#108ee9' : undefined }"-->
+            <!--/>-->
+            <!--<template slot="is_work" slot-scope="data">-->
+                <!--{{data == 1 ? '正常' : '停止'}}-->
+            <!--</template>-->
+            <!--<template slot="operation" slot-scope="data, record">-->
+                <!--<a @click="jump('/system/develop/role/update/'+record.id)">编辑</a>-->
+                <!--<a-divider type="vertical" />-->
+                <!--<a-popconfirm-->
+                    <!--title="Sure to delete?"-->
+                    <!--@confirm="() => onDelete(record.id)">-->
+                    <!--<a>删除</a>-->
+                <!--</a-popconfirm>-->
+            <!--</template>-->
+        <!--</a-table>-->
     </div>
 </template>
 <script>
@@ -108,11 +108,10 @@
             }
         },
         mounted(){
-            this.handleTableChange(this.pagination);
+            // this.handleTableChange(this.pagination);
         },
         methods: {
             handleTableChange(pagination = {}, filters = {}, sorter = {}) {
-                window.console.log(pagination,filters,sorter);
                 axios.post('system/develop/role',{
                     page: pagination.current || 1,
                     pageSize: this.pagination.pageSize,
