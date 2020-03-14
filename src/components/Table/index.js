@@ -5,9 +5,11 @@ export default {
     data () {
         return {
             dataSourceLocal: [],
-            paginationLocal: {
+            paginationLocal: Object.assign({
                 pageSize: 10
-            },
+            }, this.pagination),
+            formData: {},
+            filterData: {},
         }
     },
     props: Object.assign({},T.props,{
@@ -24,22 +26,41 @@ export default {
 
     },
     created () {
-        this.loadDate(this.pagination);
+        this.loadData();
     },
     methods: {
-        loadDate(pagination = {}, filters = {}, sorter = {}){
+        setFormSearch(where = {}){
+            this.formData = where;
+            this.loadData();
+        },
+        setFilters(pagination = {}, filters = {}, sorter = {}){
+            this.filterData = filters;
+            this.loadData(pagination,sorter);
+        },
+        loadData(pagination = {}, sorter = {}){
+            // window.console.log(pagination,filters,sorter);
             axios.post(this.dataUrl,{
+                page: pagination.current || 1,
+                pageSize: this.paginationLocal.pageSize,
+                sort:{
+                    field: sorter.field,
+                    type: sorter.order == 'ascend' ? 'AES' : 'DESC',
+                },
+                data: {
+                    ...this.formData,
+                    ...this.filterData
+                }
             }).then((response) => {
 
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
                 this.dataSourceLocal = response.data;
-                this.paginationLocal = {
+                this.paginationLocal = Object.assign(pagination,{
                     total: response.meta.total,
                     pageSize: response.meta.per_page,
-                    ...pagination,
-                };
+                    current: response.meta.current_page,
+                });
             });
         }
     },
@@ -59,7 +80,7 @@ export default {
         })
 
         return (
-            <a-table {...{props, scopedSlots: { ...this.$scopedSlots }}} onChange={this.loadDate}></a-table>
+            <a-table {...{props, scopedSlots: { ...this.$scopedSlots }}} onChange={this.setFilters}></a-table>
         )
     }
 }
