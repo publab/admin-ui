@@ -11,7 +11,7 @@
                 <a-form-item label="Field A">
                     <a-input
                             v-decorator="[
-                              'gender', { rules: [{ required: true, message: 'Please input your gender!' }] }
+                              'gender', { rules: [{ required: false, message: 'Please input your gender!' }] }
                             ]"
                             placeholder="input Field A"
                     />
