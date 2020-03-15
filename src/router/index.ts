@@ -12,17 +12,17 @@ const routes = [
     children:[
         {
           path: 'login',
-          meta: { title: '确定', keepAlive: true},
+          meta: { title: '登录'},
           component: () => import('@/views/user/Login.vue'),
         },
         {
           path: 'password',
-          meta: { title: '忘记密码', keepAlive: true},
+          meta: { title: '忘记密码'},
           component: () => import('@/views/user/Password.vue'),
         },
         {
           path: 'register',
-          meta: { title: '注册', keepAlive: true},
+          meta: { title: '注册'},
           component: () => import('@/views/user/Register.vue'),
         },
     ]
@@ -37,7 +37,7 @@ export const asyncRouterMap = [
     {
         path: '/',
         component: () => import('@/layouts/HomeLayout.vue'),
-        meta: { title: '首页' },
+        meta: { title: false },
         redirect: '/index',
         children: menu
     },
