@@ -10,19 +10,19 @@
                 @openChange="openChange"
         >
             <template v-for="(top) in data">
-                <a-menu-item v-if="!top.children" :key="top.path" @click="jump('/'+top.path)">
+                <a-menu-item v-if="!top.children" :key="top.path">
                     <a-icon :type="top.meta.icon" />
                     <span>{{top.meta.title}}</span>
                 </a-menu-item>
-                <a-sub-menu v-else :key="top.path" @titleClick="titleClick">
+                <a-sub-menu v-else :key="top.path">
                     <span slot="title"><a-icon :type="top.meta.icon" /><span>{{top.meta.title}}</span></span>
 
                     <template v-for="(middle) in top.children">
-                        <a-menu-item v-if="!middle.children" :key="middle.path" @click="jump('/'+top.path+'/'+middle.path)">{{middle.meta.title}}</a-menu-item>
-                        <a-sub-menu v-else :key="middle.path" :title="middle.meta.title" @titleClick="titleClick">
+                        <a-menu-item v-if="!middle.children" :key="top.path+'/'+middle.path">{{middle.meta.title}}</a-menu-item>
+                        <a-sub-menu v-else :key="top.path+'/'+middle.path" :title="middle.meta.title">
 
                             <template v-for="(bottom) in middle.children">
-                                <a-menu-item :key="bottom.path" @click="jump('/'+top.path+'/'+middle.path+'/'+bottom.path)">{{bottom.meta.title}}</a-menu-item>
+                                <a-menu-item :key="top.path+'/'+middle.path+'/'+bottom.path">{{bottom.meta.title}}</a-menu-item>
                             </template>
 
                         </a-sub-menu>
@@ -72,14 +72,16 @@
         },
         methods: {
             openChange(keys){
+                window.console.log('----------- openChange -----------')
+                window.console.log(keys)
                 this.openKeys = keys;
             },
             menuClick(data){
+                window.console.log('----------- menuClick -----------')
+                window.console.log(data)
                 this.selectedKeys = [data.key]
+                this.jump('/'+data.key);
             },
-            titleClick(data){
-                window.console.log(data);
-            }
         }
     };
 </script>
