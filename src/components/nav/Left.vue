@@ -77,8 +77,6 @@
                 this.openKeys = keys;
             },
             menuClick(data){
-                window.console.log('----------- menuClick -----------')
-                window.console.log(data)
                 this.selectedKeys = [data.key]
                 this.jump('/'+data.key);
             },
