@@ -3,12 +3,12 @@ import tree from  './tree';
 export default [
     {
         path: 'index',
-        meta: { title: '仪表盘'},
+        meta: { title: '仪表盘', icon: 'pie-chart'},
         component: tree(() => import('../views/Welcome.vue')),
     },
     {
         path: 'system',
-        meta: { title: '系统'},
+        meta: { title: '系统', icon: 'setting'},
         component: tree(),
         children: [
             {

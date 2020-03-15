@@ -1,53 +1,48 @@
 <template>
     <a-layout-sider :theme="navtheme" :width="siderWidth" v-model="collapsed" style="box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);">
         <Logo></Logo>
-        <a-menu :theme="navtheme" mode="inline" :defaultSelectedKeys="['1']">
-            <a-menu-item key="1" @click="jump('/')">
-                <a-icon type="pie-chart" />
-                <span>首页</span>
-            </a-menu-item>
-            <a-sub-menu key="sub1" @titleClick="titleClick">
-                <span slot="title"><a-icon type="mail" /><span>Navigation One</span></span>
-                <a-menu-item-group key="g1">
-                    <template slot="title">
-                        <a-icon type="qq" /><span>Item 1</span>
+        <a-menu
+                :theme="navtheme"
+                mode="inline"
+                :openKeys="openKeys"
+                :selectedKeys="selectedKeys"
+                @click="menuClick"
+                @openChange="openChange"
+        >
+            <template v-for="(top) in data">
+                <a-menu-item v-if="!top.children" :key="top.path" @click="jump('/'+top.path)">
+                    <a-icon :type="top.meta.icon" />
+                    <span>{{top.meta.title}}</span>
+                </a-menu-item>
+                <a-sub-menu v-else :key="top.path" @titleClick="titleClick">
+                    <span slot="title"><a-icon :type="top.meta.icon" /><span>{{top.meta.title}}</span></span>
+
+                    <template v-for="(middle) in top.children">
+                        <a-menu-item v-if="!middle.children" :key="middle.path" @click="jump('/'+top.path+'/'+middle.path)">{{middle.meta.title}}</a-menu-item>
+                        <a-sub-menu v-else :key="middle.path" :title="middle.meta.title">
+
+                            <template v-for="(bottom) in middle.children">
+                                <a-menu-item :key="bottom.path" @click="jump('/'+top.path+'/'+middle.path+'/'+bottom.path)">{{bottom.meta.title}}</a-menu-item>
+                            </template>
+
+                        </a-sub-menu>
                     </template>
-                    <a-menu-item key="13">nav</a-menu-item>
-                    <a-menu-item key="2">Option 2</a-menu-item>
-                </a-menu-item-group>
-                <a-menu-item-group key="g2" title="Item 2">
-                    <a-menu-item key="3">Option 3</a-menu-item>
-                    <a-menu-item key="4">Option 4</a-menu-item>
-                </a-menu-item-group>
-            </a-sub-menu>
-            <a-sub-menu key="sub4">
-                <span slot="title"><a-icon type="appstore" /><span>Navigation Two</span></span>
-                <a-menu-item key="9">Option 9</a-menu-item>
-                <a-menu-item key="10">Option 10</a-menu-item>
-                <a-menu-item key="11">Option 11</a-menu-item>
-                <a-menu-item key="12">Option 12</a-menu-item>
-            </a-sub-menu>
-            <a-sub-menu key="sub2" @titleClick="titleClick">
-                <span slot="title"><a-icon type="setting" /><span>系统设置</span></span>
-                <a-menu-item key="5">Option 5</a-menu-item>
-                <a-menu-item key="6">Option 6</a-menu-item>
-                <a-sub-menu key="sub3" title="权限管理">
-                    <a-menu-item key="7" @click="jump('/system/develop/permission')">权限列表</a-menu-item>
-                    <a-menu-item key="8" @click="jump('/system/develop/role')">角色列表</a-menu-item>
+
                 </a-sub-menu>
-            </a-sub-menu>
+            </template>
         </a-menu>
     </a-layout-sider>
 </template>
 <script>
     import Logo from '@/components/tool/Logo'
+    import menu from '@/router/menu'
 
     export default {
         data() {
             return {
-                defaultSelected: [
-
-                ]
+                data: menu,
+                selectedKeys: ['1'],
+                openKeys: []
             };
         },
         components: {
@@ -70,10 +65,22 @@
                 default: false
             },
         },
+        mounted(){
+            //初始化
+            const routes = this.$route.matched.concat()
+            window.console.log(routes)
+        },
         methods: {
-            titleClick(e) {
-                // window.console.log('titleClick', e);
+            openChange(keys){
+                window.console.log(keys)
+                this.openKeys = keys;
             },
+            menuClick(data){
+                this.selectedKeys = [data.key]
+            },
+            titleClick(data){
+                // window.console.log(data);
+            }
         }
     };
 </script>
