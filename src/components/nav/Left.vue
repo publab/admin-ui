@@ -41,7 +41,7 @@
         data() {
             return {
                 data: menu,
-                selectedKeys: ['1'],
+                selectedKeys: ['index'],
                 openKeys: []
             };
         },
