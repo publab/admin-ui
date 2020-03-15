@@ -42,7 +42,7 @@ export const asyncRouterMap = [
         children:[
             {
                 path: 'index',
-                meta: { title: '仪表盘', keepAlive: true},
+                meta: { title: '仪表盘'},
                 component: tree(() => import('../views/Welcome.vue')),
             },
             {
@@ -57,7 +57,7 @@ export const asyncRouterMap = [
                         children:[
                             {
                                 path: 'permission',
-                                meta: { title: '权限列表', keepAlive: true},
+                                meta: { title: '权限列表', keepAlive: true}, //keepAlive 暂未开发此功能（当前暂无可行方案）
                                 component: tree(() => import('../views/system/develop/permission/Index.vue')),
                                 children:[
                                     {
@@ -74,7 +74,7 @@ export const asyncRouterMap = [
                             },
                             {
                                 path: 'role',
-                                meta: { title: '角色列表', keepAlive: true},
+                                meta: { title: '角色列表'},
                                 component: tree(() => import('../views/system/develop/role/Index.vue')),
                                 children:[
                                     {

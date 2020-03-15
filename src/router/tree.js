@@ -8,6 +8,7 @@ export default function tree(component = false) {
             },
         },
         render(h) {
+            // const { $route: { meta } } = this
             return this.showChild || !component ? h('router-view') : h(component);
             // const child = this.showChild ? h('router-view') : h(component);
             // return h('keep-alive', [child]);
