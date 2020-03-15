@@ -45,6 +45,13 @@
                 openKeys: []
             };
         },
+        computed: {
+            rootSubmenuKeys: vm => {
+                const keys = []
+                vm.data.forEach(item => keys.push(item.path))
+                return keys
+            }
+        },
         components: {
             Logo
         },
@@ -71,10 +78,13 @@
             window.console.log(routes)
         },
         methods: {
-            openChange(keys){
-                window.console.log('----------- openChange -----------')
-                window.console.log(keys)
-                this.openKeys = keys;
+            openChange(openKeys){
+                const latestOpenKey = openKeys.find(key => !this.openKeys.includes(key))
+                if (!this.rootSubmenuKeys.includes(latestOpenKey)) {
+                    this.openKeys = openKeys
+                } else {
+                    this.openKeys = latestOpenKey ? [latestOpenKey] : []
+                }
             },
             menuClick(data){
                 this.selectedKeys = [data.key]
