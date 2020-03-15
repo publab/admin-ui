@@ -19,7 +19,7 @@
 
                     <template v-for="(middle) in top.children">
                         <a-menu-item v-if="!middle.children" :key="middle.path" @click="jump('/'+top.path+'/'+middle.path)">{{middle.meta.title}}</a-menu-item>
-                        <a-sub-menu v-else :key="middle.path" :title="middle.meta.title">
+                        <a-sub-menu v-else :key="middle.path" :title="middle.meta.title" @titleClick="titleClick">
 
                             <template v-for="(bottom) in middle.children">
                                 <a-menu-item :key="bottom.path" @click="jump('/'+top.path+'/'+middle.path+'/'+bottom.path)">{{bottom.meta.title}}</a-menu-item>
@@ -72,14 +72,13 @@
         },
         methods: {
             openChange(keys){
-                window.console.log(keys)
                 this.openKeys = keys;
             },
             menuClick(data){
                 this.selectedKeys = [data.key]
             },
             titleClick(data){
-                // window.console.log(data);
+                window.console.log(data);
             }
         }
     };
