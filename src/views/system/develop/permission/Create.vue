@@ -66,18 +66,6 @@
         </a-form-item>
 
         <a-form-item
-            label="图标"
-        >
-            <a-input
-                v-decorator="[
-                  'icon',
-                  {initialValue: '',rules: [{ required: false, message: 'Please input your icon' }]}
-                ]"
-                placeholder="请输入图标"
-            />
-        </a-form-item>
-
-        <a-form-item
                 :wrapperCol="{ span: 24 }"
                 style="text-align: center"
         >

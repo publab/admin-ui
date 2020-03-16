@@ -8,9 +8,6 @@
                 </a-col>
             </a-row>
         </template>
-        <template slot="icon" slot-scope="data">
-            <a-icon v-if="data" :type="data" />
-        </template>
         <template slot="display_name" slot-scope="data, record">
             |<span v-for="i in record.level" :key="i"> --- </span> {{data}}
         </template>
