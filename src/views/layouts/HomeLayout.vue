@@ -9,11 +9,11 @@
                 :bodyStyle="{ padding: '0px'}"
                 :width="siderWidth"
         >
-            <Left :navtheme="navtheme" :siderWidth="siderWidth" style="min-height: 100vh;"></Left>
+            <n-left :navtheme="navtheme" :siderWidth="siderWidth" style="min-height: 100vh;"></n-left>
         </a-drawer>
-        <Left v-else :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></Left>
+        <n-left v-else :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></n-left>
         <a-layout>
-            <Top :collapsed="collapsed" @toggle="toggle"></Top>
+            <n-top :collapsed="collapsed" @toggle="toggle"></n-top>
             <a-breadcrumb :style="{margin: '16px'}">
                 <template v-for="(item,key) in breadcrumb">
                     <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
@@ -31,8 +31,8 @@
     </a-layout>
 </template>
 <script>
-    import Left from '../../components/nav/Left';
-    import Top from '../../components/nav/Top';
+
+    import { NTop,NLeft } from '@/components';
     import {mixinApp} from '@/mixin/app'
 
     export default {
@@ -44,7 +44,7 @@
             };
         },
         components: {
-            Left,Top
+            NTop,NLeft
         },
         computed: {
             breadcrumb(){
