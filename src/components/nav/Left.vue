@@ -67,18 +67,31 @@
                 default: false
             },
         },
+        watch: {
+            collapsed(news,olds){
+                if(news){
+                   this.openKeys = [];
+                }else{
+                    this.menuInit();
+                }
+            }
+        },
         mounted(){
             //初始化
-            const routes = this.$route.matched.concat()
-            // window.console.log(routes)
+            this.menuInit();
         },
         methods: {
+            menuInit(){
+                let _menu = this.$route.path.replace(/^(\s|\/)+|(\s|\/)+$/g, '').split('/').slice(0,3);
+                this.menuSelect({key: _menu.join('/')});
+                _menu.pop();
+                this.titleClick({key: _menu.join('/')});
+            },
             menuSelect(data){
                 this.selectedKeys = [data.key]
                 this.jump('/'+data.key);
             },
             titleClick(data){
-
                 if(!this.openKeys.includes(data.key)){   //选中
                     let _maps = []
                     this.openKeys = []
