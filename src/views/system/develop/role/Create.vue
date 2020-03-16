@@ -35,7 +35,7 @@
         </a-form-item>
 
         <a-form-item label="权限">
-            <tree ref="permissionTree" :selectNode="selectNode"></tree>
+            <p-tree ref="permissionTree" :selectNode="selectNode"></p-tree>
         </a-form-item>
 
         <a-form-item
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-    import Tree from '@/components/permission/Tree';
+    import {PTree} from '@/components';
 
     export default {
         data: () => ({
@@ -87,7 +87,7 @@
             }
         },
         components: {
-            Tree
+            PTree
         },
         methods: {
             handleSubmit(e) {

@@ -10,7 +10,7 @@
                       <a-icon type="question-circle-o"></a-icon>
                     </span>
                 </a>
-                <notice-icon class="action"/>
+                <notice-icon class="action"></notice-icon>
                 <a-dropdown placement="bottomRight" :trigger="['click','hover']">
                     <span class="action">
                       <a-avatar class="avatar" size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    import NoticeIcon from '@/components/noticeIcon'
+    import {NoticeIcon} from '@/components'
 
     export default {
         name: "Top",

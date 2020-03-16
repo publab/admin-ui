@@ -1,6 +1,6 @@
 <template>
     <a-layout-sider :theme="navtheme" :width="siderWidth" v-model="collapsed" style="box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);">
-        <Logo></Logo>
+        <logo></logo>
         <a-menu
                 :theme="navtheme"
                 mode="inline"
@@ -33,7 +33,7 @@
     </a-layout-sider>
 </template>
 <script>
-    import Logo from '@/components/tool/Logo'
+    import { Logo } from '@/components'
     import menu from '@/router/menu'
 
     export default {
@@ -83,13 +83,13 @@
         methods: {
             menuInit(){
                 let _menu = this.$route.path.replace(/^(\s|\/)+|(\s|\/)+$/g, '').split('/').slice(0,3);
-                this.menuSelect({key: _menu.join('/')});
+                this.menuSelect({key: _menu.join('/')},false);
                 _menu.pop();
                 this.titleClick({key: _menu.join('/')});
             },
-            menuSelect(data){
+            menuSelect(data,jump = true){
                 this.selectedKeys = [data.key]
-                this.jump('/'+data.key);
+                jump && this.jump('/'+data.key);
             },
             titleClick(data){
                 if(!this.openKeys.includes(data.key)){   //选中
