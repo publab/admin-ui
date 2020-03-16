@@ -20,7 +20,7 @@
     }
 </script>
 <style lang="scss">
-    @import '../assets/css/login.scss';
+    @import '../../assets/css/login';
 </style>
 <style scoped>
     .bounce-enter-active, .bounce-leave-active {

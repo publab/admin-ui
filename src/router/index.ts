@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/user',
-    component: () => import('@/layouts/UserLayout.vue'),
+    component: () => import('@/views/layouts/UserLayout.vue'),
     children:[
         {
           path: 'login',
@@ -36,7 +36,7 @@ const router = new VueRouter({
 export const asyncRouterMap = [
     {
         path: '/',
-        component: () => import('@/layouts/HomeLayout.vue'),
+        component: () => import('@/views/layouts/HomeLayout.vue'),
         meta: { title: false },
         redirect: '/index',
         children: menu

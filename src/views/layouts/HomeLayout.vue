@@ -31,8 +31,8 @@
     </a-layout>
 </template>
 <script>
-    import Left from '../components/nav/Left';
-    import Top from '../components/nav/Top';
+    import Left from '../../components/nav/Left';
+    import Top from '../../components/nav/Top';
     import {mixinApp} from '@/mixin/app'
 
     export default {
