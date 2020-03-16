@@ -8,19 +8,18 @@
 <script>
 
 export default {
-  name: 'Logo',
-  props: {
-    title: {
-      type: String,
-      default: 'Zhiwei Duan',
-      required: false
-    },
-    showTitle: {
-      type: Boolean,
-      default: true,
-      required: false
+    props: {
+        title: {
+            type: String,
+            default: 'Zhiwei Duan',
+            required: false
+        },
+        showTitle: {
+            type: Boolean,
+            default: true,
+            required: false
+        }
     }
-  }
 }
 </script>
 <style lang="scss">

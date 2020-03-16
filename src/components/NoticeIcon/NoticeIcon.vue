@@ -50,7 +50,6 @@
 
 <script>
 export default {
-  name: 'HeaderNotice',
   data () {
     return {
       loading: false,
