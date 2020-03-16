@@ -5,7 +5,7 @@
             <h1 :key="item.id" v-else>Welcome to my world </h1>
 
         </template>
-        <chacao>
+        <t-chacao>
             <div slot="headerContent">
                 <div class="title">1111<span class="welcome-text"> 3323</span></div>
                 <div>前端工程师 | 蚂蚁金服 - 某某某事业群 - VUE平台</div>
@@ -16,17 +16,19 @@
             <div>
                 这里是匿名的东西啊啊啊啊22222
             </div>
-        </chacao>
+        </t-chacao>
 
     </div>
 </template>
 
 <script>
-    import Chacao from '@/components/test/Chacao';
+
+    import {TChacao} from '@/components';
+
     export default {
         name: "Welcome",
         components: {
-            Chacao
+            TChacao
         },
         data(){
             return {
