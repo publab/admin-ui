@@ -6,6 +6,20 @@ export default [
         component: tree(() => import('../views/Welcome.vue')),
     },
     {
+        path: 'user', meta: { title: '个人中心', icon: 'user'},
+        component: tree(),
+        children: [
+            {
+                path: 'info', meta: { title: '个人信息'},
+                component: tree(() => import('../views/system/develop/permission/Index.vue')),
+            },
+            {
+                path: 'setting', meta: { title: '个人设置'},
+                component: tree(() => import('../views/system/develop/permission/Index.vue')),
+            },
+        ]
+    },
+    {
         path: 'system', meta: { title: '系统', icon: 'setting'},
         component: tree(),
         children: [

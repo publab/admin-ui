@@ -13,17 +13,17 @@ const routes = [
         {
           path: 'login',
           meta: { title: '登录'},
-          component: () => import('@/views/user/Login.vue'),
+          component: () => import('@/views/Login.vue'),
         },
         {
           path: 'password',
           meta: { title: '忘记密码'},
-          component: () => import('@/views/user/Password.vue'),
+          component: () => import('@/views/Forget.vue'),
         },
         {
           path: 'register',
           meta: { title: '注册'},
-          component: () => import('@/views/user/Register.vue'),
+          component: () => import('@/views/Register.vue'),
         },
     ]
   }
