@@ -6,20 +6,19 @@
                 mode="inline"
                 :openKeys="openKeys"
                 :selectedKeys="selectedKeys"
-                @click="menuClick"
-                @openChange="openChange"
+                @select="menuSelect"
         >
             <template v-for="(top) in data">
                 <a-menu-item v-if="!top.children" :key="top.path">
                     <a-icon :type="top.meta.icon" />
                     <span>{{top.meta.title}}</span>
                 </a-menu-item>
-                <a-sub-menu v-else :key="top.path">
+                <a-sub-menu v-else :key="top.path" @titleClick="titleClick">
                     <span slot="title"><a-icon :type="top.meta.icon" /><span>{{top.meta.title}}</span></span>
 
                     <template v-for="(middle) in top.children">
                         <a-menu-item v-if="!middle.children" :key="top.path+'/'+middle.path">{{middle.meta.title}}</a-menu-item>
-                        <a-sub-menu v-else :key="top.path+'/'+middle.path" :title="middle.meta.title">
+                        <a-sub-menu v-else :key="top.path+'/'+middle.path" :title="middle.meta.title"  @titleClick="titleClick">
 
                             <template v-for="(bottom) in middle.children">
                                 <a-menu-item :key="top.path+'/'+middle.path+'/'+bottom.path">{{bottom.meta.title}}</a-menu-item>
@@ -46,11 +45,7 @@
             };
         },
         computed: {
-            rootSubmenuKeys: vm => {
-                const keys = []
-                vm.data.forEach(item => keys.push(item.path))
-                return keys
-            }
+
         },
         components: {
             Logo
@@ -75,20 +70,25 @@
         mounted(){
             //初始化
             const routes = this.$route.matched.concat()
-            window.console.log(routes)
+            // window.console.log(routes)
         },
         methods: {
-            openChange(openKeys){
-                const latestOpenKey = openKeys.find(key => !this.openKeys.includes(key))
-                if (!this.rootSubmenuKeys.includes(latestOpenKey)) {
-                    this.openKeys = openKeys
-                } else {
-                    this.openKeys = latestOpenKey ? [latestOpenKey] : []
-                }
-            },
-            menuClick(data){
+            menuSelect(data){
                 this.selectedKeys = [data.key]
                 this.jump('/'+data.key);
+            },
+            titleClick(data){
+
+                if(!this.openKeys.includes(data.key)){   //选中
+                    let _maps = []
+                    this.openKeys = []
+                    data.key.split('/').map((item) => {
+                        _maps.push(item);
+                        this.openKeys.push(_maps.join('/'))
+                    })
+                }else{  //取消选择
+                    this.openKeys = this.openKeys.filter(item => item.search(data.key))
+                }
             },
         }
     };
