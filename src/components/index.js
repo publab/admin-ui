@@ -7,11 +7,11 @@ import PTree from '@/components/Permission/Tree'
 import TChacao from '@/components/Test/Chacao'
 
 export {
+    Logo,
     NLeft,
     NTop,
     STable,
     NoticeIcon,
     PTree,
     TChacao,
-    Logo
 }
