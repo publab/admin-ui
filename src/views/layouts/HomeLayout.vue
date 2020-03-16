@@ -64,12 +64,3 @@
         }
     };
 </script>
-<style scoped>
-    .bounce-enter-active, .bounce-leave-active {
-        transition: opacity .2s ease;
-    }
-
-    .bounce-enter, .bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        opacity: 0;
-    }
-</style>

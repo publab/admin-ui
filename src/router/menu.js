@@ -6,7 +6,7 @@ export default [
         component: tree(() => import('../views/Welcome.vue')),
     },
     {
-        path: 'user', meta: { title: '个人中心', icon: 'user'},
+        path: 'account', meta: { title: '账户', icon: 'user'},
         component: tree(),
         children: [
             {
