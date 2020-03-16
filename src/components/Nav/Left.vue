@@ -33,7 +33,7 @@
     </a-layout-sider>
 </template>
 <script>
-    import { Logo } from '@/components'
+    import Logo from '@/components/Tool/Logo'
     import menu from '@/router/menu'
 
     export default {

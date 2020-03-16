@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    import {NoticeIcon} from '@/components'
+    import NoticeIcon from '@/components/NoticeIcon'
 
     export default {
         data() {
