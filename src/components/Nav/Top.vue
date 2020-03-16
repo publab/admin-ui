@@ -33,7 +33,6 @@
     import {NoticeIcon} from '@/components'
 
     export default {
-        name: "Top",
         data() {
             return {
                 mobile:'',
