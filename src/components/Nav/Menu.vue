@@ -84,12 +84,10 @@
             menuCheck(menu){
                 let _menu = [],tmpJson,searchJson = this.menu;
                 for(var i in menu){
-
                     tmpJson = this.jsonFind(searchJson,'path',menu[i]);
-
-                    _menu.push(menu[i]);
-                    if(tmpJson && tmpJson.children){
-                        searchJson = tmpJson.children;
+                    if(tmpJson){
+                        _menu.push(menu[i]);
+                        tmpJson.hideChildrenInMenu ? searchJson = [] : searchJson = tmpJson.children;
                     }else{
                         break;
                     }
