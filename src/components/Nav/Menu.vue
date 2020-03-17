@@ -82,8 +82,22 @@
                 });
             },
             menuCheck(menu){
+                let _menu = [],tmpJson,searchJson = this.menu;
+                for(var i in menu){
 
-                return menu.slice(0,3);
+                    tmpJson = this.jsonFind(searchJson,'path',menu[i]);
+
+                    _menu.push(menu[i]);
+                    if(tmpJson && tmpJson.children){
+                        searchJson = tmpJson.children;
+                    }else{
+                        break;
+                    }
+                }
+                return _menu;
+            },
+            jsonFind(data,key,value){
+                return data.find(item => item[key] == value);
             }
         },
         render(){
