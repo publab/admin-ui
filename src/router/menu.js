@@ -42,6 +42,7 @@ export default [
                     {
                         path: 'permission', meta: { title: '权限列表', keepAlive: true}, //keepAlive 暂未开发此功能（当前暂无可行方案）
                         component: tree(() => import('../views/system/develop/permission/Index.vue')),
+                        hideChildrenInMenu: true,
                         children:[
                             {
                                 path: 'create', meta: { title: '创建'},
