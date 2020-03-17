@@ -8,10 +8,10 @@ export default function tree(component = false) {
             },
         },
         render(h) {
-            // const { $route: { meta } } = this
+            const { $route: { meta ,path } } = this
             const routerView = (
                 <transition name="bounce" mode="out-in">
-                    <router-view></router-view>
+                    <router-view key={path}></router-view>
                 </transition>
             );
             return this.showChild || !component ? routerView : h(component);
