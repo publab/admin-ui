@@ -2,7 +2,7 @@ import tree from  './tree';
 
 export default [
     {
-        path: 'index', meta: { title: '仪表盘', icon: 'pie-chart'},
+        path: 'index', meta: { title: '仪表盘', icon: 'pie-chart', hidden: false},
         component: tree(() => import('../views/Welcome.vue')),
     },
     {
@@ -10,12 +10,20 @@ export default [
         component: tree(),
         children: [
             {
-                path: 'info', meta: { title: '个人信息'},
+                path: 'center', meta: { title: '个人中心'},
                 component: tree(() => import('../views/system/develop/permission/Index.vue')),
             },
             {
-                path: 'setting', meta: { title: '个人设置'},
-                component: tree(() => import('../views/system/develop/permission/Index.vue')),
+                path: 'settings', meta: { title: '个人设置'},
+                component: () => import('../views/system/develop/permission/Index.vue'),
+                redirect: '/account/settings/base',
+                hideChildrenInMenu: true,
+                children: [
+                    {
+                        path: 'base', meta: { title: '基本设置'},
+                        component: () => import('../views/system/develop/permission/Index.vue'),
+                    },
+                ]
             },
         ]
     },

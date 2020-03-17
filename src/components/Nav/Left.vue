@@ -9,7 +9,7 @@
                 @select="menuSelect"
         >
             <template v-for="(top) in data">
-                <a-menu-item v-if="!top.children" :key="top.path">
+                <a-menu-item v-if="!top.children || top.hideChildrenInMenu" :key="top.path">
                     <a-icon :type="top.meta.icon" />
                     <span>{{top.meta.title}}</span>
                 </a-menu-item>
@@ -17,7 +17,7 @@
                     <span slot="title"><a-icon :type="top.meta.icon" /><span>{{top.meta.title}}</span></span>
 
                     <template v-for="(middle) in top.children">
-                        <a-menu-item v-if="!middle.children" :key="top.path+'/'+middle.path">{{middle.meta.title}}</a-menu-item>
+                        <a-menu-item v-if="!middle.children || middle.hideChildrenInMenu" :key="top.path+'/'+middle.path">{{middle.meta.title}}</a-menu-item>
                         <a-sub-menu v-else :key="top.path+'/'+middle.path" :title="middle.meta.title"  @titleClick="titleClick">
 
                             <template v-for="(bottom) in middle.children">
@@ -82,7 +82,7 @@
         },
         methods: {
             menuInit(){
-                let _menu = this.$route.path.replace(/^(\s|\/)+|(\s|\/)+$/g, '').split('/').slice(0,3);
+                let _menu = this.menuCheck(this.$route.path.replace(/^(\s|\/)+|(\s|\/)+$/g, '').split('/').slice(0,3));
                 this.menuSelect({key: _menu.join('/')},false);
                 _menu.pop();
                 this.titleClick({key: _menu.join('/')});
@@ -103,6 +103,10 @@
                     this.openKeys = this.openKeys.filter(item => item.search(data.key))
                 }
             },
+            menuCheck(menu){
+
+                return menu;
+            }
         }
     };
 </script>
