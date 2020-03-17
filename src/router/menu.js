@@ -14,6 +14,10 @@ export default [
                 component: () => import('../views/account/center/Index.vue'),
             },
             {
+                path: 'hiddens', meta: { title: '个人测试隐藏', hidden: true},
+                component: () => import('../views/account/center/Index.vue'),
+            },
+            {
                 path: 'settings', meta: { title: '个人设置'},
                 component: () => import('../views/system/develop/permission/Index.vue'),
                 redirect: '/account/settings/base',
