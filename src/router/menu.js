@@ -57,6 +57,7 @@ export default [
                     {
                         path: 'role', meta: { title: '角色列表'},
                         component: tree(() => import('../views/system/develop/role/Index.vue')),
+                        hideChildrenInMenu: true,
                         children:[
                             {
                                 path: 'create', meta: { title: '创建'},
