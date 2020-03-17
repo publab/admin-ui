@@ -3,7 +3,7 @@ import tree from  './tree';
 export default [
     {
         path: 'index', meta: { title: '仪表盘', icon: 'pie-chart', hidden: false},
-        component: tree(() => import('../views/Welcome.vue')),
+        component: () => import('../views/Welcome.vue'),
     },
     {
         path: 'account', meta: { title: '账户', icon: 'user'},
@@ -11,7 +11,7 @@ export default [
         children: [
             {
                 path: 'center', meta: { title: '个人中心'},
-                component: tree(() => import('../views/system/develop/permission/Index.vue')),
+                component: () => import('../views/account/center/Index.vue'),
             },
             {
                 path: 'settings', meta: { title: '个人设置'},
