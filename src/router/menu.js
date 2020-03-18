@@ -1,4 +1,4 @@
-import tree from  './tree';
+import { Tree } from  './tree';
 
 export default [
     {
@@ -7,7 +7,7 @@ export default [
     },
     {
         path: 'account', meta: { title: '账户', icon: 'user'},
-        component: tree(),
+        component: Tree(),
         children: [
             {
                 path: 'center', meta: { title: '个人中心'},
@@ -33,39 +33,39 @@ export default [
     },
     {
         path: 'system', meta: { title: '系统', icon: 'setting'},
-        component: tree(),
+        component: Tree(),
         children: [
             {
                 path: 'develop', meta: { title: '开发管理'},
-                component: tree(),
+                component: Tree(),
                 children:[
                     {
                         path: 'permission', meta: { title: '权限列表', keepAlive: true}, //keepAlive 暂未开发此功能（当前暂无可行方案）
-                        component: tree(() => import('../views/system/develop/permission/Index.vue')),
+                        component: Tree(() => import('../views/system/develop/permission/Index.vue')),
                         hideChildrenInMenu: true,
                         children:[
                             {
                                 path: 'create', meta: { title: '创建'},
-                                component: tree(() => import('../views/system/develop/permission/Create.vue'))
+                                component: () => import('../views/system/develop/permission/Create.vue')
                             },
                             {
                                 path: 'update/:id', meta: { title: '更新'},
-                                component: tree(() => import('../views/system/develop/permission/Create.vue'))
+                                component: () => import('../views/system/develop/permission/Create.vue')
                             },
                         ]
                     },
                     {
                         path: 'role', meta: { title: '角色列表'},
-                        component: tree(() => import('../views/system/develop/role/Index.vue')),
+                        component: Tree(() => import('../views/system/develop/role/Index.vue')),
                         hideChildrenInMenu: true,
                         children:[
                             {
                                 path: 'create', meta: { title: '创建'},
-                                component: tree(() => import('../views/system/develop/role/Create.vue'))
+                                component: () => import('../views/system/develop/role/Create.vue')
                             },
                             {
                                 path: 'update/:id', meta: { title: '更新'},
-                                component: tree(() => import('../views/system/develop/role/Create.vue'))
+                                component: () => import('../views/system/develop/role/Create.vue')
                             },
                         ]
                     },
