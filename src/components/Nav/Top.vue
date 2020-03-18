@@ -31,12 +31,12 @@
 
 <script>
     import NoticeIcon from '@/components/NoticeIcon'
+    import { mapState } from 'vuex'
 
     export default {
         data() {
             return {
-                mobile:'',
-                name:'',
+
             };
         },
         props: {
@@ -46,20 +46,18 @@
                 default: false
             },
         },
+        computed: {
+            ...mapState({
+                name: state => state.user.name
+            })
+        },
         components: {
             NoticeIcon
         },
         created (){
-            let _this = this;
-            axios.post('userinfo').then((response) => {
-                _this.mobile = response.data.mobile
-                _this.name = response.data.name
-            });
+            this.$store.dispatch('GetInfo',this)
         },
         methods: {
-            topSelect(){
-                window.console.log(1111);
-            },
             logout(){
 
                 var _this = this;
