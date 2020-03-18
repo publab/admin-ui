@@ -1,18 +1,19 @@
 import config from '@/config'
 
 const app = {
-  state: {
+    namespaced: true,
+    state: {
       DEVICE: null,
       ...config
-  },
-  mutations: {
+    },
+    mutations: {
       setDevice(state,type){
           state.DEVICE = type;
       }
-  },
-  actions: {
+    },
+    actions: {
 
-  }
+    }
 }
 
 export default app

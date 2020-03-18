@@ -56,7 +56,7 @@
             NoticeIcon
         },
         created (){
-            this.$store.dispatch('GetInfo',this)
+            this.$store.dispatch('user/GetInfo',this)
         },
         methods: {
             logout(){

@@ -16,7 +16,7 @@ export default {
     name: 'app',
     mounted(){
         deviceEnquire(deviceType => {
-            this.$store.commit('setDevice',deviceType);
+            this.$store.commit('app/setDevice',deviceType);
         })
     },
     computed: {
