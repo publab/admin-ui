@@ -1,4 +1,4 @@
-import { Tree, RouterView } from  './tree';
+import { Tree } from  './tree';
 
 export default [
     {
