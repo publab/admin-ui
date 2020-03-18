@@ -27,11 +27,11 @@ export default {
 }
 </script>
 <style>
-    .bounce-enter-active, .bounce-leave-active {
-        transition: opacity 1s ease;
+    .bounce-enter-active {
+        transition: opacity .5s;
     }
 
-    .bounce-enter, .bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    .bounce-enter, .bounce-leave-to {
         opacity: 0;
     }
 </style>
