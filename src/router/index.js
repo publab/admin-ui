@@ -1,34 +1,51 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-const Home = () => import('../views/Home.vue');
-const Welcome = () => import('../views/Welcome.vue');
-const Login = () => import('../views/Login.vue');
+import store from '../store';
+import menu from './menu';
 Vue.use(VueRouter);
 const routes = [
     {
-        path: '/',
-        name: 'home',
-        component: Home,
+        path: '/user',
+        component: () => import('@/views/layouts/UserLayout.vue'),
         children: [
             {
-                path: '/',
-                name: 'index',
-                component: Welcome,
+                path: 'login',
+                meta: { title: '登录' },
+                component: () => import('@/views/Login.vue'),
             },
             {
-                path: 'system/develop/permission/index',
-                component: () => import('../views/system/develop/permission/Index.vue')
-            }
+                path: 'password',
+                meta: { title: '忘记密码' },
+                component: () => import('@/views/Forget.vue'),
+            },
+            {
+                path: 'register',
+                meta: { title: '注册' },
+                component: () => import('@/views/Register.vue'),
+            },
         ]
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login,
     }
 ];
 const router = new VueRouter({
     routes
+});
+export const asyncRouterMap = [
+    {
+        path: '/',
+        component: () => import('@/views/layouts/HomeLayout.vue'),
+        meta: { title: false },
+        redirect: '/index',
+        children: menu
+    },
+];
+router.addRoutes(asyncRouterMap);
+router.afterEach((to, from) => {
+    store.commit('router/setitems', to.matched.map(function (item) {
+        return {
+            title: item.meta.title,
+            path: item.path
+        };
+    }));
 });
 export default router;
 //# sourceMappingURL=index.js.map

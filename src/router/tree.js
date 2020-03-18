@@ -1,4 +1,5 @@
 const Tree = function tree(component = false) {
+    window.console.log('innnnn');
     return {
         name: 'Tree',
         computed: {

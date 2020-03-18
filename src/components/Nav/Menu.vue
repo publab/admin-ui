@@ -70,13 +70,13 @@
                     if(item.children && !item.hideChildrenInMenu){
                         return !item.meta.hidden ? (
                             <a-sub-menu key={uri} onTitleClick={this.titleClick}>
-                                <span slot="title"><a-icon type={item.meta.icon}/><span>{item.meta.title}</span></span>
+                                <span slot="title">{item.meta.icon ? <a-icon type={item.meta.icon} /> : ''}<span>{item.meta.title}</span></span>
                                 {this.renderItem(item.children,uri)}
                             </a-sub-menu>
                         ):null;
                     }else{
                         return !item.meta.hidden ? (
-                            <a-menu-item key={uri}><a-icon type={item.meta.icon}/><span>{item.meta.title}</span></a-menu-item>
+                            <a-menu-item key={uri}>{item.meta.icon ? <a-icon type={item.meta.icon} /> : ''}<span>{item.meta.title}</span></a-menu-item>
                         ):null;
                     }
                 });
