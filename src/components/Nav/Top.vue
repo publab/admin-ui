@@ -13,7 +13,7 @@
                 <notice-icon class="action"></notice-icon>
                 <a-dropdown placement="bottomRight" :trigger="['click','hover']">
                     <span class="action">
-                      <a-avatar class="avatar" size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
+                      <a-avatar class="avatar" size="small" :src="avatar"/>
                       <span class="ant-dropdown-link">{{ name }} <a-icon type="down" /></span>
                     </span>
                     <a-menu slot="overlay" style="width: 150px">
@@ -48,7 +48,8 @@
         },
         computed: {
             ...mapState({
-                name: state => state.user.name
+                name: state => state.user.name,
+                avatar: state => state.user.avatar
             })
         },
         components: {
@@ -118,7 +119,7 @@
             background: hsla(0, 0%, 100%, 0.85);
             vertical-align: middle;
             position: relative;
-            top: -4px;
+            top: -3px;
         }
 
         .icon {
