@@ -1,6 +1,5 @@
 // initial state
 const state = {
-    count: 0,
     index: 0,
     todos: [
         { id: 1, text: '...', done: true },
@@ -18,13 +17,6 @@ const getters = { //用来计算 state
     }
 }
 
-// actions
-const actions = { //可以包含任意异步操作
-    increment ({ commit }) {
-        commit('increment')
-    }
-}
-
 // mutations
 const mutations = { //mutation 必须是同步函数
     increment (state) {
@@ -39,6 +31,5 @@ export default {
     namespaced: true,
     state,
     getters,
-    actions,
     mutations
 }
