@@ -11,11 +11,10 @@ const Tree = function tree(component = false) {
             const { $route: { meta ,path } } = this
             const routerView = (
                 <transition name="bounce" mode="out-in">
-                    <router-view key={path}></router-view>
+                    <router-view key={path} />
                 </transition>
             );
             return this.showChild || !component ? routerView : h(component);
-            // const child = this.showChild ? h('router-view') : h(component);
             // return h('keep-alive', [child]);
         },
     };
