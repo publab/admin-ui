@@ -88,8 +88,8 @@ let _login = function () {
 };
 
 Plugin.install = function(Vue, options) {
-  Vue.axios = _axios;
   window.axios = _axios;
+  window.$axios = _axios;
   Object.defineProperties(Vue.prototype, {
     axios: {
       get() {
