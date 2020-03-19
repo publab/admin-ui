@@ -17,70 +17,76 @@ let config = {
 };
 
 const _axios = axios.create(config);
+const $axios = axios.create(config);
 
-_axios.interceptors.request.use(
-    function(config) {
-        // Do something before request is sent
-        store.commit('loading/increment');
-        let token = sessionStorage.getItem('access_token');
-        config.headers = {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + token,
+init(_axios,true);
+init($axios);
+
+function init(_axios,loading = false){
+    _axios.interceptors.request.use(
+        function(config) {
+            // Do something before request is sent
+            loading && store.commit('loading/increment');
+            let token = sessionStorage.getItem('access_token');
+            config.headers = {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            }
+
+            return config;
+        },
+        function(error) {
+            // Do something with request error
+            loading && store.commit('loading/decrement');
+            return Promise.reject(error);
         }
+    );
 
-        return config;
-    },
-    function(error) {
-        // Do something with request error
-        store.commit('loading/decrement');
-        return Promise.reject(error);
-    }
-);
-
-// Add a response interceptor
-_axios.interceptors.response.use(
-    function(response) {
-        // Do something with response data
-        store.commit('loading/decrement');
-        return response.data;
-    },
-    function(error) {
-        // Do something with response error
-        store.commit('loading/decrement');
-        if(error.response){
-            if(error.response.status == 401){
-                if(sessionStorage.getItem('access_token')){
-                    //个人理解重新返回一个 Promise 替代原有的 再次发送请求后调用 当前的 resolve
-                    return new Promise((resolve,reject) => {
-                        // 等待refresh_token
-                        _axios.post('refresh').then((response) => {
-                            if(response.status && response.data.token){
-                                //写入新的token重新发送请求
-                                sessionStorage.setItem('access_token',response.data.token)
-                                _axios(error.config).then((response) => {
-                                    resolve(response);
-                                });
-                            }else{
+    // Add a response interceptor
+    _axios.interceptors.response.use(
+        function(response) {
+            // Do something with response data
+            loading && store.commit('loading/decrement');
+            return response.data;
+        },
+        function(error) {
+            // Do something with response error
+            loading && store.commit('loading/decrement');
+            if(error.response){
+                if(error.response.status == 401){
+                    if(sessionStorage.getItem('access_token')){
+                        //个人理解重新返回一个 Promise 替代原有的 再次发送请求后调用 当前的 resolve
+                        return new Promise((resolve,reject) => {
+                            // 等待refresh_token
+                            _axios.post('refresh').then((response) => {
+                                if(response.status && response.data.token){
+                                    //写入新的token重新发送请求
+                                    sessionStorage.setItem('access_token',response.data.token)
+                                    _axios(error.config).then((response) => {
+                                        resolve(response);
+                                    });
+                                }else{
+                                    _login();
+                                }
+                            }).catch((error) => {
+                                // reject(response)
                                 _login();
-                            }
-                        }).catch((error) => {
-                            // reject(response)
-                            _login();
+                            });
                         });
-                    });
-                }else{
-                    return _login();
+                    }else{
+                        return _login();
+                    }
                 }
             }
+
+            return Promise.reject(error);
+            // return new Promise(resolve => {
+            //     resolve('test');
+            // });
+
         }
-
-        return Promise.reject(error);
-        // return new Promise(resolve => {
-        //     resolve('test');
-        // });
-
-    }
-);
+    );
+}
 
 let _login = function () {
     sessionStorage.clear();
@@ -89,18 +95,12 @@ let _login = function () {
 
 Plugin.install = function(Vue, options) {
   window.axios = _axios;
-  window.$axios = _axios;
   Object.defineProperties(Vue.prototype, {
     axios: {
       get() {
-        return _axios;
+        return $axios;
       }
-    },
-    $axios: {
-      get() {
-        return _axios;
-      }
-    },
+    }
   });
 };
 
