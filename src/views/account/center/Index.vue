@@ -108,6 +108,7 @@
                     {key: 'app', tab: '应用(8)'},
                     {key: 'project', tab: '项目(8)'}
                 ],
+                noTitleKey: 'app'
             }
         },
         computed: {
