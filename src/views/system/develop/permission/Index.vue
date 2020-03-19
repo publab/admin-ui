@@ -1,5 +1,5 @@
 <template>
-    <s-table :columns="columns" dataUrl="system/develop/permission">
+    <s-table ref="table" :columns="columns" dataUrl="system/develop/permission?merge=1">
         <template slot="title">
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="8">Admin功能列表</a-col>
