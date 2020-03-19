@@ -1,5 +1,5 @@
 <template>
-    <a-table :columns="columns" :dataSource="data" :pagination="pagination" rowKey="id">
+    <s-table :columns="columns" dataUrl="system/develop/permission">
         <template slot="title">
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="8">Admin功能列表</a-col>
@@ -26,17 +26,17 @@
                 <a>删除</a>
             </a-popconfirm>
         </template>
-    </a-table>
+    </s-table>
 </template>
 <script>
+    import { STable } from '@/components'
 
     export default {
+        components: {
+            STable
+        },
         data() {
             return {
-                data: [],
-                pagination: {
-                    pageSize: 20
-                },
                 columns: [
                     {title: 'ID', dataIndex: 'id', align: 'right'},
                     {title: '名称', dataIndex: 'title', scopedSlots: { customRender: 'display_name' },},
@@ -48,20 +48,7 @@
                 ]
             }
         },
-        mounted(){
-            this.fetch();
-        },
         methods: {
-            fetch(){
-                let _this = this;
-                axios.post('system/develop/permission',{merge:1}).then((response) => {
-
-                    if(!response.status){
-                        return this.$message.error(response.message);
-                    }
-                    _this.data = response.data;
-                });
-            },
             onDelete(id){
                 let _this = this;
                 axios.post('system/develop/permission/delete/'+id,{}).then((response) => {
