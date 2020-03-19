@@ -82,10 +82,16 @@
 </template>
 
 <script>
+    import { AppPage, ArticlePage, ProjectPage } from './page'
     import { mapState } from 'vuex'
 
     export default {
         name: "Index",
+        components: {
+            AppPage,
+            ArticlePage,
+            ProjectPage
+        },
         data(){
             return {
                 tags: ['很有想法的', '专注设计', '辣~', '大长腿', '川妹子', '海纳百川'],
@@ -112,6 +118,11 @@
         },
         mounted(){
             setTimeout(() => this.teamSpinning = false,1000)
+        },
+        methods: {
+            handleTabChange (key, type) {
+                this[type] = key
+            },
         }
     }
 </script>
