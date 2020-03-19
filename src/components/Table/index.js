@@ -10,6 +10,7 @@ export default {
             }, this.pagination),
             formData: {},
             filterData: {},
+            loadingLocal: false
         }
     },
     props: Object.assign({},T.props,{
@@ -38,7 +39,7 @@ export default {
             this.loadData(pagination,sorter);
         },
         loadData(pagination = {}, sorter = {}){
-            // window.console.log(pagination,filters,sorter);
+            this.loadingLocal = true;
             this.axios.post(this.dataUrl,{
                 page: pagination.current || 1,
                 pageSize: this.paginationLocal.pageSize,
@@ -51,7 +52,6 @@ export default {
                     ...this.filterData
                 }
             }).then((response) => {
-
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
@@ -61,6 +61,10 @@ export default {
                     pageSize: response.meta.per_page,
                     current: response.meta.current_page,
                 });
+            }).catch((error) => {
+                window.console.log(error)
+            }).finally(() => {
+                this.loadingLocal = false;
             });
         }
     },
