@@ -94,13 +94,19 @@ let _login = function () {
 };
 
 Plugin.install = function(Vue, options) {
-  window.axios = _axios;
+    Vue.axios = _axios;
+    window.axios = _axios;
   Object.defineProperties(Vue.prototype, {
-    axios: {
-      get() {
-        return $axios;
-      }
-    }
+      axios: {
+          get() {
+              return $axios;
+          }
+      },
+      $axios: {
+          get() {
+              return $axios;
+          }
+      },
   });
 };
 

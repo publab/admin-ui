@@ -39,7 +39,7 @@ export default {
         },
         loadData(pagination = {}, sorter = {}){
             // window.console.log(pagination,filters,sorter);
-            axios.post(this.dataUrl,{
+            this.axios.post(this.dataUrl,{
                 page: pagination.current || 1,
                 pageSize: this.paginationLocal.pageSize,
                 sort:{
