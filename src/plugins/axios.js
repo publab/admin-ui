@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import axios from "axios";
 import router from '../router'
+import store from '../store'
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
@@ -20,6 +21,7 @@ const _axios = axios.create(config);
 _axios.interceptors.request.use(
     function(config) {
         // Do something before request is sent
+        store.commit('loading/increment');
         let token = sessionStorage.getItem('access_token');
         config.headers = {
             'Accept': 'application/json',
@@ -30,6 +32,7 @@ _axios.interceptors.request.use(
     },
     function(error) {
         // Do something with request error
+        store.commit('loading/decrement');
         return Promise.reject(error);
     }
 );
@@ -38,10 +41,12 @@ _axios.interceptors.request.use(
 _axios.interceptors.response.use(
     function(response) {
         // Do something with response data
+        store.commit('loading/decrement');
         return response.data;
     },
     function(error) {
         // Do something with response error
+        store.commit('loading/decrement');
         if(error.response){
             if(error.response.status == 401){
                 if(sessionStorage.getItem('access_token')){
