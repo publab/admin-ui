@@ -102,3 +102,30 @@ Plugin.install = function(Vue, options) {
 Vue.use(Plugin)
 
 export default Plugin;
+
+/*
+//理解Promise的小例子
+var isLiForget = false; //给一个布尔值判断小丽有没有忘记小花的生日
+var getCloth = new Promise(function(resolve,reject){
+    if(!isLiForget){ //没忘记
+        var cloth = {
+            color:'red',
+            price:'$120'
+        };
+        resolve(cloth); // 得到衣服
+    }else{
+        var err = new Error("forgot the promise"); //忘记了
+        reject(err);
+    }
+});
+
+//之后就是调用Promise了
+var testFn = function(){
+    getCloth.then(function(fulfilled){
+        console.log(fulfilled);
+    }).catch(function(rejected){
+        console.log(rejected.message);
+    });
+}
+testFn();
+*/
