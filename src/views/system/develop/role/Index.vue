@@ -116,8 +116,9 @@
             },
             handleReset(){
                 this.form.resetFields();
+                this.params = {};
                 this.$nextTick(() => {
-                    this.$refs.table.setFormSearch()
+                    this.$refs.table.loadData()
                 });
             },
             onDelete(id){
