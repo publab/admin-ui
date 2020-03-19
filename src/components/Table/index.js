@@ -8,7 +8,6 @@ export default {
             paginationLocal: Object.assign({
                 pageSize: 10
             }, this.pagination),
-            formData: {},
             filterData: {},
             loadingLocal: false
         }
@@ -22,6 +21,10 @@ export default {
             type: [String, Function],
             default: 'id'
         },
+        params: {
+            type: [Object],
+            default: {}
+        }
     }),
     watch: {
 
@@ -30,10 +33,6 @@ export default {
         this.loadData();
     },
     methods: {
-        setFormSearch(where = {}){
-            this.formData = where;
-            this.loadData();
-        },
         setFilters(pagination = {}, filters = {}, sorter = {}){
             this.filterData = filters;
             this.loadData(pagination,sorter);
@@ -48,8 +47,8 @@ export default {
                     type: sorter.order == 'ascend' ? 'AES' : 'DESC',
                 },
                 data: {
-                    ...this.formData,
-                    ...this.filterData
+                    ...this.filterData,
+                    ...this.params
                 }
             }).then((response) => {
                 if(!response.status){

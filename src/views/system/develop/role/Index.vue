@@ -1,5 +1,5 @@
 <template>
-    <s-table ref="table" :columns="columns" dataUrl="system/develop/role">
+    <s-table ref="table" :columns="columns" dataUrl="system/develop/role" :params="params">
         <template slot="title">
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="8"><h3>角色列表</h3></a-col>
@@ -96,6 +96,7 @@
                     {title: '状态', dataIndex: 'is_work', scopedSlots: {customRender: 'is_work'},},
                     {title: '操作', dataIndex: 'operation', width: 150, scopedSlots: { customRender: 'operation' },
                 }],
+                params: {}
             }
         },
         mounted(){
@@ -106,8 +107,9 @@
                 e.preventDefault();
                 this.form.validateFields((err, values) => {
                     if (!err) {
+                        this.params = values;
                         this.$nextTick(() => {
-                            this.$refs.table.setFormSearch(values)
+                            this.$refs.table.loadData()
                         });
                     }
                 });
