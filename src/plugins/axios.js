@@ -46,7 +46,7 @@ _axios.interceptors.response.use(
             if(error.response.status == 401){
                 if(sessionStorage.getItem('access_token')){
                     //个人理解重新返回一个 Promise 替代原有的 再次发送请求后调用 当前的 resolve
-                    return new Promise(resolve => {
+                    return new Promise((resolve,reject) => {
                         // 等待refresh_token
                         _axios.post('refresh').then((response) => {
                             if(response.status && response.data.token){
@@ -59,6 +59,7 @@ _axios.interceptors.response.use(
                                 _login();
                             }
                         }).catch((error) => {
+                            // reject(response)
                             _login();
                         });
                     });
