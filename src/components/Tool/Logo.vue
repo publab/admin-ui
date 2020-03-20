@@ -28,6 +28,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+  @import "~@/assets/css/global";
   .logo {
     position: relative;
     height: 64px;
@@ -46,7 +47,7 @@ export default {
     &.light {
       background: #fff;
         h1{
-
+          color: @primary-color;
         }
     }
 
