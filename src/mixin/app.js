@@ -6,6 +6,7 @@ export const mixinApp = {
         ...mapState({
             device: state => state.app.DEVICE,
             navtheme: state => state.app.NAVTHEME,
+            layout: state => state.app.LAYOUT,
         }),
         isMobile(){
            return  this.device == DEVICE_TYPE.MOBILE

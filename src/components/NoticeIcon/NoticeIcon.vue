@@ -41,7 +41,7 @@
       </a-spin>
     </template>
     <span @click="fetchNotice" class="header-notice" ref="noticeRef" style="padding: 0 18px">
-      <a-badge count="12">
+      <a-badge count="12" :class="theme">
         <a-icon style="font-size: 16px; padding: 4px" type="bell" />
       </a-badge>
     </span>
@@ -55,6 +55,13 @@ export default {
       loading: false,
       visible: false
     }
+  },
+  props: {
+      theme: {
+          type: String,
+          required: false,
+          default: 'light'
+      }
   },
   methods: {
     fetchNotice () {
@@ -76,7 +83,9 @@ export default {
   .header-notice-wrapper {
     top: 50px !important;
   }
-
+  .dark{
+    color: #fff !important;
+  }
   .header-notice{
     display: inline-block;
     transition: all 0.3s;

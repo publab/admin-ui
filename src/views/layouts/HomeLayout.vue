@@ -11,9 +11,9 @@
         >
             <n-left :navtheme="navtheme" :siderWidth="siderWidth" style="min-height: 100vh;"></n-left>
         </a-drawer>
-        <n-left v-else :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></n-left>
+        <n-left v-else-if="!isMobile && layout == 'sidemenu'" :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></n-left>
         <a-layout>
-            <n-top :collapsed="collapsed" @toggle="toggle"></n-top>
+            <n-top :collapsed="collapsed" @toggle="toggle" :navtheme="navtheme" :isMobile="isMobile" :layout="layout"></n-top>
             <a-breadcrumb :style="{margin: '16px'}">
                 <template v-for="(item,key) in breadcrumb">
                     <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
@@ -52,7 +52,7 @@
             }
         },
         created(){
-            
+
         },
         watch: {
             //渲染不触发 只有更改后才触发

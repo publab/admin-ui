@@ -10,8 +10,8 @@
  */
 
 export default {
-    NAVTHEME        : 'light',
-    LAYOUT          : 'sidemenu',
+    NAVTHEME        : 'dark',
+    LAYOUT          : 'topmenu',
     FIXHEADER       : false,
     FIXSIDEBAR      : false,
     AUTOHIDEHEADER  : false,

@@ -99,12 +99,15 @@
             }
         },
         render(){
+            const extra = this.mode == 'inline' ? {
+                openKeys: this.openKeys,
+            }:{};
             const dynamicProps = {
                 props: {
                     mode: this.mode,
                     theme: this.theme,
-                    openKeys: this.openKeys,
-                    selectedKeys: this.selectedKeys
+                    selectedKeys: this.selectedKeys,
+                    ...extra
                 },
                 on: {
                     select: this.menuSelect

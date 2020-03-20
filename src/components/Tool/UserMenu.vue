@@ -1,15 +1,15 @@
 <template>
     <div>
         <a target="_blank" class="action">
-            <span class="action">
+            <span :class="'action ' + theme">
               <a-icon type="question-circle-o"></a-icon>
             </span>
         </a>
-        <notice-icon class="action"></notice-icon>
-        <a-dropdown placement="bottomRight" :trigger="['click','hover']">
+        <notice-icon class="action" :theme="theme"></notice-icon>
+        <a-dropdown placement="bottomRight" :theme="theme" :trigger="['click','hover']">
             <span class="action">
               <a-avatar class="avatar" size="small" :src="avatar"/>
-              <span class="ant-dropdown-link">{{ name }} <a-icon type="down" /></span>
+              <span :class="theme">{{ name }} <a-icon type="down" /></span>
             </span>
             <a-menu slot="overlay" style="width: 150px">
                 <a-menu-item key="11"><a-icon type="user" />个人中心</a-menu-item>
@@ -33,6 +33,13 @@
                 name: state => state.user.name,
                 avatar: state => state.user.avatar
             })
+        },
+        props: {
+            theme: {
+                type: String,
+                required: false,
+                default: 'dark'
+            }
         },
         components: {
             NoticeIcon
@@ -79,6 +86,10 @@
 
         &:hover {
             background: rgba(0, 0, 0, 0.025);
+        }
+
+        .dark{
+            color:#ffffff !important;
         }
 
         .avatar {
