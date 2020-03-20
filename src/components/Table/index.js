@@ -56,11 +56,11 @@ export default {
                     return this.$message.error(response.message);
                 }
                 this.dataSourceLocal = response.data;
-                this.paginationLocal = Object.assign(pagination,{
-                    total: response.meta.total,
-                    pageSize: response.meta.per_page,
-                    current: response.meta.current_page,
-                });
+                response.meta && (this.paginationLocal = Object.assign(pagination,{
+                    total: response.meta.total || undefined,
+                    pageSize: response.meta.per_page || undefined,
+                    current: response.meta.current_page || undefined,
+                }));
             }).catch((error) => {
                 window.console.log(error)
             }).finally(() => {
