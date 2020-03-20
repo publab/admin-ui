@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div class="logo" :class="[navtheme === 'dark' ? 'dard': 'light']">
     <img src="@/assets/logo.svg" alt="logo">
     <h1 v-if="showTitle">{{ title }}</h1>
   </div>
@@ -18,7 +18,12 @@ export default {
             type: Boolean,
             default: true,
             required: false
-        }
+        },
+        navtheme: {
+            type: String,
+            required: false,
+            default: 'dark'
+        },
     }
 }
 </script>
@@ -29,8 +34,15 @@ export default {
     padding-left: 24px;
     overflow: hidden;
     line-height: 64px;
-    background: #002140;
     transition: all .3s;
+
+    &.dard {
+      background: #002140;
+    }
+
+    &.light {
+      background: #fff;
+    }
 
     img,
     svg,

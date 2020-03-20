@@ -12,7 +12,7 @@
 
 export default {
     PRIMARYCOLOR    : '#52C41A',
-    NAVTHEME        : 'dark',
+    NAVTHEME        : 'light',
     LAYOUT          : 'sidemenu',
     FIXHEADER       : false,
     FIXSIDEBAR      : false,
