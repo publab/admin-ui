@@ -28,7 +28,7 @@ export default {
 </script>
 <style>
     .bounce-enter-active {
-        transition: opacity .5s;
+        transition: opacity .1s;
     }
 
     .bounce-enter, .bounce-leave-to {
