@@ -21,9 +21,10 @@ export default {
             type: [String, Function],
             default: 'id'
         },
+        // 对象或数组默认值必须从一个工厂函数获取
         params: {
             type: [Object],
-            default: {}
+            default: () => {}
         }
     }),
     watch: {
