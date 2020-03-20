@@ -27,7 +27,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="less" scoped>
   .logo {
     position: relative;
     height: 64px;

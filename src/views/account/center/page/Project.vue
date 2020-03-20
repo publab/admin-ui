@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .ant-pro-pages-account-projects-cardList {
     margin-top: 24px;
 

@@ -51,6 +51,9 @@
                 return this.$store.state.router.items;
             }
         },
+        created(){
+            
+        },
         watch: {
             //渲染不触发 只有更改后才触发
             isMobile: function(val,oldVal){

@@ -100,7 +100,7 @@
         color: #1890ff;
     }
 </style>
-<style lang="scss">
+<style lang="less">
     .action {
         cursor: pointer;
         padding: 0 12px;
