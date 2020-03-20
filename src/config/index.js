@@ -3,7 +3,6 @@
  * PRIMARYCOLOR     - 默认主题色, 如果修改颜色不生效，请清理 localStorage
  * NAVTHEME         - sidebar theme ['dark', 'light'] 两种主题
  * LAYOUT           - 整体布局方式 ['sidemenu', 'topmenu'] 两种布局
- * CONTENTWIDTH     - 内容区布局： 流式 |  固定
  * FIXHEADER        - 固定 Header : boolean
  * FIXSIDEBAR       - 固定左侧菜单栏 ： boolean
  * AUTOHIDEHEADER   - 向下滚动时，隐藏 Header : boolean
@@ -15,7 +14,6 @@ export default {
     PRIMARYCOLOR    : '#52C41A',
     NAVTHEME        : 'dark',
     LAYOUT          : 'sidemenu',
-    CONTENTWIDTH    : 'Fixed',
     FIXHEADER       : false,
     FIXSIDEBAR      : false,
     AUTOHIDEHEADER  : false,
