@@ -1,5 +1,5 @@
 <template>
-  <div class="logo" :class="[navtheme === 'dark' ? 'dard': 'light']">
+  <div class="logo" :class="[navtheme === 'dark' ? 'dark': 'light']">
     <img src="@/assets/logo.svg" alt="logo">
     <h1 v-if="showTitle">{{ title }}</h1>
   </div>
@@ -36,12 +36,18 @@ export default {
     line-height: 64px;
     transition: all .3s;
 
-    &.dard {
+    &.dark {
       background: #002140;
+        h1{
+            color: #fff;
+        }
     }
 
     &.light {
       background: #fff;
+        h1{
+            color: #000000;
+        }
     }
 
     img,
@@ -58,7 +64,6 @@ export default {
     }
 
     h1 {
-      color: #fff;
       font-size: 20px;
       margin: 0 0 0 12px;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
