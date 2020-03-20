@@ -5,9 +5,7 @@ export default {
     data () {
         return {
             dataSourceLocal: [],
-            paginationLocal: Object.assign({
-                pageSize: 10
-            }, this.pagination),
+            paginationLocal: this.pagination,
             filterData: {},
             loadingLocal: false
         }
@@ -21,15 +19,20 @@ export default {
             type: [String, Function],
             default: 'id'
         },
+        pagination: {
+            type: [Object,Boolean],
+            default: function () {
+                return {
+                    pageSize: 10
+                }
+            }
+        },
         // 对象或数组默认值必须从一个工厂函数获取
         params: {
             type: [Object],
             default: () => {}
         }
     }),
-    watch: {
-
-    },
     created () {
         this.loadData();
     },
