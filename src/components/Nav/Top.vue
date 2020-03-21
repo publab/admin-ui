@@ -1,15 +1,5 @@
 <template>
-    <a-layout-header v-if="isMobile" class="light">
-        <a-row>
-            <a-col :span="4">
-                <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
-            </a-col>
-            <a-col :span="20" :style="{textAlign: 'right'}">
-                <user-menu theme="light"></user-menu>
-            </a-col>
-        </a-row>
-    </a-layout-header>
-    <a-layout-header v-else-if="layout == 'sidemenu'" class="light">
+    <a-layout-header v-if="isMobile || layout == 'sidemenu'" class="light">
         <a-row>
             <a-col :span="4">
                 <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
