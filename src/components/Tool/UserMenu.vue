@@ -6,7 +6,7 @@
             </span>
         </a>
         <notice-icon class="action" :theme="theme"></notice-icon>
-        <a-dropdown placement="bottomRight" :theme="theme" :trigger="['click','hover']">
+        <a-dropdown placement="bottomRight" :trigger="['click','hover']">
             <span class="action">
               <a-avatar class="avatar" size="small" :src="avatar"/>
               <span :class="theme">{{ name }} <a-icon type="down" /></span>

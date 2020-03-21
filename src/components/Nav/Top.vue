@@ -1,27 +1,29 @@
 <template>
-    <a-layout-header :class="(layout == 'topmenu' && navtheme == 'dark' && !isMobile) ? 'dark' : 'light'">
-        <a-row v-if="isMobile || layout == 'sidemenu'">
+    <a-layout-header v-if="isMobile" class="light">
+        <a-row>
             <a-col :span="4">
                 <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
             </a-col>
             <a-col :span="20" :style="{textAlign: 'right'}">
-                <user-menu></user-menu>
+                <user-menu theme="light"></user-menu>
             </a-col>
         </a-row>
-        <a-row v-else>
+    </a-layout-header>
+    <a-layout-header v-else-if="layout == 'sidemenu'" class="light">
+        <a-row>
             <a-col :span="4">
-                <logo :navtheme="navtheme"></logo>
+                <logo navtheme="light"></logo>
             </a-col>
             <a-col :span="14">
                 <Menu
                         mode="horizontal"
                         :menu="menus"
-                        :theme="navtheme"
+                        theme="light"
                         style="height: 64px;line-height: 64px;border: none;"
                 ></Menu>
             </a-col>
             <a-col :span="6" :style="{textAlign: 'right'}">
-                <user-menu :theme="navtheme"></user-menu>
+                <user-menu theme="light"></user-menu>
             </a-col>
         </a-row>
     </a-layout-header>

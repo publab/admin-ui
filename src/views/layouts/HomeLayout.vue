@@ -11,9 +11,15 @@
         >
             <n-left :navtheme="navtheme" :siderWidth="siderWidth" style="min-height: 100vh;"></n-left>
         </a-drawer>
-        <n-left v-else-if="!isMobile && layout == 'sidemenu'" :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></n-left>
+        <n-left v-else-if="layout == 'sidemenu'" :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></n-left>
         <a-layout>
-            <n-top :collapsed="collapsed" @toggle="toggle" :navtheme="navtheme" :isMobile="isMobile" :layout="layout"></n-top>
+            <n-top
+                    :collapsed="collapsed"
+                    :navtheme="navtheme"
+                    :isMobile="isMobile"
+                    :layout="layout"
+                    @toggle="toggle"
+            ></n-top>
             <a-breadcrumb :style="{margin: '16px'}">
                 <template v-for="(item,key) in breadcrumb">
                     <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
