@@ -32,6 +32,7 @@ export default {
   .header-logo {
     position: relative;
     height: 64px;
+    padding-left: 24px;
     overflow: hidden;
     line-height: 64px;
     transition: all .3s;

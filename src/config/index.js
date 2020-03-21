@@ -11,7 +11,7 @@
 
 export default {
     NAVTHEME        : 'light',
-    LAYOUT          : 'topmenu',
+    LAYOUT          : 'sidemenu',
     FIXHEADER       : false,
     FIXSIDEBAR      : false,
     AUTOHIDEHEADER  : false,
