@@ -45,6 +45,7 @@
         mixins: [mixinApp],
         data() {
             return {
+                collapsed: false,
                 siderWidth:256
             };
         },
@@ -54,9 +55,6 @@
         computed: {
             breadcrumb(){
                 return this.$store.state.router.items;
-            },
-            collapsed(){
-                return false;
             }
         },
         created(){
@@ -66,22 +64,7 @@
             //渲染不触发 只有更改后才触发
             isMobile: function(val,oldVal){
                 this.collapsed = false
-            },
-            // device(val,oldVal){
-            //     if(val == 'tablet' && oldVal == 'mobile'){
-            //         this.collapsed = true
-            //     }
-            //     if(val == 'desktop' && oldVal == 'tablet'){
-            //         this.collapsed = false
-            //     }
-            //     if(val == 'tablet' && oldVal == 'desktop'){
-            //         this.collapsed = true
-            //     }
-            //     if(val == 'mobile' && oldVal == 'tablet'){
-            //         this.collapsed = false
-            //     }
-            // }
-
+            }
         },
         methods: {
             toggle () {
