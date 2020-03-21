@@ -1,11 +1,40 @@
 @import '~ant-design-vue/dist/antd.less'; // 引入官方提供的 less 样式入口文件
-@import "~@/config/index";
+@import "../../config/index";
 
-.ant-table-wrapper {
-  .ant-table-content {
-    overflow-x: auto;
+.ant-layout {
+  &.desktop,&.tablet{
+    .header-wapper{
+      display: flex;
+      .header-menu{
+        height: 64px;
+        line-height: 64px;
+        border: none;
+        flex: 1 1 auto;
+        white-space: normal;
+      }
+      .header-user-menu{
+        text-align: right;
+        flex: 0 0 260px;
+      }
+    }
   }
-  .ant-table-body {
-    min-width: 1000px;
+  &.desktop{
+    .header-logo{
+      flex: 0 0 256px;
+    }
+  }
+  &.tablet{
+    .header-logo{
+      flex: 0 0 73px;
+    }
+  }
+  .ant-table-wrapper {
+    .ant-table-content {
+      overflow-x: auto;
+    }
+    .ant-table-body {
+      min-width: 1000px;
+    }
   }
 }
+

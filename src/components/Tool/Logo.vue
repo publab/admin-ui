@@ -1,5 +1,5 @@
 <template>
-  <div class="logo" :class="[navtheme === 'dark' ? 'dark': 'light']">
+  <div class="header-logo" :class="[navtheme === 'dark' ? 'dark': 'light']">
     <img src="@/assets/logo.svg" alt="logo">
     <h1 v-if="showTitle">{{ title }}</h1>
   </div>
@@ -29,7 +29,7 @@ export default {
 </script>
 <style lang="less" scoped>
   @import "~@/assets/css/global";
-  .logo {
+  .header-logo {
     position: relative;
     height: 64px;
     padding-left: 24px;

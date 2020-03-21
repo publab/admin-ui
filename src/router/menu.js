@@ -6,6 +6,18 @@ export default [
         component: () => import('../views/Welcome.vue'),
     },
     {
+        path: 'index2', meta: { title: '仪表盘', icon: 'pie-chart', hidden: false},
+        component: () => import('../views/Welcome.vue'),
+    },
+    {
+        path: 'index3', meta: { title: '仪表盘', icon: 'pie-chart', hidden: false},
+        component: () => import('../views/Welcome.vue'),
+    },
+    {
+        path: 'index4', meta: { title: '仪表盘', icon: 'pie-chart', hidden: false},
+        component: () => import('../views/Welcome.vue'),
+    },
+    {
         path: 'account', meta: { title: '账户', icon: 'user'},
         component: Tree(),
         children: [

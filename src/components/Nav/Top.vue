@@ -10,22 +10,16 @@
         </a-row>
     </a-layout-header>
     <a-layout-header v-else-if="layout == 'topmenu'" :class="navtheme">
-        <a-row>
-            <a-col :span="6">
-                <logo :navtheme="navtheme"></logo>
-            </a-col>
-            <a-col :span="12">
-                <Menu
-                        mode="horizontal"
-                        :menu="menus"
-                        :theme="navtheme"
-                        style="height: 64px;line-height: 64px;border: none;"
-                ></Menu>
-            </a-col>
-            <a-col :span="6" :style="{textAlign: 'right'}">
-                <user-menu :theme="navtheme"></user-menu>
-            </a-col>
-        </a-row>
+        <div class="header-wapper">
+            <logo :navtheme="navtheme"></logo>
+            <Menu
+                    mode="horizontal"
+                    :menu="menus"
+                    :theme="navtheme"
+                    class="header-menu"
+            ></Menu>
+            <user-menu class="header-user-menu" :theme="navtheme"></user-menu>
+        </div>
     </a-layout-header>
 </template>
 

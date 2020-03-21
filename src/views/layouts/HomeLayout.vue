@@ -1,5 +1,5 @@
 <template>
-    <a-layout style="min-height: 100vh;">
+    <a-layout style="min-height: 100vh;" :class="[device]">
         <a-drawer
                 v-if="isMobile"
                 placement="left"
