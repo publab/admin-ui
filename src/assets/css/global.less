@@ -1,24 +1,31 @@
 @import '~ant-design-vue/dist/antd.less'; // 引入官方提供的 less 样式入口文件
 @import "~@/config/index";
 
-//头部导航最大宽度样式
-.topmenu{
-  .limit-wapper{
-    width: 100%;
-    max-width: 1220px;
-    margin: 0 auto;
-    &.breadcrumb{
-      margin: 16px auto !important;
-    }
-  }
-}
+//桌面模式最大宽度样式
+//.desktop{
+//  .limit-wapper{
+//    width: 100%;
+//    max-width: 1220px;
+//    margin: 0 auto !important;
+//    padding: 0 20px;
+//    &.breadcrumb{
+//      margin: 16px auto !important;
+//    }
+//    &.header-wapper{
+//      padding: 0;
+//    }
+//    .header-logo{
+//      padding-left: 0;
+//    }
+//  }
+//}
 
-//table最小限制 滚动条
 .ant-layout {
   form{
     background: #fff;
     padding: 15px;
   }
+  //table最小限制 滚动条
   .ant-table-wrapper {
     background: #fff;
     padding: 0 15px;
@@ -34,8 +41,8 @@
 //适应手机端不需要边框留白
 .mobile{
   .mobile-fill-width{
-    margin-left: -20px;
-    margin-right: -20px;
+    margin-left: -24px;
+    margin-right: -24px;
   }
 }
 

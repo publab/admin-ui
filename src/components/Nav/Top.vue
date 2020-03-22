@@ -1,6 +1,6 @@
 <template>
     <a-layout-header v-if="isMobile || layout == 'sidemenu'" :class="['light']">
-        <div class="header-wapper header-wapper-tool limit-wapper">
+        <div class="header-wapper-tool">
             <div class="left-tool">
                 <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
             </div>
@@ -8,7 +8,7 @@
         </div>
     </a-layout-header>
     <a-layout-header v-else-if="layout == 'topmenu'" :class="[navtheme]">
-        <div class="header-wapper header-wapper-menu limit-wapper">
+        <div class="header-wapper-menu">
             <logo :navtheme="navtheme"></logo>
             <Menu
                     mode="horizontal"
@@ -91,7 +91,7 @@
                     line-height: 64px;
                     cursor: pointer;
                     transition: color 0.3s;
-                    margin-left: 20px;
+                    margin-left: 24px;
                     &:hover{
                         color: #1890ff;
                     }
