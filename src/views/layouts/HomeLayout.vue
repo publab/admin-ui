@@ -57,19 +57,25 @@
                 return this.$store.state.router.items;
             }
         },
-        created(){
-
+        mounted(){
+            this.resetView();
         },
         watch: {
             //渲染不触发 只有更改后才触发
-            // isMobile: function(val,oldVal){
-            //     this.collapsed = false
-            // }
+            device: function(val,oldVal){
+                this.resetView();
+            }
         },
         methods: {
             toggle () {
                 this.collapsed = !this.collapsed
             },
+            resetView(){
+                this.device == 'mobile' && (this.collapsed = false);
+                this.device == 'tablet' && (this.collapsed = true);
+                this.device == 'desktop' && (this.collapsed = false);
+
+            }
         }
     };
 </script>
