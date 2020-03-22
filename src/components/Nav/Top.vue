@@ -100,6 +100,7 @@
             .header-user-menu{
                 text-align: right;
                 flex: 1 0 auto;
+                margin-right: 10px;
             }
         }
 
@@ -118,6 +119,7 @@
             .header-user-menu{
                 text-align: right;
                 flex: 0 0 260px;
+                margin-right: 10px;
             }
         }
     }
