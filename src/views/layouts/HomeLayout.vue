@@ -71,7 +71,7 @@
                 this.collapsed = !this.collapsed
             },
             resetView(){
-                this.device == 'mobile' && (this.collapsed = false);
+                this.device == 'mobile' && (this.collapsed = false);    //手机模式 主要设置的 抽屉状态
                 this.device == 'tablet' && (this.collapsed = true);
                 this.device == 'desktop' && (this.collapsed = false);
 
