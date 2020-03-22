@@ -1,5 +1,5 @@
 <template>
-    <a-layout-sider :theme="navtheme" :width="siderWidth" v-model="collapsed" style="box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);">
+    <a-layout-sider :theme="navtheme" :width="siderWidth" collapsible :collapsed="collapsed" style="box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);">
         <logo :navtheme="navtheme"></logo>
         <Menu
                 :menu="menus"

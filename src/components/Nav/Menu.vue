@@ -30,11 +30,7 @@
         },
         watch: {
             collapsed(news,olds){
-                if(news){
-                    this.openKeys = [];
-                }else{
-                    this.menuInit();
-                }
+                this.menuInit();
             }
         },
         mounted(){
@@ -43,10 +39,11 @@
         },
         methods: {
             menuInit(){
+                this.openKeys = [];
                 let _menu = this.menuCheck(this.$route.path.replace(/^(\s|\/)+|(\s|\/)+$/g, '').split('/'));
                 this.menuSelect({key: _menu.join('/')},false);
                 _menu.pop();
-                this.titleClick({key: _menu.join('/')});
+                this.collapsed || this.titleClick({key: _menu.join('/')});
             },
             menuSelect(data,jump = true){
                 this.selectedKeys = [data.key]

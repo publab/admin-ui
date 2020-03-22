@@ -62,9 +62,9 @@
         },
         watch: {
             //渲染不触发 只有更改后才触发
-            isMobile: function(val,oldVal){
-                this.collapsed = false
-            }
+            // isMobile: function(val,oldVal){
+            //     this.collapsed = false
+            // }
         },
         methods: {
             toggle () {
