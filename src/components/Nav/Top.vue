@@ -1,16 +1,12 @@
 <template>
     <a-layout-header v-if="isMobile || layout == 'sidemenu'" class="light">
-        <a-row>
-            <a-col :span="4">
-                <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
-            </a-col>
-            <a-col :span="20" :style="{textAlign: 'right'}">
-                <user-menu theme="light"></user-menu>
-            </a-col>
-        </a-row>
+        <div class="header-wapper-tool">
+            <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
+            <user-menu class="header-user-menu" theme="light"></user-menu>
+        </div>
     </a-layout-header>
     <a-layout-header v-else-if="layout == 'topmenu'" :class="navtheme">
-        <div class="header-wapper">
+        <div class="header-wapper-menu">
             <logo :navtheme="navtheme"></logo>
             <Menu
                     mode="horizontal"
@@ -67,7 +63,7 @@
         }
     }
 </script>
-<style scoped>
+<style lang="less" scoped>
     .dark{
         background: #002140;
         padding: 0 20px;
@@ -76,14 +72,17 @@
         background: #fff;
         padding: 0 20px;
     }
-    .trigger {
-        font-size: 18px;
-        line-height: 64px;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
+    .header-wapper-tool {
 
-    .trigger:hover {
-        color: #1890ff;
+        .trigger {
+            font-size: 18px;
+            line-height: 64px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .trigger:hover {
+            color: #1890ff;
+        }
     }
 </style>

@@ -75,7 +75,7 @@
     }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
     .action {
         cursor: pointer;
         padding: 0 12px;

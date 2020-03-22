@@ -15,7 +15,3 @@
         name: "Chacao"
     }
 </script>
-
-<style scoped>
-
-</style>
