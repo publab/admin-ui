@@ -76,7 +76,7 @@
     //单独处理下特殊样式
     .tablet{
         .header-logo{
-            flex: 0 0 33px !important;
+            flex: 0 0 80px !important;
         }
     }
 
@@ -106,7 +106,7 @@
         .header-wapper-menu{
             display: flex;
             .header-logo{
-                flex: 0 0 auto;
+                flex: 0 0 256px;
             }
             .header-menu{
                 height: 64px;

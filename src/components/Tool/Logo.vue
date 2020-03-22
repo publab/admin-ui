@@ -35,7 +35,7 @@ export default {
     overflow: hidden;
     line-height: 64px;
     transition: all .3s;
-    margin: 0 23px;
+    padding-left: 24px;
 
     &.dark {
       background: #002140;
