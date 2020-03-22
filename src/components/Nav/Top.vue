@@ -1,7 +1,9 @@
 <template>
     <a-layout-header v-if="isMobile || layout == 'sidemenu'" class="light">
         <div class="header-wapper-tool">
-            <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
+            <div class="left-tool">
+                <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
+            </div>
             <user-menu class="header-user-menu" theme="light"></user-menu>
         </div>
     </a-layout-header>
@@ -66,23 +68,50 @@
 <style lang="less" scoped>
     .dark{
         background: #002140;
-        padding: 0 20px;
     }
     .light{
         background: #fff;
-        padding: 0 20px;
     }
     .header-wapper-tool {
+        display: flex;
+        .left-tool{
+            flex: 0 1 150px;
+            .trigger {
+                font-size: 18px;
+                line-height: 64px;
+                cursor: pointer;
+                transition: color 0.3s;
+                &:hover{
+                    color: #1890ff;
+                }
+            }
+        }
+        .header-user-menu{
+            text-align: right;
+            flex: 1 0 auto;
+        }
+    }
 
-        .trigger {
-            font-size: 18px;
+    .header-wapper-menu{
+        display: flex;
+        .header-logo{
+            flex: 0 0 200px;
+            padding: 0;
+            &.aaa{
+                flex: 0 0 73px
+            }
+        }
+        .header-menu{
+            height: 64px;
             line-height: 64px;
-            cursor: pointer;
-            transition: color 0.3s;
+            border: none;
+            flex: 1 1 auto;
+            white-space: normal;
+        }
+        .header-user-menu{
+            text-align: right;
+            flex: 0 0 260px;
         }
 
-        .trigger:hover {
-            color: #1890ff;
-        }
     }
 </style>
