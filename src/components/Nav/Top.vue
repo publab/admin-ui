@@ -1,14 +1,14 @@
 <template>
-    <a-layout-header v-if="isMobile || layout == 'sidemenu'" class="light">
-        <div class="header-wapper-tool">
+    <a-layout-header v-if="isMobile || layout == 'sidemenu'" :class="['light']">
+        <div class="header-wapper header-wapper-tool limit-wapper">
             <div class="left-tool">
                 <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
             </div>
             <user-menu class="header-user-menu" theme="light"></user-menu>
         </div>
     </a-layout-header>
-    <a-layout-header v-else-if="layout == 'topmenu'" :class="navtheme">
-        <div class="header-wapper-menu">
+    <a-layout-header v-else-if="layout == 'topmenu'" :class="[navtheme]">
+        <div class="header-wapper header-wapper-menu limit-wapper">
             <logo :navtheme="navtheme"></logo>
             <Menu
                     mode="horizontal"

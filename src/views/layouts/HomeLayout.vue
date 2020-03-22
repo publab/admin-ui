@@ -20,12 +20,12 @@
                     :layout="layout"
                     @toggle="toggle"
             ></n-top>
-            <a-breadcrumb :style="{margin: '16px'}">
+            <a-breadcrumb class="limit-wapper breadcrumb" :style="{margin: '16px'}">
                 <template v-for="(item,key) in breadcrumb">
                     <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
                 </template>
             </a-breadcrumb>
-            <a-layout-content :style="{ padding: '10px 20px', background: '#fff'}">
+            <a-layout-content class="limit-wapper" :style="{ padding: '10px 20px', background: '#fff'}">
                 <transition name="bounce" mode="out-in">
                     <router-view></router-view>
                 </transition>
