@@ -91,7 +91,7 @@
                     line-height: 64px;
                     cursor: pointer;
                     transition: color 0.3s;
-                    margin-left: 20px;
+                    margin-left: 24px;
                     &:hover{
                         color: #1890ff;
                     }
