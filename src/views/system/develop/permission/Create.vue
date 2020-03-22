@@ -84,8 +84,8 @@
     export default {
         data: () => ({
             formItemLayout: {
-                labelCol: {lg: {span: 5}, sm: {span: 5}},
-                wrapperCol: {lg: {span: 14}, sm: {span: 14} },
+                labelCol: {sm: {span: 5}},
+                wrapperCol: {sm: {span: 14} },
             },
             formLayout: 'horizontal',
             menuTree: [],
