@@ -131,7 +131,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="less">
     .whiteSpaceNormal>ul{
         white-space: normal !important;
     }
