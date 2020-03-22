@@ -20,12 +20,12 @@
                     :layout="layout"
                     @toggle="toggle"
             ></n-top>
-            <a-breadcrumb :style="{margin: '16px 24px'}">
+            <a-breadcrumb class="breadcrumb">
                 <template v-for="(item,key) in breadcrumb">
                     <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
                 </template>
             </a-breadcrumb>
-            <a-layout-content :style="{ margin: '0 24px'}">
+            <a-layout-content>
                 <transition name="bounce" mode="out-in">
                     <router-view></router-view>
                 </transition>

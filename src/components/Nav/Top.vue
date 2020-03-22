@@ -108,6 +108,7 @@
             display: flex;
             .header-logo{
                 flex: 0 0 256px;
+                padding-left: 24px;
             }
             .header-menu{
                 height: 64px;
