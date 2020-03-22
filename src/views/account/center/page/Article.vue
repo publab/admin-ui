@@ -236,7 +236,7 @@ export default {
     }
   },
   mounted () {
-      setTimeout(()=> this.loading = false,2000);
+      setTimeout(()=> this.loading = false,1000);
   },
   methods: {
 
