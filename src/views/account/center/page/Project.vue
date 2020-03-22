@@ -11,16 +11,6 @@
           </a-card-meta>
           <div class="cardItemContent">
             <span>{{ item.updatedAt | fromNow }}</span>
-            <div class="avatarList">
-              <avatar-list size="mini">
-                <avatar-list-item
-                  v-for="(member, i) in item.members"
-                  :key="`${item.id}-avatar-${i}`"
-                  :src="member.avatar"
-                  :tips="member.name"
-                />
-              </avatar-list>
-            </div>
           </div>
         </a-card>
       </a-list-item>

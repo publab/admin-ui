@@ -19,13 +19,13 @@ export default [
             },
             {
                 path: 'settings', meta: { title: '个人设置'},
-                component: () => import('../views/system/develop/permission/Index.vue'),
+                component: () => import('../views/account/settings/Index.vue'),
                 redirect: '/account/settings/base',
                 hideChildrenInMenu: true,
                 children: [
                     {
                         path: 'base', meta: { title: '基本设置'},
-                        component: () => import('../views/system/develop/permission/Index.vue'),
+                        component: Tree(),
                     },
                 ]
             },
