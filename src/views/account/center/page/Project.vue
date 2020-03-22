@@ -10,7 +10,7 @@
             </template>
           </a-card-meta>
           <div class="cardItemContent">
-            <span>{{ item.updatedAt | fromNow }}</span>
+            <span>{{ item.updatedAt}}</span>
           </div>
         </a-card>
       </a-list-item>
