@@ -73,7 +73,7 @@
                         ):null;
                     }else{
                         return !item.meta.hidden ? (
-                            <a-menu-item key={uri}>{item.meta.icon ? <a-icon type={item.meta.icon} /> : ''}<span>{item.meta.title}</span></a-menu-item>
+                            <a-menu-item key={uri} title={item.meta.title}>{item.meta.icon ? <a-icon type={item.meta.icon} /> : ''}<span>{item.meta.title}</span></a-menu-item>
                         ):null;
                     }
                 });
