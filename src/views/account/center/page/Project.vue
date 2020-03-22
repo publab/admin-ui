@@ -6,7 +6,7 @@
           <img slot="cover" :src="item.cover" :alt="item.title" />
           <a-card-meta :title="item.title">
             <template slot="description">
-              <ellipsis :length="50">{{ item.description }}</ellipsis>
+              {{ item.description }}
             </template>
           </a-card-meta>
           <div class="cardItemContent">
