@@ -72,46 +72,54 @@
     .light{
         background: #fff;
     }
-    .header-wapper-tool {
-        display: flex;
-        .left-tool{
-            flex: 0 1 150px;
-            .trigger {
-                font-size: 18px;
-                line-height: 64px;
-                cursor: pointer;
-                transition: color 0.3s;
-                &:hover{
-                    color: #1890ff;
+
+    //单独处理下特殊样式
+    .tablet{
+        .header-logo{
+            flex: 0 0 33px !important;
+        }
+    }
+
+    .ant-layout-header{
+        padding: 0;
+        .header-wapper-tool {
+            display: flex;
+            .left-tool{
+                flex: 0 1 150px;
+                .trigger {
+                    font-size: 18px;
+                    line-height: 64px;
+                    cursor: pointer;
+                    transition: color 0.3s;
+                    margin-left: 20px;
+                    &:hover{
+                        color: #1890ff;
+                    }
                 }
             }
-        }
-        .header-user-menu{
-            text-align: right;
-            flex: 1 0 auto;
-        }
-    }
-
-    .header-wapper-menu{
-        display: flex;
-        .header-logo{
-            flex: 0 0 200px;
-            padding: 0;
-            &.aaa{
-                flex: 0 0 73px
+            .header-user-menu{
+                text-align: right;
+                flex: 1 0 auto;
             }
         }
-        .header-menu{
-            height: 64px;
-            line-height: 64px;
-            border: none;
-            flex: 1 1 auto;
-            white-space: normal;
-        }
-        .header-user-menu{
-            text-align: right;
-            flex: 0 0 260px;
-        }
 
+        .header-wapper-menu{
+            display: flex;
+            .header-logo{
+                flex: 0 0 auto;
+            }
+            .header-menu{
+                height: 64px;
+                line-height: 64px;
+                border: none;
+                flex: 1 1 auto;
+                white-space: normal;
+            }
+            .header-user-menu{
+                text-align: right;
+                flex: 0 0 260px;
+            }
+        }
     }
+
 </style>
