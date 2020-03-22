@@ -96,7 +96,7 @@
             }
         },
         render(){
-            const extra = this.mode == 'inline' ? {
+            const extra = !this.collapsed ? {
                 openKeys: this.openKeys,
             }:{};
             const dynamicProps = {
