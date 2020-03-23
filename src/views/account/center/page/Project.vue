@@ -6,7 +6,7 @@
           <img slot="cover" :src="item.cover" :alt="item.title" />
           <a-card-meta :title="item.title">
             <template slot="description">
-              {{ item.description }}
+              <ellipsis :length="50">{{ item.description }}</ellipsis>
             </template>
           </a-card-meta>
           <div class="cardItemContent">
@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import moment from 'moment'
+import { Ellipsis } from '@/components'
 
 export default {
   name: 'Project',
   components: {
-
+      Ellipsis
   },
   data () {
     return {
