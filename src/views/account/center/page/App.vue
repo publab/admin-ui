@@ -22,30 +22,18 @@
             </div>
           </a-card-meta>
           <template class="ant-card-actions" slot="actions">
-            <a>
-              <a-icon type="download"/>
-            </a>
-            <a>
-              <a-icon type="edit"/>
-            </a>
-            <a>
-              <a-icon type="share-alt"/>
-            </a>
+            <a><a-icon type="download"/></a>
+            <a><a-icon type="edit"/></a>
+            <a><a-icon type="share-alt"/></a>
             <a>
               <a-dropdown>
                 <a class="ant-dropdown-link" href="javascript:;">
                   <a-icon type="ellipsis"/>
                 </a>
                 <a-menu slot="overlay">
-                  <a-menu-item>
-                    <a href="javascript:;">1st menu item</a>
-                  </a-menu-item>
-                  <a-menu-item>
-                    <a href="javascript:;">2nd menu item</a>
-                  </a-menu-item>
-                  <a-menu-item>
-                    <a href="javascript:;">3rd menu item</a>
-                  </a-menu-item>
+                  <a-menu-item>1st menu item</a-menu-item>
+                  <a-menu-item>2nd menu item</a-menu-item>
+                  <a-menu-item>3rd menu item</a-menu-item>
                 </a-menu>
               </a-dropdown>
             </a>
