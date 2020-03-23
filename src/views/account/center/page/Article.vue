@@ -1,53 +1,53 @@
 <template>
-  <a-list
+    <a-list
     size="large"
     rowKey="id"
     :loading="loading"
     itemLayout="vertical"
     :dataSource="data"
-  >
-    <a-list-item :key="item.id" slot="renderItem" slot-scope="item">
-      <template slot="actions">
-        <span>
-          <a-icon type="star-o" style="margin-right: 8px" />
-          {{ item.star }}
-        </span>
-          <span>
-          <a-icon type="like-o" style="margin-right: 8px" />
-          {{ item.like }}
-        </span>
-          <span>
-          <a-icon type="message" style="margin-right: 8px" />
-          {{ item.message }}
-        </span>
-      </template>
-      <a-list-item-meta>
-        <a slot="title" href="https://vue.ant.design/">{{ item.title }}</a>
-        <template slot="description">
-          <span>
-            <a-tag>Ant Design</a-tag>
-            <a-tag>设计语言</a-tag>
-            <a-tag>蚂蚁金服</a-tag>
-          </span>
-        </template>
-      </a-list-item-meta>
-        <div class="antd-pro-components-article-list-content-index-listContent">
-            <div class="description">
-                <slot>
-                    {{ item.description }}
-                </slot>
+    >
+        <a-list-item :key="item.id" slot="renderItem" slot-scope="item">
+            <template slot="actions">
+                <span>
+                  <a-icon type="star-o" style="margin-right: 8px" />
+                  {{ item.star }}
+                </span>
+                <span>
+                  <a-icon type="like-o" style="margin-right: 8px" />
+                  {{ item.like }}
+                </span>
+                <span>
+                  <a-icon type="message" style="margin-right: 8px" />
+                  {{ item.message }}
+                </span>
+            </template>
+            <a-list-item-meta>
+                <a slot="title" href="https://vue.ant.design/">{{ item.title }}</a>
+                <template slot="description">
+                      <span>
+                        <a-tag>Ant Design</a-tag>
+                        <a-tag>设计语言</a-tag>
+                        <a-tag>蚂蚁金服</a-tag>
+                      </span>
+                </template>
+            </a-list-item-meta>
+            <div class="antd-pro-components-article-list-content-index-listContent">
+                <div class="description">
+                    <slot>
+                        {{ item.description }}
+                    </slot>
+                </div>
+                <div class="extra">
+                    <a-avatar :src="item.avatar" size="small" />
+                    <a :href="item.href">{{ item.owner }}</a> 发布在 <a :href="item.href">{{ item.href }}</a>
+                    <em>{{ item.updatedAt}}</em>
+                </div>
             </div>
-            <div class="extra">
-                <a-avatar :src="item.avatar" size="small" />
-                <a :href="item.href">{{ item.owner }}</a> 发布在 <a :href="item.href">{{ item.href }}</a>
-                <em>{{ item.updateAt}}</em>
-            </div>
+        </a-list-item>
+        <div slot="footer" v-if="data.length > 0" style="text-align: center; margin-top: 16px;">
+          <a-button :loading="loadingMore">加载更多</a-button>
         </div>
-    </a-list-item>
-    <div slot="footer" v-if="data.length > 0" style="text-align: center; margin-top: 16px;">
-      <a-button :loading="loadingMore">加载更多</a-button>
-    </div>
-  </a-list>
+    </a-list>
 </template>
 
 <script>
