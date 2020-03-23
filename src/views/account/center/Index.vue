@@ -25,20 +25,37 @@
                         <div class="tagsTitle">标签</div>
                         <div>
                             <template v-for="(tag, index) in tags">
-                                <a-tooltip v-if="tag.length > 20" :key="tag" :title="tag">
-                                    <a-tag
-                                            :key="tag"
-                                            :closable="index !== 0"
-                                            :afterClose="() => handleTagClose(tag)"
-                                    >{{ `${tag.slice(0, 20)}...` }}</a-tag>
-                                </a-tooltip>
                                 <a-tag
-                                        v-else
                                         :key="tag"
                                         :closable="index !== 0"
                                         :afterClose="() => handleTagClose(tag)"
-                                >{{ tag }}</a-tag>
+                                >
+                                    <ellipsis :length="16" tooltip>
+                                        {{ tag }}
+                                    </ellipsis>
+                                </a-tag>
                             </template>
+                            <a-input
+                                    v-if="tagInputVisible"
+                                    ref="tagInput"
+                                    type="text"
+                                    size="small"
+                                    :style="{ width: '78px' }"
+                                    :value="tagInputValue"
+                                    @change="(e) => {
+                                        this.tagInputValue = e.target.value
+                                    }"
+                                    @blur="handleTagInputConfirm"
+                                    @keyup.enter="handleTagInputConfirm"
+                            />
+                            <a-tag v-else @click="() => {
+                                  this.tagInputVisible = true
+                                  this.$nextTick(() => {
+                                    this.$refs.tagInput.focus()
+                                  })
+                            }" style="background: #fff; borderStyle: dashed;">
+                                <a-icon type="plus"/>New Tag
+                            </a-tag>
                         </div>
                     </div>
                     <a-divider :dashed="true"/>
@@ -80,17 +97,21 @@
 <script>
     import { AppPage, ArticlePage, ProjectPage } from './page'
     import { mapState } from 'vuex'
+    import { Ellipsis } from '@/components'
 
     export default {
         name: "Index",
         components: {
             AppPage,
             ArticlePage,
-            ProjectPage
+            ProjectPage,
+            Ellipsis
         },
         data(){
             return {
-                tags: ['很有想法的很有想法的很有想法的很有想法的很有想法的很有想法的很有想法的', '专注设计', '辣~', '大长腿', '川妹子', '海纳百川'],
+                tagInputVisible: false,
+                tagInputValue: '',
+                tags: ['不删除的标签','很有想法的很有想法的很有想法的很有想法的很有想法的很有想法的很有想法的', '专注设计', '辣~', '大长腿', '川妹子', '海纳百川'],
                 teamSpinning: true,
                 teams: [
                     {id: 1, name: '科学搬砖组', avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png'},
@@ -120,6 +141,23 @@
             handleTabChange (key, type) {
                 this[type] = key
             },
+            handleTagClose (removeTag) {
+                const tags = this.tags.filter(tag => tag !== removeTag)
+                this.tags = tags
+            },
+            handleTagInputConfirm () {
+                const inputValue = this.tagInputValue
+                let tags = this.tags
+                if (inputValue && !tags.includes(inputValue)) {
+                    tags = [...tags, inputValue]
+                }
+
+                Object.assign(this, {
+                    tags,
+                    tagInputVisible: false,
+                    tagInputValue: ''
+                })
+            }
         }
     }
 </script>
