@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { deviceEnquire } from '@/utils/device'
+import { deviceEnquire } from '@/plugins/device'
 
 export default {
     name: 'app',

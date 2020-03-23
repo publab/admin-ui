@@ -6,7 +6,7 @@ import './registerServiceWorker'
 import './plugins/axios'
 import './plugins/ant-design-vue'
 import './plugins/vue-ls'
-import './plugins/helper'
+import './utils/helper'
 
 Vue.config.productionTip = false
 

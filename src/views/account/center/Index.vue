@@ -11,12 +11,8 @@
                         <div class="bio">海纳百川，有容乃大</div>
                     </div>
                     <div class="account-center-detail">
-                        <p>
-                            <i class="title"></i>交互专家
-                        </p>
-                        <p>
-                            <i class="group"></i>蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED
-                        </p>
+                        <p><i class="title"></i>交互专家</p>
+                        <p><i class="group"></i>蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED</p>
                         <p>
                             <i class="address"></i>
                             <span>浙江省</span>
@@ -94,7 +90,7 @@
         },
         data(){
             return {
-                tags: ['很有想法的', '专注设计', '辣~', '大长腿', '川妹子', '海纳百川'],
+                tags: ['很有想法的很有想法的很有想法的很有想法的很有想法的很有想法的很有想法的', '专注设计', '辣~', '大长腿', '川妹子', '海纳百川'],
                 teamSpinning: true,
                 teams: [
                     {id: 1, name: '科学搬砖组', avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png'},

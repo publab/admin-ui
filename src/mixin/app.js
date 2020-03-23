@@ -1,4 +1,4 @@
-import { DEVICE_TYPE } from '@/utils/device'
+import { DEVICE_TYPE } from '@/plugins/device'
 import { mapState } from 'vuex'
 
 export const mixinApp = {
