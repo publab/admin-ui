@@ -10,7 +10,17 @@
 						</template>
 					</a-card-meta>
 					<div class="cardItemContent">
-						<span>{{ item.updatedAt}}</span>
+						<span>{{ item.updatedAt | fromNow}}</span>
+						<div class="avatarList">
+							<avatar-list size="mini">
+								<avatar-list-item
+										v-for="(member, i) in item.members"
+										:key="`${item.id}-avatar-${i}`"
+										:src="member.avatar"
+										:tips="member.name"
+								/>
+							</avatar-list>
+						</div>
 					</div>
 				</a-card>
 			</a-list-item>
@@ -19,12 +29,16 @@
 </template>
 
 <script>
-    import { Ellipsis } from '@/components'
+    import moment from 'moment'
+    import { Ellipsis, AvatarList } from '@/components'
+    const AvatarListItem = AvatarList.AvatarItem
 
     export default {
         name: 'Project',
         components: {
-            Ellipsis
+            Ellipsis,
+            AvatarList,
+            AvatarListItem,
         },
         data () {
             return {
@@ -308,6 +322,11 @@
         },
         mounted () {
             setTimeout(()=> this.loading = false,1000);
+        },
+        filters: {
+            fromNow (date) {
+                return moment(date).fromNow()
+            }
         },
         methods: {
 
