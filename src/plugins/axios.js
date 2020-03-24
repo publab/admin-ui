@@ -11,9 +11,9 @@ import store from '../store'
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 let config = {
-  baseURL: process.env.VUE_APP_API_BASE_URL,
-  timeout: 60 * 1000, // Timeout
-  // withCredentials: true, // Check cross-site Access-Control
+    baseURL: process.env.VUE_APP_API_BASE_URL,
+    timeout: 60 * 1000, // Timeout
+    // withCredentials: true, // Check cross-site Access-Control
 };
 
 const _axios = axios.create(config);
@@ -96,18 +96,18 @@ let _login = function () {
 Plugin.install = function(Vue, options) {
     Vue.axios = _axios;
     window.axios = _axios;
-  Object.defineProperties(Vue.prototype, {
-      axios: {
-          get() {
-              return $axios;
-          }
-      },
-      $axios: {
-          get() {
-              return $axios;
-          }
-      },
-  });
+    Object.defineProperties(Vue.prototype, {
+        axios: {
+            get() {
+                return $axios;
+            }
+        },
+        $axios: {
+            get() {
+                return $axios;
+            }
+        },
+    });
 };
 
 Vue.use(Plugin)

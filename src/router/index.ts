@@ -6,31 +6,31 @@ import menu from './menu'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/user',
-    component: () => import('@/views/layouts/UserLayout.vue'),
-    children:[
-        {
-          path: 'login',
-          meta: { title: '登录'},
-          component: () => import('@/views/Login.vue'),
-        },
-        {
-          path: 'password',
-          meta: { title: '忘记密码'},
-          component: () => import('@/views/Forget.vue'),
-        },
-        {
-          path: 'register',
-          meta: { title: '注册'},
-          component: () => import('@/views/Register.vue'),
-        },
-    ]
-  }
+    {
+        path: '/user',
+        component: () => import('@/views/layouts/UserLayout.vue'),
+        children:[
+            {
+                path: 'login',
+                meta: { title: '登录'},
+                component: () => import('@/views/Login.vue'),
+            },
+            {
+                path: 'password',
+                meta: { title: '忘记密码'},
+                component: () => import('@/views/Forget.vue'),
+            },
+            {
+                path: 'register',
+                meta: { title: '注册'},
+                component: () => import('@/views/Register.vue'),
+            },
+        ]
+    }
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export const asyncRouterMap = [

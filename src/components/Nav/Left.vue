@@ -1,12 +1,12 @@
 <template>
-    <a-layout-sider :theme="navtheme" :width="siderWidth" :collapsed="collapsed">
-        <logo :navtheme="navtheme"></logo>
-        <Menu
-                :menu="menus"
-                :theme="navtheme"
-                :collapsed="collapsed"
-        ></Menu>
-    </a-layout-sider>
+	<a-layout-sider :theme="navtheme" :width="siderWidth" :collapsed="collapsed">
+		<logo :navtheme="navtheme"></logo>
+		<Menu
+				:menu="menus"
+				:theme="navtheme"
+				:collapsed="collapsed"
+		></Menu>
+	</a-layout-sider>
 </template>
 <script>
     import Menu from '@/components/Nav/Menu'
@@ -45,10 +45,10 @@
     };
 </script>
 <style lang="less" scoped>
-    .ant-layout-sider{
-        box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
-        .header-logo{
-            padding-left: 24px;
-        }
-    }
+	.ant-layout-sider{
+		box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+		.header-logo{
+			padding-left: 24px;
+		}
+	}
 </style>

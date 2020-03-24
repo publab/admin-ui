@@ -1,40 +1,40 @@
 <template>
-    <a-layout style="min-height: 100vh;" :class="[device,layout]">
-        <a-drawer
-                v-if="isMobile"
-                placement="left"
-                :closable="false"
-                :visible="collapsed"
-                @close="()=> collapsed = !collapsed"
-                :bodyStyle="{ padding: '0px'}"
-                :width="siderWidth"
-        >
-            <n-left :navtheme="navtheme" :siderWidth="siderWidth" style="min-height: 100vh;"></n-left>
-        </a-drawer>
-        <n-left v-else-if="layout == 'sidemenu'" :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></n-left>
-        <a-layout>
-            <n-top
-                    :collapsed="collapsed"
-                    :navtheme="navtheme"
-                    :isMobile="isMobile"
-                    :layout="layout"
-                    @toggle="toggle"
-            ></n-top>
-            <a-breadcrumb class="breadcrumb">
-                <template v-for="(item,key) in breadcrumb">
-                    <a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
-                </template>
-            </a-breadcrumb>
-            <a-layout-content>
-                <transition name="bounce" mode="out-in">
-                    <router-view></router-view>
-                </transition>
-            </a-layout-content>
-            <a-layout-footer style="text-align: center">
-                <a href="https://www.antdv.com/components/button-cn/" target="_blank">Ant Design ©2018 Created by Ant UED</a>
-            </a-layout-footer>
-        </a-layout>
-    </a-layout>
+	<a-layout style="min-height: 100vh;" :class="[device,layout]">
+		<a-drawer
+				v-if="isMobile"
+				placement="left"
+				:closable="false"
+				:visible="collapsed"
+				@close="()=> collapsed = !collapsed"
+				:bodyStyle="{ padding: '0px'}"
+				:width="siderWidth"
+		>
+			<n-left :navtheme="navtheme" :siderWidth="siderWidth" style="min-height: 100vh;"></n-left>
+		</a-drawer>
+		<n-left v-else-if="layout == 'sidemenu'" :navtheme="navtheme" :siderWidth="siderWidth" :collapsed="collapsed"></n-left>
+		<a-layout>
+			<n-top
+					:collapsed="collapsed"
+					:navtheme="navtheme"
+					:isMobile="isMobile"
+					:layout="layout"
+					@toggle="toggle"
+			></n-top>
+			<a-breadcrumb class="breadcrumb">
+				<template v-for="(item,key) in breadcrumb">
+					<a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
+				</template>
+			</a-breadcrumb>
+			<a-layout-content>
+				<transition name="bounce" mode="out-in">
+					<router-view></router-view>
+				</transition>
+			</a-layout-content>
+			<a-layout-footer style="text-align: center">
+				<a href="https://www.antdv.com/components/button-cn/" target="_blank">Ant Design ©2018 Created by Ant UED</a>
+			</a-layout-footer>
+		</a-layout>
+	</a-layout>
 </template>
 <script>
 

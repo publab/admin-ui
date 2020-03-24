@@ -8,12 +8,12 @@ import router from './modules/router'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules: {
-      app,
-      user,
-      loading,
-      router
-  },
-  strict: true,
-  plugins: []
+    modules: {
+        app,
+        user,
+        loading,
+        router
+    },
+    strict: true,
+    plugins: []
 })

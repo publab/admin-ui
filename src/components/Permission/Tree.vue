@@ -1,13 +1,13 @@
 <template>
-    <a-tree v-if="treeData.length"
-            checkable
-            v-model="checkboxs"
-            :treeData="treeData"
-            :replaceFields="replaceFields"
-            :defaultExpandedKeys="threeNodes"
-            :checkStrictly="true"
-            @check="onCheck"
-    />
+	<a-tree v-if="treeData.length"
+			checkable
+			v-model="checkboxs"
+			:treeData="treeData"
+			:replaceFields="replaceFields"
+			:defaultExpandedKeys="threeNodes"
+			:checkStrictly="true"
+			@check="onCheck"
+	/>
 </template>
 
 <script>
@@ -112,10 +112,10 @@
                 }
                 let brothers = this.getNodeByLine(data,line);
                 let top = brothers.map(item => {
-                        return item.id;
-                    }).some(item => {
-                        return nodePool.includes(item)
-                    });
+                    return item.id;
+                }).some(item => {
+                    return nodePool.includes(item)
+                });
                 let parentKey = brothers[0].parent_id;
 
                 if(top){
@@ -132,12 +132,12 @@
 </script>
 
 <style lang="less">
-    .whiteSpaceNormal>ul{
-        white-space: normal !important;
-    }
-    .whiteSpaceNormal>ul>li{
-        display: inline-block;
-        vertical-align: top;
-        padding-top: 8px;
-    }
+	.whiteSpaceNormal>ul{
+		white-space: normal !important;
+	}
+	.whiteSpaceNormal>ul>li{
+		display: inline-block;
+		vertical-align: top;
+		padding-top: 8px;
+	}
 </style>

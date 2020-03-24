@@ -9,10 +9,10 @@ export const mixinApp = {
             layout: state => state.app.LAYOUT,
         }),
         isMobile(){
-           return  this.device == DEVICE_TYPE.MOBILE
+            return  this.device == DEVICE_TYPE.MOBILE
         },
         isDesktop(){
-           return  this.device == DEVICE_TYPE.DESKTOP
+            return  this.device == DEVICE_TYPE.DESKTOP
         },
     },
     methods: {

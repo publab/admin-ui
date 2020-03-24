@@ -11,9 +11,9 @@ import './utils/helper'
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
 
 //移动端UI框架 vant

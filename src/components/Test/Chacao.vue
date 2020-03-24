@@ -1,13 +1,13 @@
 <template>
-    <div>
-        <slot name="headerContent"></slot>
-        <div>
-            duanzhiwei
-        </div>
-        <slot>
-            <router-view ref="content" />
-        </slot>
-    </div>
+	<div>
+		<slot name="headerContent"></slot>
+		<div>
+			duanzhiwei
+		</div>
+		<slot>
+			<router-view ref="content" />
+		</slot>
+	</div>
 </template>
 
 <script>

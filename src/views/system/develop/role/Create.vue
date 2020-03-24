@@ -1,57 +1,51 @@
 <template>
-    <a-form id="components-form-demo-validate-other"
-            :form="form"
-            v-bind="formItemLayout"
-            :layout="formLayout"
-            @submit="handleSubmit"
-    >
-        <a-divider orientation="left">角色添加</a-divider>
+	<a-form id="components-form-demo-validate-other"
+			:form="form"
+			v-bind="formItemLayout"
+			:layout="formLayout"
+			@submit="handleSubmit"
+	>
+		<a-divider orientation="left">角色添加</a-divider>
 
-        <a-form-item label="显示名称">
-            <a-input
-                v-decorator="[
-                  'title',
-                  {initialValue: '',rules: [{ required: true, message: 'Please input your display_name!' }]}
-                ]"
-                placeholder="请输入显示名称"
-            />
-        </a-form-item>
+		<a-form-item label="显示名称">
+			<a-input
+					v-decorator="['title',{initialValue: '',rules: [{ required: true, message: 'Please input your display_name!' }]}]"
+					placeholder="请输入显示名称"
+			/>
+		</a-form-item>
 
-        <a-form-item label="角色名称">
-            <a-input
-                v-decorator="[
-                  'name',
-                  {initialValue: '',rules: [{ required: true, message: 'Please input your route_name!' }]}
-                ]"
-                placeholder="请输入角色名称"
-            />
-        </a-form-item>
+		<a-form-item label="角色名称">
+			<a-input
+					v-decorator="['name',{initialValue: '',rules: [{ required: true, message: 'Please input your route_name!' }]}]"
+					placeholder="请输入角色名称"
+			/>
+		</a-form-item>
 
-        <a-form-item label="状态">
-            <a-radio-group v-decorator="['is_work',{ initialValue: 1 }]">
-                <a-radio :value="1">正常</a-radio>
-                <a-radio :value="2">停止</a-radio>
-            </a-radio-group>
-        </a-form-item>
+		<a-form-item label="状态">
+			<a-radio-group v-decorator="['is_work',{ initialValue: 1 }]">
+				<a-radio :value="1">正常</a-radio>
+				<a-radio :value="2">停止</a-radio>
+			</a-radio-group>
+		</a-form-item>
 
-        <a-form-item label="权限">
-            <p-tree ref="permissionTree" :selectNode="selectNode"></p-tree>
-        </a-form-item>
+		<a-form-item label="权限">
+			<p-tree ref="permissionTree" :selectNode="selectNode"></p-tree>
+		</a-form-item>
 
-        <a-form-item
-                :wrapperCol="{ span: 24 }"
-                style="text-align: center"
-        >
-            <a-button
-                type="primary"
-                html-type="submit"
-                :disabled="hasErrors(form.getFieldsError())"
-            >
-                Submit
-            </a-button>
-        </a-form-item>
+		<a-form-item
+				:wrapperCol="{ span: 24 }"
+				style="text-align: center"
+		>
+			<a-button
+					type="primary"
+					html-type="submit"
+					:disabled="hasErrors(form.getFieldsError())"
+			>
+				Submit
+			</a-button>
+		</a-form-item>
 
-    </a-form>
+	</a-form>
 </template>
 
 <script>
