@@ -12,14 +12,11 @@
 					<div class="cardItemContent">
 						<span>{{ item.updatedAt | fromNow}}</span>
 						<div class="avatarList">
-							<avatar-list size="mini">
-								<avatar-list-item
-										v-for="(member, i) in item.members"
-										:key="`${item.id}-avatar-${i}`"
-										:src="member.avatar"
-										:tips="member.name"
-								/>
-							</avatar-list>
+                            <template
+                                    v-for="(member, i) in item.members"
+                            >
+                                <avatar :key="i" :src="member.avatar" />
+                            </template>
 						</div>
 					</div>
 				</a-card>
@@ -30,15 +27,12 @@
 
 <script>
     import moment from 'moment'
-    import { Ellipsis, AvatarList } from '@/components'
-    const AvatarListItem = AvatarList.AvatarItem
+    import { Ellipsis } from '@/components'
 
     export default {
         name: 'Project',
         components: {
             Ellipsis,
-            AvatarList,
-            AvatarListItem,
         },
         data () {
             return {
