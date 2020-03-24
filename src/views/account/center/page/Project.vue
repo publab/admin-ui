@@ -12,9 +12,7 @@
 					<div class="cardItemContent">
 						<span>{{ item.updatedAt | fromNow}}</span>
 						<div class="avatarList">
-                            <template
-                                    v-for="(member, i) in item.members"
-                            >
+                            <template v-for="(member, i) in item.members">
                                 <a-avatar :key="i" size="small" :src="member.avatar" />
                             </template>
 						</div>
