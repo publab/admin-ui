@@ -15,7 +15,7 @@
                             <template
                                     v-for="(member, i) in item.members"
                             >
-                                <avatar :key="i" :src="member.avatar" />
+                                <a-avatar :key="i" size="small" :src="member.avatar" />
                             </template>
 						</div>
 					</div>

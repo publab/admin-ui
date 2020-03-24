@@ -6,10 +6,8 @@ import NoticeIcon from '@/components/NoticeIcon'
 import PTree from '@/components/Permission/Tree'
 import TChacao from '@/components/Test/Chacao'
 import Ellipsis from '@/components/Ellipsis'
-import AvatarList from '@/components/AvatarList'
 
 export {
-    AvatarList,
     Logo,
     NLeft,
     NTop,
