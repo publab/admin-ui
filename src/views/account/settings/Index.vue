@@ -5,6 +5,7 @@
 				<div class="account-settings-info-left">
 					<a-menu
 							:mode="device == 'mobile' ? 'horizontal' : 'inline'"
+							:style="{ border: '0', width: device == 'mobile' ? '560px' : 'auto'}"
 					>
 						<a-menu-item key="/account/settings/base">
 							基本设置
@@ -71,9 +72,8 @@
 				border-right: unset;
 				border-bottom: 1px solid #e8e8e8;
 				width: 100%;
-				height: 50px;
-				overflow-x: auto;
-				overflow-y: scroll;
+				overflow-x: scroll;
+				overflow-y: hidden;
 			}
 			.account-settings-info-right {
 				padding: 20px 40px;
