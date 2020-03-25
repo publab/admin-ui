@@ -6,6 +6,7 @@
  * FIXSIDEBAR       - 固定左侧菜单栏 ： boolean
  * AUTOHIDEHEADER   - 向下滚动时，隐藏 Header : boolean
  * COLORWEAK        - 色盲模式
+ * MULTITAB         - 多标签模式
  * LSOPTIONS: {}    - Vue-ls 插件配置项 (localStorage/sessionStorage)
  */
 
@@ -16,6 +17,7 @@ export default {
     FIXSIDEBAR      : false,
     AUTOHIDEHEADER  : false,
     COLORWEAK       : false,
+    MULTITAB        : false,
     PRODUCTION      : process.env.NODE_ENV === 'production',
     LSOPTIONS       :{
                           namespace : 'pro__',   // key prefix
