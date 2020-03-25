@@ -5,10 +5,6 @@
 				<div class="account-settings-info-left">
 					<a-menu
 							:mode="device == 'mobile' ? 'horizontal' : 'inline'"
-							:style="{ border: '0', width: device == 'mobile' ? '560px' : 'auto'}"
-							:selectedKeys="selectedKeys"
-							type="inner"
-							@openChange="onOpenChange"
 					>
 						<a-menu-item key="/account/settings/base">
 							基本设置
@@ -47,47 +43,16 @@
             return {
                 // horizontal  inline
                 mode: 'inline',
-
-                openKeys: [],
-                selectedKeys: [],
-
-                // cropper
-                preview: {},
-                option: {
-                    img: '/avatar2.jpg',
-                    info: true,
-                    size: 1,
-                    outputType: 'jpeg',
-                    canScale: false,
-                    autoCrop: true,
-                    // 只有自动截图开启 宽度高度才生效
-                    autoCropWidth: 180,
-                    autoCropHeight: 180,
-                    fixedBox: true,
-                    // 开启宽度和高度比例
-                    fixed: true,
-                    fixedNumber: [1, 1]
-                },
-
-                pageTitle: ''
             }
         },
         mounted () {
-            this.updateMenu()
+
         },
         methods: {
-            onOpenChange (openKeys) {
-                this.openKeys = openKeys
-            },
-            updateMenu () {
-                const routes = this.$route.matched.concat()
-                this.selectedKeys = [ routes.pop().path ]
-            }
+
         },
         watch: {
-            '$route' (val) {
-                this.updateMenu()
-            }
+
         }
     }
 </script>
