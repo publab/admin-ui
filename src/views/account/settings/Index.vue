@@ -6,6 +6,7 @@
 					<a-menu
 							:mode="device == 'mobile' ? 'horizontal' : 'inline'"
 							:style="{ border: '0', width: device == 'mobile' ? '560px' : 'auto'}"
+							:selectedKeys="selectedKeys"
 					>
 						<a-menu-item key="/account/settings/base">
 							基本设置
@@ -42,18 +43,22 @@
         mixins: [mixinApp],
         data () {
             return {
-                // horizontal  inline
-                mode: 'inline',
+                selectedKeys: [],
             }
         },
         mounted () {
-
+            this.updateMenu()
         },
         methods: {
-
+            updateMenu () {
+                const routes = this.$route.matched.concat()
+                this.selectedKeys = [ routes.pop().path ]
+            }
         },
         watch: {
-
+            '$route' (val) {
+                this.updateMenu()
+            }
         }
     }
 </script>
