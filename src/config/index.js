@@ -12,12 +12,12 @@
 
 export default {
     NAVTHEME        : 'dark',
-    LAYOUT          : 'topmenu',
+    LAYOUT          : 'sidemenu',
     FIXHEADER       : false,
     FIXSIDEBAR      : false,
     AUTOHIDEHEADER  : false,
     COLORWEAK       : false,
-    MULTITAB        : false,
+    MULTITAB        : true,
     PRODUCTION      : process.env.NODE_ENV === 'production',
     LSOPTIONS       :{
                           namespace : 'pro__',   // key prefix

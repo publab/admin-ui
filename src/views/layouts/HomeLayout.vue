@@ -20,6 +20,7 @@
 					:layout="layout"
 					@toggle="toggle"
 			></n-top>
+			<multi-tab v-if="multitab"></multi-tab>
 			<a-breadcrumb class="breadcrumb">
 				<template v-for="(item,key) in breadcrumb">
 					<a-breadcrumb-item v-if="item.title" :key="key">{{item.title}}</a-breadcrumb-item>
@@ -38,7 +39,7 @@
 </template>
 <script>
 
-    import { NTop,NLeft } from '@/components';
+    import { NTop,NLeft,MultiTab } from '@/components';
     import {mixinApp} from '@/mixin/app'
 
     export default {
@@ -50,7 +51,7 @@
             };
         },
         components: {
-            NTop,NLeft
+            NTop,NLeft,MultiTab
         },
         computed: {
             breadcrumb(){

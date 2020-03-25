@@ -29,6 +29,9 @@
             }
         },
         watch: {
+            '$route': function (newVal) {
+                this.menuInit();
+            },
             collapsed(news,olds){
                 this.menuInit();
             }

@@ -6,6 +6,7 @@ import NoticeIcon from '@/components/NoticeIcon'
 import PTree from '@/components/Permission/Tree'
 import TChacao from '@/components/Test/Chacao'
 import Ellipsis from '@/components/Ellipsis'
+import MultiTab from '@/components/MultiTab'
 
 export {
     Logo,
@@ -16,4 +17,5 @@ export {
     PTree,
     TChacao,
     Ellipsis,
+    MultiTab,
 }
