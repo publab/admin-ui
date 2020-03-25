@@ -47,6 +47,7 @@
 <style lang="less" scoped>
 	.ant-layout-sider{
 		box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+		z-index: 1;
 		.header-logo{
 			padding-left: 24px;
 		}

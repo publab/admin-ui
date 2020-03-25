@@ -123,7 +123,7 @@
             })
 
             return (
-                <div class="ant-pro-multi-tab">
+                <div class="ant-pro-multi-tab" style="height: 40px; overflow: hidden;">
                     <div class="ant-pro-multi-tab-wrapper">
                         <a-tabs
                             hideAdd
