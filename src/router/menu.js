@@ -25,7 +25,7 @@ export default [
                 children: [
                     {
                         path: 'base', meta: { title: '基本设置'},
-                        component: Tree(),
+                        component: () => import('../views/account/settings/BaseSetting.vue'),
                     },
                 ]
             },
