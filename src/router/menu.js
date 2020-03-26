@@ -27,6 +27,10 @@ export default [
                         path: 'base', meta: { title: '基本设置'},
                         component: () => import('../views/account/settings/BaseSetting.vue'),
                     },
+                    {
+                        path: 'security', meta: { title: '安全设置'},
+                        component: Tree(),
+                    },
                 ]
             },
         ]

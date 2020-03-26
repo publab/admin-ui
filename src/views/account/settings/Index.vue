@@ -7,6 +7,7 @@
 							:mode="device == 'mobile' ? 'horizontal' : 'inline'"
 							:style="{ border: '0', width: device == 'mobile' ? '560px' : 'auto'}"
 							:selectedKeys="selectedKeys"
+							@click="userMenuClick"
 					>
 						<a-menu-item key="/account/settings/base">
 							基本设置
@@ -53,7 +54,10 @@
             updateMenu () {
                 const routes = this.$route.matched.concat()
                 this.selectedKeys = [ routes.pop().path ]
-            }
+            },
+            userMenuClick(data){
+                this.jump(data.key);
+			}
         },
         watch: {
             '$route' (val) {
