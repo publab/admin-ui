@@ -4,6 +4,7 @@
 			v-bind="formItemLayout"
 			:layout="formLayout"
 			@submit="handleSubmit"
+			class="ant-pro-form-wapper"
 	>
 		<a-divider orientation="left">Admin 功能添加</a-divider>
 

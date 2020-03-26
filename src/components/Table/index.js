@@ -87,7 +87,7 @@ export default {
         })
 
         return (
-            <a-table {...{props, scopedSlots: { ...this.$scopedSlots }}} onChange={this.setFilters}></a-table>
+            <a-table {...{props, scopedSlots: { ...this.$scopedSlots }}} onChange={this.setFilters} class="ant-pro-table-wapper"></a-table>
         )
     }
 }
