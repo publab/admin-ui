@@ -29,7 +29,7 @@ export default [
                     },
                     {
                         path: 'security', meta: { title: '安全设置'},
-                        component: Tree(),
+                        component: () => import('../views/account/settings/Security.vue'),
                     },
                 ]
             },
