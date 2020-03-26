@@ -7,8 +7,10 @@ import PTree from '@/components/Permission/Tree'
 import TChacao from '@/components/Test/Chacao'
 import Ellipsis from '@/components/Ellipsis'
 import MultiTab from '@/components/MultiTab'
+import AvatarModal from '@/components/AvatarModal'
 
 export {
+    AvatarModal,
     Logo,
     NLeft,
     NTop,

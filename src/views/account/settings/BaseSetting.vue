@@ -60,7 +60,7 @@
 				</a-form>
 
 			</a-col>
-			<a-col :md="0" :lg="8" :style="{ minHeight: '180px' }">
+			<a-col :xs="0" :sm="0" :md="0" :lg="8" :style="{ minHeight: '180px' }">
 				<div class="ant-upload-preview" @click="$refs.modal.edit(1)" >
 					<a-icon type="cloud-upload-o" class="upload-icon"/>
 					<div class="mask">
@@ -71,15 +71,17 @@
 			</a-col>
 
 		</a-row>
-
+		<avatar-modal ref="modal" @ok="setavatar"></avatar-modal>
 	</div>
 </template>
 
 <script>
 
+    import { AvatarModal } from '@/components'
+
     export default {
         components: {
-
+            AvatarModal
         },
         data () {
             return {

@@ -5,6 +5,7 @@ import store from './store'
 import './plugins/axios'
 import './plugins/ant-design-vue'
 import './plugins/vue-ls'
+import './plugins/vue-cropper'
 import './utils/helper'
 
 Vue.config.productionTip = false

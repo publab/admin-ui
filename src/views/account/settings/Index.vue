@@ -1,5 +1,5 @@
 <template>
-	<div class="page-header-index-wide">
+	<div class="page-header-index-wide mobile-fill-width">
 		<a-card :bordered="false" :bodyStyle="{ padding: '16px 0', height: '100%' }" :style="{ height: '100%' }">
 			<div class="account-settings-info-main" :class="device">
 				<div class="account-settings-info-left">
