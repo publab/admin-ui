@@ -12,7 +12,7 @@
 
 export default {
     NAVTHEME        : 'dark',
-    LAYOUT          : 'topmenu',
+    LAYOUT          : 'sidemenu',
     FIXHEADER       : false,
     FIXSIDEBAR      : false,
     AUTOHIDEHEADER  : false,

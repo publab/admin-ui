@@ -96,7 +96,8 @@
                 this.previewImage = file.url || file.preview;
                 this.previewVisible = true;
             },
-            handleChange({ fileList }) {
+            handleChange({file,fileList,event}) {
+                // window.console.log(file,fileList,event);
                 this.fileList = fileList;
             },
         }
