@@ -8,9 +8,11 @@ import TChacao from '@/components/Test/Chacao'
 import Ellipsis from '@/components/Ellipsis'
 import MultiTab from '@/components/MultiTab'
 import AvatarModal from '@/components/AvatarModal'
+import Ueditor from '@/components/Ueditor'
 
 export {
     AvatarModal,
+    Ueditor,
     Logo,
     NLeft,
     NTop,

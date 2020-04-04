@@ -31,6 +31,10 @@ export default [
                         path: 'security', meta: { title: '安全设置'},
                         component: () => import('../views/account/settings/Security.vue'),
                     },
+                    {
+                        path: 'custom', meta: { title: '个性化'},
+                        component: () => import('../views/account/settings/Custom.vue'),
+                    },
                 ]
             },
         ]
