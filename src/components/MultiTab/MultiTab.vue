@@ -101,7 +101,7 @@
         watch: {
             '$route': function (newVal) {
                 this.activeKey = newVal.fullPath
-                if (this.fullPathList.indexOf(newVal.fullPath) < 0) {
+                if (this.fullPathList.indexOf(newVal.fullPath) < 0 && !newVal.meta.untab) {
                     this.fullPathList.push(newVal.fullPath)
                     this.pages.push(newVal)
                 }
