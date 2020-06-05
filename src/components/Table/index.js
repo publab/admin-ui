@@ -60,9 +60,9 @@ export default {
                 }
                 this.dataSourceLocal = response.data;
                 response.meta && (this.paginationLocal = Object.assign(pagination,{
-                    total: response.meta.total || undefined,
-                    pageSize: response.meta.per_page || undefined,
-                    current: response.meta.current_page || undefined,
+                    total: response.meta.total || 0,
+                    pageSize: response.meta.per_page || 0,
+                    current: response.meta.current_page || 1,
                 }));
             }).catch((error) => {
                 window.console.log(error)
