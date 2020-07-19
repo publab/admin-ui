@@ -49,27 +49,22 @@
         },
         methods: {
             logout(){
-
-                var _this = this;
-
                 this.$confirm({
                     title: '提示',
                     content: '真的要注销登录吗 ?',
-                    onOk() {
-                        axios.post('logout').then((response) => {
-                            if(!response.status){
-                                return _this.$message.error(response.message);
-                            }
-                            sessionStorage.clear()
-                            _this.jump('/user/login');
-                        });
+                    onOk: () => {
+						this.axios.post('logout').then((response) => {
+							if(!response.status){
+								return this.$message.error(response.message);
+							}
+							sessionStorage.clear()
+							this.jump('/user/login');
+						});
                     },
                     onCancel() {
 
                     },
                 });
-
-
             },
         }
     }

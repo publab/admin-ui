@@ -25,10 +25,9 @@
             threeNodes:[],
         }),
         mounted(){
-            let _this = this;
 
             //异步加载权限
-            axios.post('system/develop/permission',{}).then((response) => {
+			this.axios.post('system/develop/permission',{}).then((response) => {
                 if(!response.status){
                     return this.$message.error(response.message);
                 }
@@ -40,8 +39,8 @@
                         response.data[i].children[j].class = 'whiteSpaceNormal'
                     }
                 }
-                _this.threeNodes = threeNodes;
-                _this.treeData = response.data;
+                this.threeNodes = threeNodes;
+                this.treeData = response.data;
             });
 
         },

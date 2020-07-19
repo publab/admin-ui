@@ -40,7 +40,7 @@
         },
         methods: {
             login(){
-                axios.post('token',{
+                this.axios.post('token',{
                     data:{
                         'mobile': this.user_name,
                         'password': this.password,

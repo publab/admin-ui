@@ -26,7 +26,8 @@ const user = {
     },
     actions: {
         GetInfo ({ commit }, _this) {
-            axios.post('userinfo').then((response) => {
+            console.log(this)
+            _this.axios.post('userinfo').then((response) => {
                 if(response.status != 1){
                     return _this.$message.error(response.message);
                 }

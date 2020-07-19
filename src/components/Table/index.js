@@ -43,7 +43,7 @@ export default {
         },
         loadData(pagination = {}, sorter = {}){
             this.loadingLocal = true;
-            this.axios.post(this.dataUrl,{
+            this.$axios.post(this.dataUrl,{
                 page: pagination.current || 1,
                 pageSize: this.paginationLocal.pageSize,
                 sort:{
