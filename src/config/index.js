@@ -1,6 +1,6 @@
 /**
  * 项目默认配置项
- * NAVTHEME         - sidebar theme ['dark', 'light'] 两种主题
+ * NAVTHEME         - sidebar theme ['dark', 'light', 'gray'] 两种主题
  * LAYOUT           - 整体布局方式 ['sidemenu', 'topmenu'] 两种布局
  * FIXHEADER        - 固定 Header : boolean
  * FIXSIDEBAR       - 固定左侧菜单栏 ： boolean
