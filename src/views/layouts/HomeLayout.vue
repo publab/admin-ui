@@ -1,9 +1,10 @@
 <template>
-	<div>456789ss</div>
+	<mobile-layout></mobile-layout>
 </template>
 <script>
 
     import {mixinApp} from '@/mixin/app'
+	import MobileLayout from './home/MobileLayout'
 
     export default {
         mixins: [mixinApp],
@@ -13,7 +14,7 @@
             };
         },
         components: {
-
+            MobileLayout
         },
         mounted(){
 
